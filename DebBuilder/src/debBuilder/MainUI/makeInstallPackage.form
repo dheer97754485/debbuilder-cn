@@ -55,7 +55,7 @@
             </constraints>
             <properties>
               <font size="28"/>
-              <text value="软件包名："/>
+              <text value="软件包名称："/>
             </properties>
           </component>
           <component id="f377f" class="javax.swing.JProgressBar" binding="pbMakeBar">
