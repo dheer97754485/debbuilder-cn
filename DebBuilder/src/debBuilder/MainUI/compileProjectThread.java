@@ -13,15 +13,15 @@ import java.io.*;
  */
 public class compileProjectThread implements Runnable
 {
-    private File projectFile;
+    private debProjectModel project;
     private String compileBufferDir;
     private String compileResultFile;
     public boolean makeFinish;
     public boolean haveError;
     public String makeResult;
-    public compileProjectThread(File project,String bufferdir,String debfilepath)
+    public compileProjectThread(debProjectModel project,String bufferdir,String debfilepath)
     {
-        this.projectFile = project;
+        this.project = project;
         this.compileBufferDir = bufferdir;
         this.compileResultFile = debfilepath;
         makeFinish = false;
@@ -32,10 +32,10 @@ public class compileProjectThread implements Runnable
         //To change body of implemented methods use File | Settings | File Templates.
         try
         {
-            debProjectModel dpm = debProjectModelRW.loadProject(this.projectFile.getAbsolutePath());
+            //debProjectModel dpm = debProjectModelRW.loadProject(this.projectFile.getAbsolutePath());
             System.out.println("缓冲目录：" + this.compileBufferDir);
             System.out.println("Deb文件：" + this.compileResultFile);
-            debProjectCompile.compileProjectWithMakeDeb(dpm,this.compileBufferDir,this.compileResultFile);
+            debProjectCompile.compileProjectWithMakeDeb(this.project,this.compileBufferDir,this.compileResultFile);
             this.makeFinish = true;
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.

@@ -14,7 +14,6 @@ public class makeInstallPackage extends JDialog implements Runnable{
     private JProgressBar pbMakeBar;
     private JTextArea textStatus;
     private debProjectModel projectModel;
-    private File projectFile;
     private String compileBufferDir;
     private String compileResultFile;
     private Boolean enableCloseApp;
@@ -23,11 +22,11 @@ public class makeInstallPackage extends JDialog implements Runnable{
     private Thread makeThread;
     private boolean waitCompileFinish = false;
 
-    public makeInstallPackage(debProjectModel project,File pFile,String bufferdir,String debfilepath,Boolean enableClose) {
+    public makeInstallPackage(debProjectModel project,String bufferdir,String debfilepath,Boolean enableClose) {
         setContentPane(contentPane);
         setModal(true);
         this.projectModel = project;
-        this.projectFile = pFile;
+        //this.projectFile = pFile;
         this.compileBufferDir = bufferdir;
         this.compileResultFile = debfilepath;
         this.enableCloseApp = enableClose;
@@ -54,7 +53,7 @@ public class makeInstallPackage extends JDialog implements Runnable{
         timerThread = new Thread(this);
         timerThread.start();
 
-        compileHelper = new compileProjectThread(this.projectFile,this.compileBufferDir,this.compileResultFile);
+        compileHelper = new compileProjectThread(this.projectModel,this.compileBufferDir,this.compileResultFile);
         makeThread = new Thread(compileHelper);
         makeThread.start();
     }

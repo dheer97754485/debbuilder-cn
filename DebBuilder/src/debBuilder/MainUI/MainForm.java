@@ -34,7 +34,7 @@ public class MainForm extends JDialog {
     private JTextField textInstalledSize;
     private JTextField textSection;
     private JTextField textMaintainer;
-    private JTextField textOriginalMaintainer;
+    //private JTextField textOriginalMaintainer;
     private JTextField textPriority;
     private JTextField textDebName;
     private JTextField textResultDir;
@@ -584,7 +584,17 @@ public class MainForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                makeInstallPkg(MainForm.currentProject, MainForm.currentProjectFile, MainForm.currentProject.resultDir + "/" + MainForm.currentProject.debPackagename, false);
+                saveprojectdata();
+                if (MainForm.currentProject.debPackagename == null || MainForm.currentProject.resultDir == null)
+                {
+                   JOptionPane.showMessageDialog(null,"对不起，编译文件名或编译输出目录不能为空！");
+                }else if (MainForm.currentProject.debPackagename.isEmpty() || MainForm.currentProject.resultDir.isEmpty())
+                {
+                    JOptionPane.showMessageDialog(null,"对不起，编译文件名或编译输出目录不能为空！");
+                }else
+                {
+                   makeInstallPkg(MainForm.currentProject, MainForm.currentProject.resultDir + "/" + MainForm.currentProject.debPackagename, false);
+                }
             }
         });
         btnDesktopCompile.addActionListener(new ActionListener() {
@@ -620,8 +630,8 @@ public class MainForm extends JDialog {
      * @param debfile
      * @param closeapps
      */
-    public static void makeInstallPkg(debProjectModel project, File pfiles, String debfile, boolean closeapps) {
-        makeDialog = new makeInstallPackage(project, pfiles, jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/debBuilderWorkSpace/" + project.packageName, debfile, closeapps);
+    public static void makeInstallPkg(debProjectModel project, String debfile, boolean closeapps) {
+        makeDialog = new makeInstallPackage(project, jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/debBuilderWorkSpace/" + project.packageName, debfile, closeapps);
         makeDialog.pack();
         makeDialog.setTitle("DebBuilder软件包生成器-编译进度");
         makeDialog.setSize(new Dimension(400, 240));
@@ -684,7 +694,7 @@ public class MainForm extends JDialog {
         MainForm.currentProject.packageHomepage = this.textHomePage.getText().trim();
         MainForm.currentProject.packageDescription = this.textDescription.getText().trim();
         MainForm.currentProject.packageMaintainer = this.textMaintainer.getText().trim();
-        MainForm.currentProject.packageOriginalMaintainer = this.textOriginalMaintainer.getText().trim();
+        //MainForm.currentProject.packageOriginalMaintainer = this.textOriginalMaintainer.getText().trim();
         MainForm.currentProject.packagePriority = this.textPriority.getText().trim();
         MainForm.currentProject.packagePostInstFile = textPostInst.getText();
         MainForm.currentProject.packagePostRmFile = textPostRm.getText();
@@ -781,7 +791,7 @@ public class MainForm extends JDialog {
         this.textInstalledSize.setText("0");
         this.textSection.setText("utils");
         this.textMaintainer.setText("无人维护");
-        this.textOriginalMaintainer.setText("无人维护");
+        //this.textOriginalMaintainer.setText("无人维护");
         this.textPriority.setText("optional");
         this.textDebName.setText("empty.deb");
         this.textResultDir.setText("");
@@ -823,7 +833,7 @@ public class MainForm extends JDialog {
         this.textInstalledSize.setText(MainForm.currentProject.packageInstalledSize);
         this.textSection.setText(MainForm.currentProject.packageSection);
         this.textMaintainer.setText(MainForm.currentProject.packageMaintainer);
-        this.textOriginalMaintainer.setText(MainForm.currentProject.packageOriginalMaintainer);
+        //this.textOriginalMaintainer.setText(MainForm.currentProject.packageOriginalMaintainer);
         this.textPriority.setText(MainForm.currentProject.packagePriority);
         this.textDebName.setText(MainForm.currentProject.debPackagename);
         this.textResultDir.setText(MainForm.currentProject.resultDir);
@@ -905,7 +915,7 @@ public class MainForm extends JDialog {
            if (cmd != null && cmd.startsWith("compile") && project != null && debfile != null)
            {
               debProjectModel dpmm = debProjectModelRW.loadProject(project);
-              makeInstallPkg(dpmm,new File(project),debfile,true);
+              makeInstallPkg(dpmm,debfile,true);
            }else if (cmd != null && cmd.startsWith("open") && project != null)
            {
                MainForm dialog = new MainForm();
