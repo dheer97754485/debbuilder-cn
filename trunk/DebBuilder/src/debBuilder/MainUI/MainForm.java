@@ -257,32 +257,38 @@ public class MainForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                if (MainForm.currentDepend != null) {
-                    MainForm.currentDepend.packageName = textDependName.getText();
-                    MainForm.currentDepend.packageVersion = textDependVersion.getText();
-                    MainForm.currentDepend.packageVersionType = dependVersionType;
-                    MainForm.currentProject.packageDepends.add(MainForm.currentDepend);
-                    MainForm.currentDepend = null;
-                    btnNewDepends.setEnabled(true);
-                    btnCancelNew.setEnabled(false);
-                    listDepends.setListData(MainForm.currentProject.packageDepends.toArray());
+                if (textDependName.getText() == null || textDependName.getText().isEmpty())
+                {
+                   JOptionPane.showMessageDialog(null,"请输入软件包名！");
+                }else
+                {
+                   if (MainForm.currentDepend != null) {
+                       MainForm.currentDepend.packageName = textDependName.getText();
+                       MainForm.currentDepend.packageVersion = textDependVersion.getText();
+                       MainForm.currentDepend.packageVersionType = dependVersionType;
+                       MainForm.currentProject.packageDepends.add(MainForm.currentDepend);
+                       MainForm.currentDepend = null;
+                       btnNewDepends.setEnabled(true);
+                       btnCancelNew.setEnabled(false);
+                       listDepends.setListData(MainForm.currentProject.packageDepends.toArray());
 
-                } else {
-                    if (listDepends.getSelectedValue() != null) {
-                        debDependsModel ddm = (debDependsModel) listDepends.getSelectedValue();
-                        ddm.packageName = textDependName.getText();
-                        ddm.packageVersion = textDependVersion.getText();
-                        ddm.packageVersionType = dependVersionType;
-                        int index = MainForm.currentProject.packageDepends.indexOf(ddm);
-                        MainForm.currentProject.packageDepends.set(index, ddm);
-                        btnNewDepends.setEnabled(true);
-                        btnCancelNew.setEnabled(false);
-                        listDepends.setListData(MainForm.currentProject.packageDepends.toArray());
-                    }
+                   } else {
+                       if (listDepends.getSelectedValue() != null) {
+                          debDependsModel ddm = (debDependsModel) listDepends.getSelectedValue();
+                          ddm.packageName = textDependName.getText();
+                          ddm.packageVersion = textDependVersion.getText();
+                          ddm.packageVersionType = dependVersionType;
+                          int index = MainForm.currentProject.packageDepends.indexOf(ddm);
+                          MainForm.currentProject.packageDepends.set(index, ddm);
+                          btnNewDepends.setEnabled(true);
+                          btnCancelNew.setEnabled(false);
+                          listDepends.setListData(MainForm.currentProject.packageDepends.toArray());
+                       }
+                   }
+                   lblStatus.setText("添加/修改软件包依赖完成");
+                   btnSaveDepends.setEnabled(false);
+                   MainForm.currentDepend = null;
                 }
-                lblStatus.setText("添加/修改软件包依赖完成");
-                btnSaveDepends.setEnabled(false);
-                MainForm.currentDepend = null;
             }
         });
         btnCancelNew.addActionListener(new ActionListener() {
@@ -378,41 +384,47 @@ public class MainForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                debStartupModel editor = null;
-                if (MainForm.currentStartup != null) {
-                    //新建
-                    editor = MainForm.currentStartup;
-                } else {
+                if (textStartupName.getText() == null || textStartupName.getText().isEmpty())
+                {
+                  JOptionPane.showMessageDialog(null,"请输入启动器显示名称！");
+                }else
+                {
+                   debStartupModel editor = null;
+                   if (MainForm.currentStartup != null) {
+                       //新建
+                       editor = MainForm.currentStartup;
+                   } else {
                     //修改
-                    if (listStartup.getSelectedValue() != null) {
+                       if (listStartup.getSelectedValue() != null) {
                         editor = (debStartupModel) listStartup.getSelectedValue();
-                    }
-                }
-                if (editor != null) {
-                    editor.startupCategories = textStartupCategories.getText();
-                    editor.startupFileName = textStartupFileName.getText();
-                    editor.iconSourceFile = textStartupIcon.getText();
-                    editor.startupIcon = new File(editor.iconSourceFile).getName();
-                    editor.startupComment = textStartupComment.getText();
-                    editor.startupExec = textStartupExec.getText();
-                    editor.startupGenericName = textStartupGenericName.getText();
-                    editor.startupName = textStartupName.getText();
-                    editor.startupType = textStartupType.getText();
-                    editor.startupVersion = textStartupVersion.getText();
+                       }
+                   }
+                   if (editor != null) {
+                       editor.startupCategories = textStartupCategories.getText();
+                       editor.startupFileName = textStartupFileName.getText();
+                       editor.iconSourceFile = textStartupIcon.getText();
+                       editor.startupIcon = new File(editor.iconSourceFile).getName();
+                       editor.startupComment = textStartupComment.getText();
+                       editor.startupExec = textStartupExec.getText();
+                       editor.startupGenericName = textStartupGenericName.getText();
+                       editor.startupName = textStartupName.getText();
+                       editor.startupType = textStartupType.getText();
+                       editor.startupVersion = textStartupVersion.getText();
 
-                    if (MainForm.currentStartup != null) {
-                        //添加
-                        MainForm.currentProject.packageStartupList.add(editor);
-                        btnNewStartup.setEnabled(true);
-                    } else {
-                        int index = MainForm.currentProject.packageStartupList.indexOf(listStartup.getSelectedValue());
-                        MainForm.currentProject.packageStartupList.set(index, editor);
-                    }
-                    listStartup.setListData(MainForm.currentProject.packageStartupList.toArray());
+                       if (MainForm.currentStartup != null) {
+                           //添加
+                           MainForm.currentProject.packageStartupList.add(editor);
+                           btnNewStartup.setEnabled(true);
+                       } else {
+                           int index = MainForm.currentProject.packageStartupList.indexOf(listStartup.getSelectedValue());
+                           MainForm.currentProject.packageStartupList.set(index, editor);
+                       }
+                       listStartup.setListData(MainForm.currentProject.packageStartupList.toArray());
+                   }
+                   lblStatus.setText("添加/修改菜单启动器完成");
+                   btnSaveStartup.setEnabled(false);
+                   MainForm.currentStartup = null;
                 }
-                lblStatus.setText("添加/修改菜单启动器完成");
-                btnSaveStartup.setEnabled(false);
-                MainForm.currentStartup = null;
             }
         });
         btnCancelSave.addActionListener(new ActionListener() {
@@ -483,33 +495,42 @@ public class MainForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                debFilesModel dfm = null;
-                if (MainForm.currentFiles != null) {
-                    dfm = MainForm.currentFiles;
-                } else {
-                    if (listFiles.getSelectedValue() != null) {
-                        dfm = (debFilesModel) listFiles.getSelectedValue();
-                    }
-                }
+                if (textSourcePath.getText() == null || textSourcePath.getText().isEmpty())
+                {
+                    JOptionPane.showMessageDialog(null,"源路径不能为空！");
+                }else if (textDestPath.getText() == null || textDestPath.getText().isEmpty())
+                {
+                    JOptionPane.showMessageDialog(null,"目标路径不能为空！");
+                }else
+                {
+                   debFilesModel dfm = null;
+                   if (MainForm.currentFiles != null) {
+                       dfm = MainForm.currentFiles;
+                   } else {
+                       if (listFiles.getSelectedValue() != null) {
+                           dfm = (debFilesModel) listFiles.getSelectedValue();
+                       }
+                   }
 
-                if (dfm != null) {
-                    dfm.sourcePath = textSourcePath.getText();
-                    dfm.destPath = textDestPath.getText();
-                    dfm.copyInfo = "dir";
-                    dfm.copyType = debFilesModel.copyDir;
+                   if (dfm != null) {
+                       dfm.sourcePath = textSourcePath.getText();
+                       dfm.destPath = textDestPath.getText();
+                       dfm.copyInfo = "dir";
+                       dfm.copyType = debFilesModel.copyDir;
 
-                    if (MainForm.currentFiles != null) {
-                        MainForm.currentProject.packageFiles.add(dfm);
-                    } else {
-                        int index = MainForm.currentProject.packageFiles.indexOf(listFiles.getSelectedValue());
-                        MainForm.currentProject.packageFiles.set(index, dfm);
-                    }
-                    listFiles.setListData(MainForm.currentProject.packageFiles.toArray());
+                       if (MainForm.currentFiles != null) {
+                           MainForm.currentProject.packageFiles.add(dfm);
+                       } else {
+                           int index = MainForm.currentProject.packageFiles.indexOf(listFiles.getSelectedValue());
+                           MainForm.currentProject.packageFiles.set(index, dfm);
+                       }
+                       listFiles.setListData(MainForm.currentProject.packageFiles.toArray());
+                   }
+                   lblStatus.setText("添加/修改安装目录完成！");
+                   btnSaveFiles.setEnabled(false);
+                   btnNewFiles.setEnabled(true);
+                   MainForm.currentFiles = null;
                 }
-                lblStatus.setText("添加/修改安装目录完成！");
-                btnSaveFiles.setEnabled(false);
-                btnNewFiles.setEnabled(true);
-                MainForm.currentFiles = null;
             }
         });
         btnCancelFiles.addActionListener(new ActionListener() {
@@ -887,7 +908,7 @@ public class MainForm extends JDialog {
                temp = args[k] == null?"":args[k].trim();
                if (temp.startsWith("--help"))
                {
-                  System.out.println("DebBuilder软件包生成器V1.5 QQ707519239");
+                  System.out.println("DebBuilder软件包生成器V1.6 QQ707519239");
                   System.out.println(" 参数(注意大小写和空格!)：");
                   System.out.println(" --help    帮助。");
                   System.out.println(" -compile  编译软件包工程文件。");
@@ -920,7 +941,7 @@ public class MainForm extends JDialog {
            {
                MainForm dialog = new MainForm();
                dialog.pack();
-               dialog.setTitle("DebBuilder软件包生成器 V1.5 QQ707519239");
+               dialog.setTitle("DebBuilder软件包生成器 V1.6 QQ707519239");
                //dialog.setSize(new Dimension(900,650));
                dialog.changeEditorStatus(true, project);
                MainForm.setFormToCenter(dialog);
@@ -931,7 +952,7 @@ public class MainForm extends JDialog {
         } else {
             MainForm dialog = new MainForm();
             dialog.pack();
-            dialog.setTitle("DebBuilder软件包生成器 V1.5 QQ707519239");
+            dialog.setTitle("DebBuilder软件包生成器 V1.6 QQ707519239");
             //dialog.setSize(new Dimension(900,650));
             dialog.changeEditorStatus(false, "/home/wcss/测试工程.dpro");
             MainForm.setFormToCenter(dialog);
