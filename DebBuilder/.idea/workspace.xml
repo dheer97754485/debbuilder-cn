@@ -495,7 +495,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="33" width="1282" height="769" extended-state="6" />
+    <frame x="-1" y="33" width="1282" height="769" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12074554" sideWeight="0.63387096" order="2" side_tool="false" content_ui="tabs" />
