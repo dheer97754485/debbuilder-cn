@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: jAppHelper.jar jdom-1.1.1-computer.jar woxSerializer_2012.
+ jar
+Main-Class: debBuilder.MainUI.MainForm
+
