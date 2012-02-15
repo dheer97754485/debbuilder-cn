@@ -231,6 +231,7 @@ public class debProjectCompile
         } else {
             projectbasedir = bufferdir;
         }
+        projectbasedir = projectbasedir + (new Date().getTime());
         File basedir = new File(projectbasedir);
         basedir.mkdirs();
         File debpath = new File(new File(debfilepath).getParent());

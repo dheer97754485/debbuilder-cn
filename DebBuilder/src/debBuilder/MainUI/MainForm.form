@@ -141,7 +141,7 @@
                           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="软件版本号："/>
+                          <text value="软件版本号(数字和.号)："/>
                         </properties>
                       </component>
                       <component id="51bdc" class="javax.swing.JTextField" binding="textVersion">
@@ -231,7 +231,7 @@
                           <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="软件包优先级："/>
+                          <text value="软件包优先级(非重要包用默认值)："/>
                         </properties>
                       </component>
                       <component id="f04ad" class="javax.swing.JTextField" binding="textPriority">
@@ -370,6 +370,24 @@
                         </constraints>
                         <properties>
                           <editable value="false"/>
+                        </properties>
+                      </component>
+                      <component id="d611a" class="javax.swing.JComboBox" binding="cboxSection">
+                        <constraints>
+                          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <model>
+                            <item value="utils"/>
+                            <item value="non-free"/>
+                            <item value="non-free/net"/>
+                            <item value="non-free/web"/>
+                            <item value="Development"/>
+                            <item value="misc"/>
+                            <item value="net"/>
+                            <item value="base"/>
+                            <item value="unknown"/>
+                          </model>
                         </properties>
                       </component>
                     </children>
@@ -922,7 +940,9 @@
                                         <preferred-size width="150" height="-1"/>
                                       </grid>
                                     </constraints>
-                                    <properties/>
+                                    <properties>
+                                      <text value=""/>
+                                    </properties>
                                   </component>
                                   <component id="76d2e" class="javax.swing.JLabel">
                                     <constraints>
@@ -1010,6 +1030,31 @@
                                     </constraints>
                                     <properties>
                                       <text value="选择图片"/>
+                                    </properties>
+                                  </component>
+                                  <component id="f5ffb" class="javax.swing.JComboBox" binding="cboxStartup">
+                                    <constraints>
+                                      <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <model>
+                                        <item value="Game"/>
+                                        <item value="Player"/>
+                                        <item value="Network"/>
+                                        <item value="Application"/>
+                                        <item value="System"/>
+                                        <item value="Video"/>
+                                        <item value="Graphics"/>
+                                        <item value="Office"/>
+                                      </model>
+                                    </properties>
+                                  </component>
+                                  <component id="bcdc1" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <text value="(默认即可)"/>
                                     </properties>
                                   </component>
                                 </children>

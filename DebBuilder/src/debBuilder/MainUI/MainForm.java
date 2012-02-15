@@ -83,6 +83,8 @@ public class MainForm extends JDialog {
     private JButton btnSelectSourcePath;
     private JTextField textDestPath;
     private JButton btnSelectDestPath;
+    private JComboBox cboxSection;
+    private JComboBox cboxStartup;
     private JButton buttonOK;
     private JFileChooser fc = new JFileChooser();
     private int flag;
@@ -608,7 +610,7 @@ public class MainForm extends JDialog {
                 saveprojectdata();
                 if (MainForm.currentProject.debPackagename == null || MainForm.currentProject.resultDir == null)
                 {
-                   JOptionPane.showMessageDialog(null,"对不起，编译文件名或编译输出目录不能为空！");
+                   JOptionPane.showMessageDialog(null, "对不起，编译文件名或编译输出目录不能为空！");
                 }else if (MainForm.currentProject.debPackagename.isEmpty() || MainForm.currentProject.resultDir.isEmpty())
                 {
                     JOptionPane.showMessageDialog(null,"对不起，编译文件名或编译输出目录不能为空！");
@@ -628,6 +630,20 @@ public class MainForm extends JDialog {
                 } catch (Exception e) {
                     e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 }
+            }
+        });
+
+        //下拉列表
+        cboxSection.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                textSection.setText(cboxSection.getSelectedItem().toString());
+            }
+        });
+        cboxStartup.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                textStartupCategories.setText(cboxStartup.getSelectedItem().toString());
             }
         });
     }
@@ -908,7 +924,7 @@ public class MainForm extends JDialog {
                temp = args[k] == null?"":args[k].trim();
                if (temp.startsWith("--help"))
                {
-                  System.out.println("DebBuilder软件包生成器V1.6 QQ707519239");
+                  System.out.println("DebBuilder软件包生成器V1.7 QQ707519239");
                   System.out.println(" 参数(注意大小写和空格!)：");
                   System.out.println(" --help    帮助。");
                   System.out.println(" -compile  编译软件包工程文件。");
@@ -941,7 +957,7 @@ public class MainForm extends JDialog {
            {
                MainForm dialog = new MainForm();
                dialog.pack();
-               dialog.setTitle("DebBuilder软件包生成器 V1.6 QQ707519239");
+               dialog.setTitle("DebBuilder软件包生成器 V1.7 QQ707519239");
                //dialog.setSize(new Dimension(900,650));
                dialog.changeEditorStatus(true, project);
                MainForm.setFormToCenter(dialog);
@@ -952,7 +968,7 @@ public class MainForm extends JDialog {
         } else {
             MainForm dialog = new MainForm();
             dialog.pack();
-            dialog.setTitle("DebBuilder软件包生成器 V1.6 QQ707519239");
+            dialog.setTitle("DebBuilder软件包生成器 V1.7 QQ707519239");
             //dialog.setSize(new Dimension(900,650));
             dialog.changeEditorStatus(false, "/home/wcss/测试工程.dpro");
             MainForm.setFormToCenter(dialog);
