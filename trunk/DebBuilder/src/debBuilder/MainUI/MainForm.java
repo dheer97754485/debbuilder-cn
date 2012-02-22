@@ -85,6 +85,7 @@ public class MainForm extends JDialog {
     private JButton btnSelectDestPath;
     private JComboBox cboxSection;
     private JComboBox cboxStartup;
+    private JButton btnSaveFor;
     private JButton buttonOK;
     private JFileChooser fc = new JFileChooser();
     private int flag;
@@ -607,7 +608,7 @@ public class MainForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                saveprojectdata();
+                saveprojectdata(MainForm.currentProjectFile.getAbsolutePath());
                 if (MainForm.currentProject.debPackagename == null || MainForm.currentProject.resultDir == null)
                 {
                    JOptionPane.showMessageDialog(null, "对不起，编译文件名或编译输出目录不能为空！");
@@ -646,6 +647,58 @@ public class MainForm extends JDialog {
                 textStartupCategories.setText(cboxStartup.getSelectedItem().toString());
             }
         });
+
+        //界面
+        btnSaveFor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                //To change body of implemented methods use File | Settings | File Templates.
+                onsaveprojectfor();
+            }
+        });
+    }
+
+    /**
+     * 保存工程文件
+     */
+    private String selectSaveProjectFor(String title) //保存文件
+    {
+        String fileName;
+
+        //设置保存文件对话框的标题
+        fc.setDialogTitle(title);
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        //fc.setFileFilter(projectFilter);
+
+        //这里将显示保存文件的对话框
+        try {
+            flag = fc.showSaveDialog(null);
+        } catch (HeadlessException he) {
+            System.out.println("Save File Dialog ERROR!");
+        }
+
+        //如果按下确定按钮，则获得该文件。
+        if (flag == JFileChooser.APPROVE_OPTION) {
+            //获得你输入要保存的文件
+            return fc.getSelectedFile().getAbsolutePath();
+        }
+        return "";
+    }
+
+    /**
+     * 工程另存为
+     */
+    private void onsaveprojectfor()
+    {
+        //To change body of created methods use File | Settings | File Templates.
+        String savepath = selectSaveProjectFor("工程另存为！");
+        if (savepath == "")
+        {
+           //没有文件要保存
+        }else{
+           saveprojectdata(savepath);
+           JOptionPane.showMessageDialog(null,"保存完成！");
+        }
     }
 
     /**
@@ -715,7 +768,7 @@ public class MainForm extends JDialog {
     /**
      * 保存工程数据
      */
-    private void saveprojectdata() {
+    private void saveprojectdata(String projectsave) {
         if (MainForm.currentProject == null) {
             MainForm.currentProject = new debProjectModel();
         }
@@ -738,15 +791,24 @@ public class MainForm extends JDialog {
         MainForm.currentProject.packagePreInstFile = textPreInst.getText();
         MainForm.currentProject.packagePreRmFile = textPreRm.getText();
 
-        debProjectModelRW.saveProject(MainForm.currentProject, this.currentProjectFile.getAbsolutePath());
+        if (projectsave.endsWith(".dproject"))
+        {
+            //后缀名正确无需修改
+        }else
+        {
+            projectsave += ".dproject";
+        }
+
+        debProjectModelRW.saveProject(MainForm.currentProject, projectsave);
 
     }
 
     /**
      * 保存按钮
      */
-    private void onsaveproject() {
-        saveprojectdata();
+    private void onsaveproject()
+    {
+        saveprojectdata(this.currentProjectFile.getAbsolutePath());
         JOptionPane.showMessageDialog(null,"保存完成！");
     }
 
