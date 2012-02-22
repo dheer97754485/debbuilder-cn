@@ -68,19 +68,74 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainForm.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="913" column="43" selection-start="39858" selection-end="39858" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainForm.form" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MainForm.form" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.form">
           <provider selected="true" editor-type-id="ui-designer">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainForm.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="770" column="53" selection-start="33431" selection-end="33431" vertical-scroll-proportion="2.1761787">
+              <folding>
+                <element signature="method#MainForm#0;class#MainForm#0" expanded="false" />
+                <element signature="class#3881:4341" expanded="false" />
+                <element signature="class#4385:4846" expanded="false" />
+                <element signature="class#4891:5353" expanded="false" />
+                <element signature="class#5400:5864" expanded="false" />
+                <element signature="class#5911:6173" expanded="false" />
+                <element signature="class#6226:6928" expanded="false" />
+                <element signature="class#6976:7140" expanded="false" />
+                <element signature="class#7209:8566" expanded="false" />
+                <element signature="class#8610:9121" expanded="false" />
+                <element signature="class#9165:9676" expanded="false" />
+                <element signature="class#9723:10100" expanded="false" />
+                <element signature="class#10147:10646" expanded="false" />
+                <element signature="class#10694:12833" expanded="false" />
+                <element signature="class#12879:13384" expanded="false" />
+                <element signature="class#13430:13937" expanded="false" />
+                <element signature="class#14004:14321" expanded="false" />
+                <element signature="class#14370:14777" expanded="false" />
+                <element signature="class#14827:15233" expanded="false" />
+                <element signature="class#15281:15683" expanded="false" />
+                <element signature="class#15747:16221" expanded="false" />
+                <element signature="class#16268:16775" expanded="false" />
+                <element signature="class#16823:19335" expanded="false" />
+                <element signature="class#19382:19890" expanded="false" />
+                <element signature="class#19937:20346" expanded="false" />
+                <element signature="class#20398:21513" expanded="false" />
+                <element signature="class#21574:22039" expanded="false" />
+                <element signature="class#22084:22573" expanded="false" />
+                <element signature="class#22619:24613" expanded="false" />
+                <element signature="class#24661:25160" expanded="false" />
+                <element signature="class#25213:25913" expanded="false" />
+                <element signature="class#25964:26663" expanded="false" />
+                <element signature="class#26713:27287" expanded="false" />
+                <element signature="class#27353:27769" expanded="false" />
+                <element signature="class#27820:28766" expanded="false" />
+                <element signature="class#28817:29434" expanded="false" />
+                <element signature="class#29495:29705" expanded="false" />
+                <element signature="class#29750:29970" expanded="false" />
+                <element signature="class#30028:30289" expanded="false" />
+                <element signature="method#selectSaveProjectFor#0;class#MainForm#0" expanded="false" />
+                <element signature="method#onsaveprojectfor#0;class#MainForm#0" expanded="false" />
+                <element signature="method#setFormToCenter#0;class#MainForm#0" expanded="false" />
+                <element signature="method#makeInstallPkg#0;class#MainForm#0" expanded="false" />
+                <element signature="method#clearFilesEditor#0;class#MainForm#0" expanded="false" />
+                <element signature="method#clearStartupEditor#0;class#MainForm#0" expanded="false" />
+                <element signature="method#clearDependEditor#0;class#MainForm#0" expanded="false" />
+                <element signature="method#saveprojectdata#0;class#MainForm#0" expanded="false" />
+                <element signature="method#onsaveproject#0;class#MainForm#0" expanded="false" />
+                <element signature="method#saveProjectFile#0;class#MainForm#0" expanded="false" />
+                <element signature="method#selectScriptFile#0;class#MainForm#0" expanded="false" />
+                <element signature="method#clearProjectData#0;class#MainForm#0" expanded="false" />
+                <element signature="method#showProjectData#0;class#MainForm#0" expanded="false" />
+                <element signature="method#changeEditorStatus#0;class#MainForm#0" expanded="false" />
+                <element signature="method#main#0;class#MainForm#0" expanded="false" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
@@ -111,19 +166,22 @@
         <option value="$PROJECT_DIR$/src/debBuilder/MainUI/makeInstallPackage.java" />
         <option value="$PROJECT_DIR$/src/debBuilder/MainUI/makeInstallPackage.form" />
         <option value="$PROJECT_DIR$/src/debProjectTool/debProjectCompile.java" />
-        <option value="$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.java" />
         <option value="$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.form" />
+        <option value="$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.java" />
       </list>
     </option>
   </component>
   <component name="MavenProjectNavigator">
     <treeState />
   </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="#JAVA_INTERNAL" />
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
-    <option name="y" value="33" />
-    <option name="width" value="1282" />
-    <option name="height" value="769" />
+    <option name="x" value="66" />
+    <option name="y" value="24" />
+    <option name="width" value="1214" />
+    <option name="height" value="776" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -151,8 +209,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -253,11 +309,13 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -472,12 +530,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="33" width="1282" height="769" extended-state="6" />
-    <editor active="false" />
+    <frame x="66" y="24" width="1214" height="776" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22483766" sideWeight="0.63387096" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22469983" sideWeight="0.63387096" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12662338" sideWeight="0.63387096" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12521441" sideWeight="0.63387096" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.63387096" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -488,8 +546,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.63387096" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39935064" sideWeight="0.63387096" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.63387096" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36612904" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21183534" sideWeight="0.63387096" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3480243" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -613,14 +671,71 @@
         <state line="226" column="136" selection-start="9236" selection-end="9236" vertical-scroll-proportion="0.8746594" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="913" column="43" selection-start="39858" selection-end="39858" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="770" column="53" selection-start="33431" selection-end="33431" vertical-scroll-proportion="2.1761787">
+          <folding>
+            <element signature="method#MainForm#0;class#MainForm#0" expanded="false" />
+            <element signature="class#3881:4341" expanded="false" />
+            <element signature="class#4385:4846" expanded="false" />
+            <element signature="class#4891:5353" expanded="false" />
+            <element signature="class#5400:5864" expanded="false" />
+            <element signature="class#5911:6173" expanded="false" />
+            <element signature="class#6226:6928" expanded="false" />
+            <element signature="class#6976:7140" expanded="false" />
+            <element signature="class#7209:8566" expanded="false" />
+            <element signature="class#8610:9121" expanded="false" />
+            <element signature="class#9165:9676" expanded="false" />
+            <element signature="class#9723:10100" expanded="false" />
+            <element signature="class#10147:10646" expanded="false" />
+            <element signature="class#10694:12833" expanded="false" />
+            <element signature="class#12879:13384" expanded="false" />
+            <element signature="class#13430:13937" expanded="false" />
+            <element signature="class#14004:14321" expanded="false" />
+            <element signature="class#14370:14777" expanded="false" />
+            <element signature="class#14827:15233" expanded="false" />
+            <element signature="class#15281:15683" expanded="false" />
+            <element signature="class#15747:16221" expanded="false" />
+            <element signature="class#16268:16775" expanded="false" />
+            <element signature="class#16823:19335" expanded="false" />
+            <element signature="class#19382:19890" expanded="false" />
+            <element signature="class#19937:20346" expanded="false" />
+            <element signature="class#20398:21513" expanded="false" />
+            <element signature="class#21574:22039" expanded="false" />
+            <element signature="class#22084:22573" expanded="false" />
+            <element signature="class#22619:24613" expanded="false" />
+            <element signature="class#24661:25160" expanded="false" />
+            <element signature="class#25213:25913" expanded="false" />
+            <element signature="class#25964:26663" expanded="false" />
+            <element signature="class#26713:27287" expanded="false" />
+            <element signature="class#27353:27769" expanded="false" />
+            <element signature="class#27820:28766" expanded="false" />
+            <element signature="class#28817:29434" expanded="false" />
+            <element signature="class#29495:29705" expanded="false" />
+            <element signature="class#29750:29970" expanded="false" />
+            <element signature="class#30028:30289" expanded="false" />
+            <element signature="method#selectSaveProjectFor#0;class#MainForm#0" expanded="false" />
+            <element signature="method#onsaveprojectfor#0;class#MainForm#0" expanded="false" />
+            <element signature="method#setFormToCenter#0;class#MainForm#0" expanded="false" />
+            <element signature="method#makeInstallPkg#0;class#MainForm#0" expanded="false" />
+            <element signature="method#clearFilesEditor#0;class#MainForm#0" expanded="false" />
+            <element signature="method#clearStartupEditor#0;class#MainForm#0" expanded="false" />
+            <element signature="method#clearDependEditor#0;class#MainForm#0" expanded="false" />
+            <element signature="method#saveprojectdata#0;class#MainForm#0" expanded="false" />
+            <element signature="method#onsaveproject#0;class#MainForm#0" expanded="false" />
+            <element signature="method#saveProjectFile#0;class#MainForm#0" expanded="false" />
+            <element signature="method#selectScriptFile#0;class#MainForm#0" expanded="false" />
+            <element signature="method#clearProjectData#0;class#MainForm#0" expanded="false" />
+            <element signature="method#showProjectData#0;class#MainForm#0" expanded="false" />
+            <element signature="method#changeEditorStatus#0;class#MainForm#0" expanded="false" />
+            <element signature="method#main#0;class#MainForm#0" expanded="false" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
@@ -688,6 +803,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
