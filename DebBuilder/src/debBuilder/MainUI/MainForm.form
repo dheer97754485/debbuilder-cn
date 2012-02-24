@@ -51,7 +51,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <grid id="237a6" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="237a6" binding="tab0" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <tabbedpane title="首页"/>
@@ -59,7 +59,7 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="3dea7" class="javax.swing.JLabel">
+                  <component id="3dea7" class="javax.swing.JLabel" binding="txt1">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -70,7 +70,7 @@
                   </component>
                 </children>
               </grid>
-              <grid id="da53d" binding="tabpackageinfo" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="da53d" binding="tab1" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <tabbedpane title="基 本 信 息"/>
@@ -86,7 +86,7 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <component id="1e034" class="javax.swing.JLabel">
+                      <component id="1e034" class="javax.swing.JLabel" binding="txt3">
                         <constraints>
                           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -102,7 +102,7 @@
                         </constraints>
                         <properties/>
                       </component>
-                      <component id="24062" class="javax.swing.JLabel">
+                      <component id="24062" class="javax.swing.JLabel" binding="txt4">
                         <constraints>
                           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -118,7 +118,7 @@
                         </constraints>
                         <properties/>
                       </component>
-                      <component id="a607d" class="javax.swing.JLabel">
+                      <component id="a607d" class="javax.swing.JLabel" binding="txt5">
                         <constraints>
                           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -136,7 +136,7 @@
                           <text value="http://www.linuxdeepin.com"/>
                         </properties>
                       </component>
-                      <component id="80d89" class="javax.swing.JLabel">
+                      <component id="80d89" class="javax.swing.JLabel" binding="txt6">
                         <constraints>
                           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -154,7 +154,7 @@
                           <text value="1.0"/>
                         </properties>
                       </component>
-                      <component id="7b320" class="javax.swing.JLabel">
+                      <component id="7b320" class="javax.swing.JLabel" binding="txt7">
                         <constraints>
                           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -172,7 +172,7 @@
                           <text value="all"/>
                         </properties>
                       </component>
-                      <component id="c3d60" class="javax.swing.JLabel">
+                      <component id="c3d60" class="javax.swing.JLabel" binding="txt8">
                         <constraints>
                           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -190,7 +190,7 @@
                           <text value="0"/>
                         </properties>
                       </component>
-                      <component id="b9145" class="javax.swing.JLabel">
+                      <component id="b9145" class="javax.swing.JLabel" binding="txt9">
                         <constraints>
                           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -208,7 +208,7 @@
                           <text value="utils"/>
                         </properties>
                       </component>
-                      <component id="d1be7" class="javax.swing.JLabel">
+                      <component id="d1be7" class="javax.swing.JLabel" binding="txt10">
                         <constraints>
                           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -226,7 +226,7 @@
                           <text value="nohave"/>
                         </properties>
                       </component>
-                      <component id="f40d" class="javax.swing.JLabel">
+                      <component id="f40d" class="javax.swing.JLabel" binding="txt11">
                         <constraints>
                           <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -244,7 +244,7 @@
                           <text value="optional"/>
                         </properties>
                       </component>
-                      <component id="30aea" class="javax.swing.JLabel">
+                      <component id="30aea" class="javax.swing.JLabel" binding="txt12">
                         <constraints>
                           <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -252,7 +252,7 @@
                           <text value="软件包简介："/>
                         </properties>
                       </component>
-                      <component id="9de7e" class="javax.swing.JLabel">
+                      <component id="9de7e" class="javax.swing.JLabel" binding="txt2">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -261,7 +261,7 @@
                           <text value="基本信息"/>
                         </properties>
                       </component>
-                      <component id="24827" class="javax.swing.JLabel">
+                      <component id="24827" class="javax.swing.JLabel" binding="txt13">
                         <constraints>
                           <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -285,7 +285,7 @@
                         </constraints>
                         <properties/>
                       </component>
-                      <component id="39d5e" class="javax.swing.JLabel">
+                      <component id="39d5e" class="javax.swing.JLabel" binding="txt14">
                         <constraints>
                           <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -346,7 +346,7 @@
                           </component>
                         </children>
                       </grid>
-                      <component id="2f5f5" class="javax.swing.JButton" binding="btn_SelectResultDir">
+                      <component id="2f5f5" class="javax.swing.JButton" binding="btnSelectResultDir">
                         <constraints>
                           <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -354,7 +354,7 @@
                           <text value="选取目录"/>
                         </properties>
                       </component>
-                      <component id="2a3e7" class="javax.swing.JLabel">
+                      <component id="2a3e7" class="javax.swing.JLabel" binding="txt15">
                         <constraints>
                           <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -394,7 +394,7 @@
                   </grid>
                 </children>
               </grid>
-              <grid id="21621" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="21621" binding="tab2" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <tabbedpane title="依赖软件包"/>
@@ -495,7 +495,7 @@
                             <properties/>
                             <border type="none"/>
                             <children>
-                              <component id="54d24" class="javax.swing.JLabel">
+                              <component id="54d24" class="javax.swing.JLabel" binding="txt18">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -516,7 +516,7 @@
                                 </constraints>
                                 <properties/>
                               </component>
-                              <component id="d64a0" class="javax.swing.JLabel">
+                              <component id="d64a0" class="javax.swing.JLabel" binding="txt17">
                                 <constraints>
                                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -525,7 +525,7 @@
                                   <text value="软件包依赖内容"/>
                                 </properties>
                               </component>
-                              <component id="da9b" class="javax.swing.JLabel">
+                              <component id="da9b" class="javax.swing.JLabel" binding="txt19">
                                 <constraints>
                                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -580,7 +580,7 @@
                                   </component>
                                 </children>
                               </grid>
-                              <component id="21a05" class="javax.swing.JLabel">
+                              <component id="21a05" class="javax.swing.JLabel" binding="txt20">
                                 <constraints>
                                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -592,7 +592,7 @@
                           </grid>
                         </children>
                       </grid>
-                      <component id="ca473" class="javax.swing.JLabel">
+                      <component id="ca473" class="javax.swing.JLabel" binding="txt16">
                         <constraints>
                           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -610,7 +610,7 @@
                   </vspacer>
                 </children>
               </grid>
-              <grid id="84653" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="84653" binding="tab3" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <tabbedpane title="安 装 脚 本"/>
@@ -628,7 +628,7 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <component id="272ba" class="javax.swing.JLabel">
+                      <component id="272ba" class="javax.swing.JLabel" binding="txt21">
                         <constraints>
                           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -650,7 +650,7 @@
                         </constraints>
                         <properties/>
                       </component>
-                      <component id="a38ad" class="javax.swing.JLabel">
+                      <component id="a38ad" class="javax.swing.JLabel" binding="txt22">
                         <constraints>
                           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -683,7 +683,7 @@
                           <text value="选择文件"/>
                         </properties>
                       </component>
-                      <component id="73e3f" class="javax.swing.JLabel">
+                      <component id="73e3f" class="javax.swing.JLabel" binding="txt23">
                         <constraints>
                           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -700,7 +700,7 @@
                         </constraints>
                         <properties/>
                       </component>
-                      <component id="822ef" class="javax.swing.JLabel">
+                      <component id="822ef" class="javax.swing.JLabel" binding="txt24">
                         <constraints>
                           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -751,7 +751,7 @@
                   </vspacer>
                 </children>
               </grid>
-              <grid id="8640c" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="8640c" binding="tab4" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <tabbedpane title="菜单启动器"/>
@@ -759,7 +759,7 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <grid id="c7ef8" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="c7ef8" binding="panel4" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -767,7 +767,7 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <component id="1bcac" class="javax.swing.JLabel">
+                      <component id="1bcac" class="javax.swing.JLabel" binding="txt25">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -851,7 +851,7 @@
                             <properties/>
                             <border type="none"/>
                             <children>
-                              <component id="fd7f6" class="javax.swing.JLabel">
+                              <component id="fd7f6" class="javax.swing.JLabel" binding="txt26">
                                 <constraints>
                                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -873,7 +873,7 @@
                                 <properties/>
                                 <border type="none"/>
                                 <children>
-                                  <component id="fb3e3" class="javax.swing.JLabel">
+                                  <component id="fb3e3" class="javax.swing.JLabel" binding="txt27">
                                     <constraints>
                                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -894,7 +894,7 @@
                                     </constraints>
                                     <properties/>
                                   </component>
-                                  <component id="cc9ef" class="javax.swing.JLabel">
+                                  <component id="cc9ef" class="javax.swing.JLabel" binding="txt28">
                                     <constraints>
                                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -910,7 +910,7 @@
                                     </constraints>
                                     <properties/>
                                   </component>
-                                  <component id="b1ae0" class="javax.swing.JLabel">
+                                  <component id="b1ae0" class="javax.swing.JLabel" binding="txt29">
                                     <constraints>
                                       <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -926,7 +926,7 @@
                                     </constraints>
                                     <properties/>
                                   </component>
-                                  <component id="d6cf5" class="javax.swing.JLabel">
+                                  <component id="d6cf5" class="javax.swing.JLabel" binding="txt30">
                                     <constraints>
                                       <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -944,7 +944,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="76d2e" class="javax.swing.JLabel">
+                                  <component id="76d2e" class="javax.swing.JLabel" binding="txt31">
                                     <constraints>
                                       <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -960,7 +960,7 @@
                                     </constraints>
                                     <properties/>
                                   </component>
-                                  <component id="f99c5" class="javax.swing.JLabel">
+                                  <component id="f99c5" class="javax.swing.JLabel" binding="txt32">
                                     <constraints>
                                       <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -976,7 +976,7 @@
                                     </constraints>
                                     <properties/>
                                   </component>
-                                  <component id="a436" class="javax.swing.JLabel">
+                                  <component id="a436" class="javax.swing.JLabel" binding="txt33">
                                     <constraints>
                                       <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -992,7 +992,7 @@
                                     </constraints>
                                     <properties/>
                                   </component>
-                                  <component id="36aee" class="javax.swing.JLabel">
+                                  <component id="36aee" class="javax.swing.JLabel" binding="txt34">
                                     <constraints>
                                       <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -1008,7 +1008,7 @@
                                     </constraints>
                                     <properties/>
                                   </component>
-                                  <component id="fb4a1" class="javax.swing.JLabel">
+                                  <component id="fb4a1" class="javax.swing.JLabel" binding="txt35">
                                     <constraints>
                                       <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -1049,7 +1049,7 @@
                                       </model>
                                     </properties>
                                   </component>
-                                  <component id="bcdc1" class="javax.swing.JLabel">
+                                  <component id="bcdc1" class="javax.swing.JLabel" binding="txt36">
                                     <constraints>
                                       <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -1072,7 +1072,7 @@
                   </vspacer>
                 </children>
               </grid>
-              <grid id="b184f" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="b184f" binding="tab5" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <tabbedpane title="安 装 目 录"/>
@@ -1088,7 +1088,7 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <component id="f6a9c" class="javax.swing.JLabel">
+                      <component id="f6a9c" class="javax.swing.JLabel" binding="txt37">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -1170,7 +1170,7 @@
                             <properties/>
                             <border type="none"/>
                             <children>
-                              <component id="8740d" class="javax.swing.JLabel">
+                              <component id="8740d" class="javax.swing.JLabel" binding="txt38">
                                 <constraints>
                                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -1192,7 +1192,7 @@
                                 <properties/>
                                 <border type="none"/>
                                 <children>
-                                  <component id="3ac42" class="javax.swing.JLabel">
+                                  <component id="3ac42" class="javax.swing.JLabel" binding="txt39">
                                     <constraints>
                                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
@@ -1221,7 +1221,7 @@
                                       <text value="选择源目录"/>
                                     </properties>
                                   </component>
-                                  <component id="598ec" class="javax.swing.JLabel">
+                                  <component id="598ec" class="javax.swing.JLabel" binding="txt40">
                                     <constraints>
                                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>

@@ -15,11 +15,11 @@ public class debProjectModelRW {
     /**
      * 序列化对象
      */
-    public static Easy QuickEasy = new Easy();
+    public static Easy quickEasy = new Easy();
 
     public static boolean saveProject(debProjectModel project, String destfile) {
         try {
-            QuickEasy.savetofile(project, destfile);
+            quickEasy.savetofile(project, destfile);
             return true;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -29,7 +29,7 @@ public class debProjectModelRW {
 
     public static debProjectModel loadProject(String sourcefile) {
         try {
-            return (debProjectModel) QuickEasy.loadfromfile(sourcefile);
+            return (debProjectModel) quickEasy.loadfromfile(sourcefile);
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
