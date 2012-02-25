@@ -135,6 +135,7 @@ public class MainForm extends JDialog {
     private JPanel panel4;
     private JPanel tab4;
     private JPanel tab5;
+    private JLabel txt102;
     private JButton buttonOK;
     private JFileChooser fc = new JFileChooser();
     private int flag;
@@ -151,6 +152,7 @@ public class MainForm extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         //getRootPane().setDefaultButton(buttonOK);
+        makeLanguageFile(jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/language.template");
         clearProjectData();
         this.setUILanguage();
         lblStatus.setText(languageManager.getShowText("99"));
@@ -1066,6 +1068,7 @@ public class MainForm extends JDialog {
             txt38.setText(languageManager.getShowText("38"));
             txt39.setText(languageManager.getShowText("39"));
             txt40.setText(languageManager.getShowText("40"));
+            txt102.setText(languageManager.getShowText("102"));
 
             //输出标签页名字
             tabmain.setTitleAt(0,languageManager.getShowText("41"));
@@ -1073,6 +1076,7 @@ public class MainForm extends JDialog {
             tabmain.setTitleAt(2,languageManager.getShowText("43"));
             tabmain.setTitleAt(3,languageManager.getShowText("44"));
             tabmain.setTitleAt(4,languageManager.getShowText("45"));
+            tabmain.setTitleAt(5,languageManager.getShowText("101"));
 
             //输出按钮
             btnSelectResultDir.setText(languageManager.getShowText("46"));
@@ -1152,6 +1156,7 @@ public class MainForm extends JDialog {
         languageManager.languageData.add(new languageModel("38", txt38.getText()));
         languageManager.languageData.add(new languageModel("39", txt39.getText()));
         languageManager.languageData.add(new languageModel("40", txt40.getText()));
+        languageManager.languageData.add(new languageModel("102", txt102.getText()));
 
         //输出标签页名字
         languageManager.languageData.add(new languageModel("41", tabmain.getTitleAt(0)));
@@ -1159,6 +1164,7 @@ public class MainForm extends JDialog {
         languageManager.languageData.add(new languageModel("43", tabmain.getTitleAt(2)));
         languageManager.languageData.add(new languageModel("44", tabmain.getTitleAt(3)));
         languageManager.languageData.add(new languageModel("45", tabmain.getTitleAt(4)));
+        languageManager.languageData.add(new languageModel("101",tabmain.getTitleAt(5)));
 
         //输出按钮
         languageManager.languageData.add(new languageModel("46", btnSelectResultDir.getText()));
