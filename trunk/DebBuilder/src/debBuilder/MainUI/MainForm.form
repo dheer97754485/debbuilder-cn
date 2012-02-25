@@ -317,7 +317,7 @@
                             </constraints>
                             <properties>
                               <selected value="true"/>
-                              <text value="全平台通用"/>
+                              <text value="ALL"/>
                             </properties>
                           </component>
                           <component id="1c350" class="javax.swing.JRadioButton" binding="rbOnlyI386">
@@ -325,7 +325,7 @@
                               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
-                              <text value="只针对i386平台"/>
+                              <text value="i386"/>
                             </properties>
                           </component>
                           <component id="5da19" class="javax.swing.JRadioButton" binding="rbOnlyAmd64">
@@ -333,7 +333,7 @@
                               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
-                              <text value="只针对AMD64平台"/>
+                              <text value="AMD64"/>
                             </properties>
                           </component>
                           <component id="2da4e" class="javax.swing.JRadioButton" binding="rbOnlyPowerPC">
@@ -341,7 +341,7 @@
                               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
-                              <text value="只针对PowerPC平台"/>
+                              <text value="PowerPC"/>
                             </properties>
                           </component>
                         </children>
@@ -554,7 +554,7 @@
                                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <text value="大于等于"/>
+                                      <text value="&gt;="/>
                                     </properties>
                                   </component>
                                   <hspacer id="df44">
@@ -567,7 +567,7 @@
                                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <text value="小于等于"/>
+                                      <text value="&lt;="/>
                                     </properties>
                                   </component>
                                   <component id="e115c" class="javax.swing.JRadioButton" binding="rbAllVersion">
@@ -575,7 +575,7 @@
                                       <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <text value="全版本通用"/>
+                                      <text value="ALL"/>
                                     </properties>
                                   </component>
                                 </children>
@@ -733,7 +733,7 @@
                           <text value="选择文件"/>
                         </properties>
                       </component>
-                      <component id="c5a6d" class="javax.swing.JLabel">
+                      <component id="c5a6d" class="javax.swing.JLabel" binding="txt102">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>

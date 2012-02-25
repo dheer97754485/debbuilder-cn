@@ -49,14 +49,14 @@ public class debFilesModel
            File f = new File(destPath);
            if (copyType == debFilesModel.copyFile)
            {
-               return f.getName() + "(文件)";
+               return f.getName() + "(File)";
            }else
            {
-               return f.getName() + "(目录)";
+               return f.getName() + "(Dir)";
            }
         }else
         {
-            return "未知路径";
+            return "UnKnown";
         }
     }
 
