@@ -1,5 +1,6 @@
 package debBuilder.MainUI;
 
+import debBuilder.language.languageManager;
 import debProjectModels.*;
 import debProjectTool.*;
 import java.io.*;
@@ -30,8 +31,9 @@ public class makeInstallPackage extends JDialog implements Runnable{
         this.compileBufferDir = bufferdir;
         this.compileResultFile = debfilepath;
         this.enableCloseApp = enableClose;
-        this.lblWelcome.setText("正在生成安装包......");
-        this.textStatus.setText("正在生成安装包，包名：" + project.packageName);
+        this.lblWelcome.setText(languageManager.getShowText("73"));
+        this.textStatus.setText(languageManager.getShowText("74").replace("(x)", project.packageName));
+        this.btnClose.setText(languageManager.getShowText("75"));
         this.waitCompileFinish = false;
         MainForm.setFormToCenter(this);
         this.pbMakeBar.setMaximum(250);
@@ -85,10 +87,10 @@ public class makeInstallPackage extends JDialog implements Runnable{
                     pbMakeBar.setValue(pbMakeBar.getMaximum());
                     if (compileHelper.haveError)
                     {
-                        textStatus.setText("软件包" + this.projectModel.debPackagename + "编译失败！错误：" + compileHelper.makeResult);
+                        textStatus.setText(languageManager.getShowText("76").replace("(x)", this.projectModel.debPackagename).replace("(y)", compileHelper.makeResult));
                     }else
                     {
-                        textStatus.setText("软件包" + this.projectModel.debPackagename + "编译完成！");
+                        textStatus.setText(languageManager.getShowText("77").replace("(x)", this.projectModel.debPackagename));
                     }
                     break;
                }
