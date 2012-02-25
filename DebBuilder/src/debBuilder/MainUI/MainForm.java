@@ -152,7 +152,7 @@ public class MainForm extends JDialog {
         setModal(true);
         //getRootPane().setDefaultButton(buttonOK);
         clearProjectData();
-        loadLanguage();
+        this.setUILanguage();
         lblStatus.setText(languageManager.getShowText("99"));
         this.listDepends.setListData(new Object[]{});
 
@@ -1007,8 +1007,8 @@ public class MainForm extends JDialog {
     /**
      * 载入语言项
      */
-    private void loadLanguage() {
-        makeLanguageFile(jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/language.template");
+    public static void loadLanguage() {
+        //makeLanguageFile(jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/language.template");
 
         if (new File(configManager.config.workDir + "/" + configManager.config.languageName).exists())
         {
@@ -1019,7 +1019,7 @@ public class MainForm extends JDialog {
             } catch (Exception e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
-            setUILanguage();
+
         }
     }
 
@@ -1109,7 +1109,7 @@ public class MainForm extends JDialog {
     /**
      * 临时生成语言文件模板
      */
-    private void makeLanguageFile(String savepaths) {
+    public void makeLanguageFile(String savepaths) {
         //输出标签
         //languageManager.languageData.add(new languageModel("0","DebBuilder软件包生成器"));
         languageManager.languageData.add(new languageModel("1", txt1.getText()));
@@ -1238,6 +1238,7 @@ public class MainForm extends JDialog {
     {
 
         configManager.loadConfig();
+        loadLanguage();
 
         if (args != null && args.length >= 1) {
             String cmd = null;
