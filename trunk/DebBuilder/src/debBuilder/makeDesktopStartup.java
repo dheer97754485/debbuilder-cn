@@ -1,5 +1,7 @@
 package debBuilder;
 
+import debBuilder.builderConfig.configManager;
+import debBuilder.language.languageManager;
 import debProjectModels.debProjectModel;
 import debProjectModels.debStartupModel;
 import jAppHelper.jCmdRunHelper;
@@ -21,10 +23,10 @@ public class makeDesktopStartup {
     public static void buildDesktopStartup(debProjectModel project,File projectfile,String iconname) throws Exception {
         //java -jar DebBuilder.jar -compile -project=/home/wcss/IDEAIC11.02.dpro -debfile=/home/wcss/创建目录/cmdlinemake.deb
         String desktoppath = FileSystemView.getFileSystemView().getHomeDirectory().getAbsolutePath() + "/Desktop";
-        String shownames = "为("+ project.projectName + ")快速打包";
+        String shownames = languageManager.getShowText("100").replace("(x)",project.projectName );
         String startupfull = desktoppath + "/" + shownames + ".desktop";
         String debpkgfile = project.resultDir + "/" + project.debPackagename;
-        String jarfilepath = "/opt/debBuilderApp/DebBuilder.jar";
+        String jarfilepath = configManager.config.workDir + "/DebBuilder.jar";
         String cmdlines = "java -jar " + jarfilepath + " -compile -project=" + projectfile.getAbsolutePath() + " -debfile=" + debpkgfile;
         buildStartupFile(shownames,cmdlines,startupfull,iconname);
 

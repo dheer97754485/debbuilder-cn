@@ -5,9 +5,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import debBuilder.builderConfig.configManager;
 import debBuilder.language.*;
 import debBuilder.makeDesktopStartup;
 import debProjectModels.*;
@@ -151,6 +153,7 @@ public class MainForm extends JDialog {
         //getRootPane().setDefaultButton(buttonOK);
         clearProjectData();
         loadLanguage();
+        lblStatus.setText(languageManager.getShowText("99"));
         this.listDepends.setListData(new Object[]{});
 
         //基本信息
@@ -212,7 +215,7 @@ public class MainForm extends JDialog {
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
                 fc.setMultiSelectionEnabled(false);
-                fc.setDialogTitle("选择编译输出目录！");
+                fc.setDialogTitle(languageManager.getShowText("89"));
                 fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 //int option = ch.showOpenDialog(this);
                 flag = fc.showSaveDialog(null);
@@ -309,7 +312,7 @@ public class MainForm extends JDialog {
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
                 if (textDependName.getText() == null || textDependName.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "请输入软件包名！");
+                    JOptionPane.showMessageDialog(null, languageManager.getShowText("78"));
                 } else {
                     if (MainForm.currentDepend != null) {
                         MainForm.currentDepend.packageName = textDependName.getText();
@@ -334,7 +337,7 @@ public class MainForm extends JDialog {
                             listDepends.setListData(MainForm.currentProject.packageDepends.toArray());
                         }
                     }
-                    lblStatus.setText("添加/修改软件包依赖完成！");
+                    lblStatus.setText(languageManager.getShowText("88"));
                     btnSaveDepends.setEnabled(false);
                     MainForm.currentDepend = null;
                 }
@@ -370,7 +373,7 @@ public class MainForm extends JDialog {
         btnSelectPostInst.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                File posti = selectScriptFile("选择PostInst脚本！");
+                File posti = selectScriptFile(languageManager.getShowText("90"));
                 if (posti != null) {
                     textPostInst.setText(posti.getAbsolutePath());
                 }
@@ -380,7 +383,7 @@ public class MainForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                File postr = selectScriptFile("选择PostRm脚本！");
+                File postr = selectScriptFile(languageManager.getShowText("91"));
                 if (postr != null) {
                     textPostRm.setText(postr.getAbsolutePath());
                 }
@@ -390,7 +393,7 @@ public class MainForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                File prei = selectScriptFile("选择PreInst脚本！");
+                File prei = selectScriptFile(languageManager.getShowText("92"));
                 if (prei != null) {
                     textPreInst.setText(prei.getAbsolutePath());
                 }
@@ -400,7 +403,7 @@ public class MainForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                File prer = selectScriptFile("选择PreRm脚本！");
+                File prer = selectScriptFile(languageManager.getShowText("93"));
                 if (prer != null) {
                     textPreRm.setText(prer.getAbsolutePath());
                 }
@@ -434,7 +437,7 @@ public class MainForm extends JDialog {
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
                 if (textStartupName.getText() == null || textStartupName.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "请输入启动器显示名称！");
+                    JOptionPane.showMessageDialog(null, languageManager.getShowText("84"));
                 } else {
                     debStartupModel editor = null;
                     if (MainForm.currentStartup != null) {
@@ -468,7 +471,7 @@ public class MainForm extends JDialog {
                         }
                         listStartup.setListData(MainForm.currentProject.packageStartupList.toArray());
                     }
-                    lblStatus.setText("添加/修改菜单启动器完成！");
+                    lblStatus.setText(languageManager.getShowText("87"));
                     btnSaveStartup.setEnabled(false);
                     MainForm.currentStartup = null;
                 }
@@ -490,7 +493,7 @@ public class MainForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                File icon = selectScriptFile("请选择启动器图片文件！");
+                File icon = selectScriptFile(languageManager.getShowText("94"));
                 if (icon != null) {
                     textStartupIcon.setText(icon.getAbsolutePath());
                 }
@@ -543,9 +546,9 @@ public class MainForm extends JDialog {
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
                 if (textSourcePath.getText() == null || textSourcePath.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "源路径不能为空！");
+                    JOptionPane.showMessageDialog(null, languageManager.getShowText("82"));
                 } else if (textDestPath.getText() == null || textDestPath.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "目标路径不能为空！");
+                    JOptionPane.showMessageDialog(null, languageManager.getShowText("83"));
                 } else {
                     debFilesModel dfm = null;
                     if (MainForm.currentFiles != null) {
@@ -570,7 +573,7 @@ public class MainForm extends JDialog {
                         }
                         listFiles.setListData(MainForm.currentProject.packageFiles.toArray());
                     }
-                    lblStatus.setText("添加/修改安装目录完成！");
+                    lblStatus.setText(languageManager.getShowText("86"));
                     btnSaveFiles.setEnabled(false);
                     btnNewFiles.setEnabled(true);
                     MainForm.currentFiles = null;
@@ -594,7 +597,7 @@ public class MainForm extends JDialog {
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
                 fc.setMultiSelectionEnabled(false);
-                fc.setDialogTitle("选择源目录！");
+                fc.setDialogTitle(languageManager.getShowText("95"));
                 fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 //int option = ch.showOpenDialog(this);
                 flag = fc.showOpenDialog(null);
@@ -610,7 +613,7 @@ public class MainForm extends JDialog {
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
                 fc.setMultiSelectionEnabled(false);
-                fc.setDialogTitle("选择目标目录！");
+                fc.setDialogTitle(languageManager.getShowText("96"));
                 fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 //int option = ch.showOpenDialog(this);
                 flag = fc.showOpenDialog(null);
@@ -639,7 +642,7 @@ public class MainForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                File open = selectScriptFile("选择DebBuilder工程文件!");
+                File open = selectScriptFile(languageManager.getShowText("97"));
                 if (open != null) {
                     changeEditorStatus(true, open.getAbsolutePath());
                 }
@@ -651,9 +654,9 @@ public class MainForm extends JDialog {
                 //To change body of implemented methods use File | Settings | File Templates.
                 saveprojectdata(MainForm.currentProjectFile.getAbsolutePath());
                 if (MainForm.currentProject.debPackagename == null || MainForm.currentProject.resultDir == null) {
-                    JOptionPane.showMessageDialog(null, "对不起，编译文件名或编译输出目录不能为空！");
+                    JOptionPane.showMessageDialog(null, languageManager.getShowText("81"));
                 } else if (MainForm.currentProject.debPackagename.isEmpty() || MainForm.currentProject.resultDir.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "对不起，编译文件名或编译输出目录不能为空！");
+                    JOptionPane.showMessageDialog(null, languageManager.getShowText("81"));
                 } else {
                     makeInstallPkg(MainForm.currentProject, MainForm.currentProject.resultDir + "/" + MainForm.currentProject.debPackagename, false);
                 }
@@ -665,7 +668,7 @@ public class MainForm extends JDialog {
                 //To change body of implemented methods use File | Settings | File Templates.
                 try {
                     makeDesktopStartup.buildDesktopStartup(MainForm.currentProject, MainForm.currentProjectFile, "debbuilderico");
-                    JOptionPane.showMessageDialog(null, "生成成功！");
+                    JOptionPane.showMessageDialog(null, languageManager.getShowText("80"));
                 } catch (Exception e) {
                     e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 }
@@ -728,12 +731,12 @@ public class MainForm extends JDialog {
      */
     private void onsaveprojectfor() {
         //To change body of created methods use File | Settings | File Templates.
-        String savepath = selectSaveProjectFor("工程另存为！");
+        String savepath = selectSaveProjectFor(languageManager.getShowText("85"));
         if (savepath == "") {
             //没有文件要保存
         } else {
             saveprojectdata(savepath);
-            JOptionPane.showMessageDialog(null, "保存完成！");
+            JOptionPane.showMessageDialog(null, languageManager.getShowText("79"));
         }
     }
 
@@ -759,7 +762,7 @@ public class MainForm extends JDialog {
     public static void makeInstallPkg(debProjectModel project, String debfile, boolean closeapps) {
         makeDialog = new makeInstallPackage(project, jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/debBuilderWorkSpace/" + project.packageName, debfile, closeapps);
         makeDialog.pack();
-        makeDialog.setTitle("DebBuilder软件包生成器-编译进度");
+        makeDialog.setTitle(languageManager.getShowText("72"));
         makeDialog.setSize(new Dimension(400, 240));
         MainForm.setFormToCenter(makeDialog);
         makeDialog.setVisible(true);
@@ -842,7 +845,7 @@ public class MainForm extends JDialog {
      */
     private void onsaveproject() {
         saveprojectdata(this.currentProjectFile.getAbsolutePath());
-        JOptionPane.showMessageDialog(null, "保存完成！");
+        JOptionPane.showMessageDialog(null, languageManager.getShowText("79"));
     }
 
     /**
@@ -853,7 +856,7 @@ public class MainForm extends JDialog {
         String fileName;
 
         //设置保存文件对话框的标题
-        fc.setDialogTitle("选择工程文件保存位置！");
+        fc.setDialogTitle(languageManager.getShowText("98"));
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         //fc.setFileFilter(projectFilter);
 
@@ -1005,12 +1008,14 @@ public class MainForm extends JDialog {
      * 载入语言项
      */
     private void loadLanguage() {
-        makeLanguageFile("/home/wcss/language.template");
+        makeLanguageFile(jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/language.template");
 
-        if (new File("/home/wcss/language.cfg").exists())
+        if (new File(configManager.config.workDir + "/" + configManager.config.languageName).exists())
         {
-            try {
-                languageManager.loadLanguageFile("/home/wcss/language.cfg");
+            try
+            {
+                languageManager.languageData = new ArrayList<languageModel>();
+                languageManager.loadLanguageFile(configManager.config.workDir + "/" + configManager.config.languageName);
             } catch (Exception e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
@@ -1214,6 +1219,9 @@ public class MainForm extends JDialog {
         languageManager.languageData.add(new languageModel("97", "选择DebBuilder工程文件!"));
         languageManager.languageData.add(new languageModel("98", "选择工程文件保存位置！"));
         languageManager.languageData.add(new languageModel("99", "DebBuilder软件包生成器 V1.7 QQ707519239"));
+
+        languageManager.languageData.add(new languageModel("100", "为(x)快速打包"));
+
         try {
             languageManager.saveLanguageFile(savepaths);
         } catch (Exception e) {
@@ -1226,7 +1234,10 @@ public class MainForm extends JDialog {
      *
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
+
+        configManager.loadConfig();
 
         if (args != null && args.length >= 1) {
             String cmd = null;
@@ -1236,13 +1247,13 @@ public class MainForm extends JDialog {
             for (int k = 0; k < args.length; k++) {
                 temp = args[k] == null ? "" : args[k].trim();
                 if (temp.startsWith("--help")) {
-                    System.out.println("DebBuilder软件包生成器V1.7 QQ707519239");
-                    System.out.println(" 参数(注意大小写和空格!)：");
-                    System.out.println(" --help    帮助。");
-                    System.out.println(" -compile  编译软件包工程文件。");
-                    System.out.println(" -open 打开工程文件");
-                    System.out.println(" -project= 指向软件包工程文件全路径。");
-                    System.out.println(" -debfile= 编译完成后软件包保存位置。");
+                    System.out.println("DebBuilder");
+                    //System.out.println(" cmd：");
+                    System.out.println(" --help    Help(帮助)");
+                    System.out.println(" -compile  Compile Project(编译软件包工程文件)");
+                    System.out.println(" -open Open Project(打开工程文件)");
+                    System.out.println(" -project= Set Project Path(指向软件包工程文件全路径)");
+                    System.out.println(" -debfile= Set Deb Output Path(编译完成后软件包保存位置)");
 
                 } else {
                     if (temp.startsWith("-compile")) {
@@ -1262,7 +1273,7 @@ public class MainForm extends JDialog {
             } else if (cmd != null && cmd.startsWith("open") && project != null) {
                 MainForm dialog = new MainForm();
                 dialog.pack();
-                dialog.setTitle("DebBuilder软件包生成器 V1.7 QQ707519239");
+                dialog.setTitle(languageManager.getShowText("99"));
                 //dialog.setSize(new Dimension(900,650));
                 dialog.changeEditorStatus(true, project);
                 MainForm.setFormToCenter(dialog);
@@ -1273,7 +1284,7 @@ public class MainForm extends JDialog {
         } else {
             MainForm dialog = new MainForm();
             dialog.pack();
-            dialog.setTitle("DebBuilder软件包生成器 V1.7 QQ707519239");
+            dialog.setTitle(languageManager.getShowText("99"));
             //dialog.setSize(new Dimension(900,650));
             dialog.changeEditorStatus(false, "/home/wcss/测试工程.dpro");
             MainForm.setFormToCenter(dialog);

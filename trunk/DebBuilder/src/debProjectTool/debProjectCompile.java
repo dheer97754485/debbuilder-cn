@@ -1,5 +1,6 @@
 package debProjectTool;
 
+import debBuilder.builderConfig.configManager;
 import debProjectModels.*;
 import jAppHelper.*;
 
@@ -282,7 +283,8 @@ public class debProjectCompile
      */
     public static void makeDebPackageFile(String debresourcedir,String debresultpath) throws Exception
     {
-       Process pro = jCmdRunHelper.runSysCmd("dpkg -b " + debresourcedir + " " + debresultpath,false);
+       String makecmd = configManager.config.compileCmd.replace("(source)",debresourcedir).replace("(dest)",debresultpath);
+       Process pro = jCmdRunHelper.runSysCmd(makecmd,false);
        pro.waitFor();
        InputStream is = pro.getErrorStream();
        String[] error = jDataRWHelper.readFromInputStream(is);
