@@ -62,7 +62,7 @@ public class TestStartupClass {
         dpm.packageFiles.add(new debFilesModel("/home/wcss/buildtestproject/source/cpdir/","/usr/lib/debbuilder/",debFilesModel.copyDir));
 
         try {
-            debProjectCompile.compileProjectWithoutMakeDeb(dpm, dpm.resultDir);
+            builderCompile.compilePackageWithoutMakeDeb(dpm, dpm.resultDir);
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
@@ -72,7 +72,7 @@ public class TestStartupClass {
     {
         debProjectModel dpm = debProjectModelRW.loadProject("/home/wcss/IDEAIC11.02.dpro");
         try {
-            debProjectCompile.compileProjectWithMakeDeb(dpm,"/home/wcss/debBuilderBuffer/ideaic1102");
+            builderCompile.compilePackageWithMakeDeb(dpm,"/home/wcss/debBuilderBuffer/ideaic1102");
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
