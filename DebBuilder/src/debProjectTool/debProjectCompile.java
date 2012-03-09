@@ -225,80 +225,11 @@ public class debProjectCompile
      *
      * @return 执行结果
      */
-    public static void compileProject(debProjectModel project, String bufferdir,String debfilepath,Boolean makedebpkg) throws Exception {
-        String projectbasedir = "";
-        if (bufferdir.endsWith("/")) {
-            projectbasedir = bufferdir.substring(0, bufferdir.length() - 1);
-        } else {
-            projectbasedir = bufferdir;
-        }
-        projectbasedir = projectbasedir + (new Date().getTime());
-        File basedir = new File(projectbasedir);
-        basedir.mkdirs();
-        File debpath = new File(new File(debfilepath).getParent());
-        debpath.mkdirs();
-        buildPackageInfo(project, projectbasedir);
-        buildInstallScript(project, projectbasedir);
-        buildStartupFiles(project, projectbasedir);
-        buildCopyInstallFiles(project, projectbasedir);
-        if (makedebpkg)
-        {
-            makeDebPackageFile(projectbasedir, debfilepath);
-        }
-
-    }
-
-    /**
-     * 编译Deb包(不生成Deb包)
-     * @param project
-     * @param bufferdir
-     */
-    public static void compileProjectWithoutMakeDeb(debProjectModel project,String bufferdir) throws Exception
-    {
-        compileProject(project,bufferdir,project.resultDir + "/" + project.debPackagename,false);
-    }
-
-    /**
-     * 生成Deb包自定义包路径
-     * @param project
-     * @param bufferdir
-     */
-    public static void compileProjectWithMakeDeb(debProjectModel project,String bufferdir,String debfile) throws Exception
-    {
-       compileProject(project,bufferdir,debfile,true);
-    }
-
-    /**
-     * 生成Deb包使用默认路径
-     * @param project
-     * @param bufferdir
-     * @throws Exception
-     */
-    public static void compileProjectWithMakeDeb(debProjectModel project,String bufferdir) throws Exception {
-        compileProjectWithMakeDeb(project, bufferdir, project.resultDir + "/" + project.debPackagename);
-    }
-
-    /**
-     * 生成Deb文件
-     */
-    public static void makeDebPackageFile(String debresourcedir,String debresultpath) throws Exception
-    {
-       String makecmd = configManager.config.compileCmd.replace("(source)",debresourcedir).replace("(dest)",debresultpath);
-       Process pro = jCmdRunHelper.runSysCmd(makecmd,false);
-       pro.waitFor();
-       InputStream is = pro.getErrorStream();
-       String[] error = jDataRWHelper.readFromInputStream(is);
-       is.close();
-       String errorprint="";
-       if (error != null && error.length > 0)
-       {
-          for(int k=0;k<error.length;k++)
-          {
-              errorprint+=error[k];
-          }
-          throw new Exception(errorprint);
-       }
-
+    public static void compileDebPackage(debProjectModel project, String bufferdir) throws Exception {
+        buildPackageInfo(project, bufferdir);
+        buildInstallScript(project, bufferdir);
+        buildStartupFiles(project, bufferdir);
+        buildCopyInstallFiles(project, bufferdir);
     }
 
 }

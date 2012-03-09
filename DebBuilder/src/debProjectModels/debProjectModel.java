@@ -27,6 +27,11 @@ public class debProjectModel {
     public String debPackagename;
 
     /**
+     * 软件包生成器类型
+     */
+    public String packageMakerType = "deb";
+
+    /**
      * 包名
      */
     public String packageName;

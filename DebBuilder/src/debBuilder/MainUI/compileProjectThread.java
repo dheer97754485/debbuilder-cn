@@ -35,7 +35,7 @@ public class compileProjectThread implements Runnable
             //debProjectModel dpm = debProjectModelRW.loadProject(this.projectFile.getAbsolutePath());
             System.out.println("缓冲目录：" + this.compileBufferDir);
             System.out.println("Deb文件：" + this.compileResultFile);
-            debProjectCompile.compileProjectWithMakeDeb(this.project,this.compileBufferDir,this.compileResultFile);
+            builderCompile.compilePackageWithMakeDeb(this.project,this.compileBufferDir,this.compileResultFile);
             this.makeFinish = true;
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.

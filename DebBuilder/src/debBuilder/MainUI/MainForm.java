@@ -136,6 +136,8 @@ public class MainForm extends JDialog {
     private JPanel tab4;
     private JPanel tab5;
     private JLabel txt102;
+    private JLabel txt103;
+    private JComboBox cbbCompileType;
     private JButton buttonOK;
     private JFileChooser fc = new JFileChooser();
     private int flag;
@@ -825,12 +827,13 @@ public class MainForm extends JDialog {
         MainForm.currentProject.packageHomepage = this.textHomePage.getText().trim();
         MainForm.currentProject.packageDescription = this.textDescription.getText().trim();
         MainForm.currentProject.packageMaintainer = this.textMaintainer.getText().trim();
-        //MainForm.currentProject.packageOriginalMaintainer = this.textOriginalMaintainer.getText().trim();
+        MainForm.currentProject.packageOriginalMaintainer = "none";
         MainForm.currentProject.packagePriority = this.textPriority.getText().trim();
         MainForm.currentProject.packagePostInstFile = textPostInst.getText();
         MainForm.currentProject.packagePostRmFile = textPostRm.getText();
         MainForm.currentProject.packagePreInstFile = textPreInst.getText();
         MainForm.currentProject.packagePreRmFile = textPreRm.getText();
+        MainForm.currentProject.packageMakerType = cbbCompileType.getSelectedItem().toString();
 
         if (projectsave.endsWith(".dproject")) {
             //后缀名正确无需修改
@@ -939,6 +942,7 @@ public class MainForm extends JDialog {
         this.textPostRm.setText("");
         this.textPreInst.setText("");
         this.textPreRm.setText("");
+        this.cbbCompileType.setSelectedIndex(0);
     }
 
     /**
@@ -984,6 +988,7 @@ public class MainForm extends JDialog {
         this.textPostRm.setText(MainForm.currentProject.packagePostRmFile);
         this.textPreInst.setText(MainForm.currentProject.packagePreInstFile);
         this.textPreRm.setText(MainForm.currentProject.packagePreRmFile);
+        this.cbbCompileType.setSelectedItem(MainForm.currentProject.packageMakerType);
     }
 
     /**
@@ -1069,6 +1074,7 @@ public class MainForm extends JDialog {
             txt39.setText(languageManager.getShowText("39"));
             txt40.setText(languageManager.getShowText("40"));
             txt102.setText(languageManager.getShowText("102"));
+            txt103.setText(languageManager.getShowText("103"));
 
             //输出标签页名字
             tabmain.setTitleAt(0,languageManager.getShowText("41"));
@@ -1157,6 +1163,7 @@ public class MainForm extends JDialog {
         languageManager.languageData.add(new languageModel("39", txt39.getText()));
         languageManager.languageData.add(new languageModel("40", txt40.getText()));
         languageManager.languageData.add(new languageModel("102", txt102.getText()));
+        languageManager.languageData.add(new languageModel("103",txt103.getText()));
 
         //输出标签页名字
         languageManager.languageData.add(new languageModel("41", tabmain.getTitleAt(0)));
