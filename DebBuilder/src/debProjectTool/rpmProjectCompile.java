@@ -27,11 +27,11 @@ public class rpmProjectCompile
             controlcontent.add("Name: " + project.packageName);
             controlcontent.add("Version: " + project.packageVersion);
             controlcontent.add("Release: " + project.packageVersion);
-            //controlcontent.add("Build Arch:" + project.packageArchitecture);
+            controlcontent.add("ExclusiveArch:" + project.packageArchitecture);
             controlcontent.add("Packager: " + project.packageMaintainer);
             //controlcontent.add("Installed-Size: " + project.packageInstalledSize);
             controlcontent.add("Requires: " + buildRequiresStr(project));
-            controlcontent.add("Group: Converted/" + project.packageSection);
+            controlcontent.add("Group: " + project.packageSection);
             //controlcontent.add("Priority: " + project.packagePriority);
             controlcontent.add("License: GPL");
             controlcontent.add("Summary: none");
