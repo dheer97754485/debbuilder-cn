@@ -87,10 +87,10 @@ public class makeInstallPackage extends JDialog implements Runnable{
                     pbMakeBar.setValue(pbMakeBar.getMaximum());
                     if (compileHelper.haveError)
                     {
-                        textStatus.setText(languageManager.getShowText("76").replace("(x)", this.projectModel.debPackagename).replace("(y)", compileHelper.makeResult));
+                        textStatus.setText(languageManager.getShowText("76").replace("(x)", this.projectModel.packageName).replace("(y)", compileHelper.makeResult));
                     }else
                     {
-                        textStatus.setText(languageManager.getShowText("77").replace("(x)", this.projectModel.debPackagename));
+                        textStatus.setText(languageManager.getShowText("77").replace("(x)", this.projectModel.packageName));
                     }
                     break;
                }
@@ -101,4 +101,5 @@ public class makeInstallPackage extends JDialog implements Runnable{
             }
         }
     }
+
 }

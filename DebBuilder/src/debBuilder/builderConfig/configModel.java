@@ -12,9 +12,9 @@ public class configModel
     public configModel()
     {
         this.languageName = "zh-cn.lang";
-        this.compileType = "deb";
+        this.compileType = "system";
         this.workDir = "/opt/debBuilderApp";
-        this.compileCmd = "dpkg -b " + "(source)" + " " + "(dest)";
+        this.compileCmd = "dpkg -b " + "(source)" + " " + "(dest)" + " " + "(output)" + " " + "(pkgtype)"  + " " + "(pkgname)";
     }
     public configModel(String language,String type,String dir,String cmd)
     {

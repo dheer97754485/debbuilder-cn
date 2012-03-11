@@ -23,7 +23,7 @@ public class makeDesktopStartup {
     public static void buildDesktopStartup(debProjectModel project,File projectfile,String iconname) throws Exception {
         //java -jar DebBuilder.jar -compile -project=/home/wcss/IDEAIC11.02.dpro -debfile=/home/wcss/创建目录/cmdlinemake.deb
         String desktoppath = FileSystemView.getFileSystemView().getHomeDirectory().getAbsolutePath() + "/Desktop";
-        String shownames = languageManager.getShowText("100").replace("(x)",project.projectName );
+        String shownames = languageManager.getShowText("100").replace("(x)",project.projectName + "@" + project.packageMakerType);
         String startupfull = desktoppath + "/" + shownames + ".desktop";
         String debpkgfile = project.resultDir + "/" + project.debPackagename;
         String jarfilepath = configManager.config.workDir + "/DebBuilder.jar";
