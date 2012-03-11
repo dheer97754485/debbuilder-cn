@@ -4,7 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -14,6 +17,7 @@ import debBuilder.language.*;
 import debBuilder.makeDesktopStartup;
 import debProjectModels.*;
 import debProjectTool.*;
+import jAppHelper.jCmdRunHelper;
 
 public class MainForm extends JDialog {
     private JPanel contentPane;
@@ -150,6 +154,19 @@ public class MainForm extends JDialog {
     private int dependVersionType = 0;
     private static makeInstallPackage makeDialog = null;
 
+    public String getCurrentArch()
+    {
+        String arch = "";
+        try {
+            InputStream is = jCmdRunHelper.runSysCmd("uname -i", false).getInputStream();
+            arch = jAppHelper.jDataRWHelper.readFromInputStream(is)[0].trim();
+            is.close();
+        } catch (Exception e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return arch;
+    }
+
     public MainForm() {
         setContentPane(contentPane);
         setModal(true);
@@ -165,7 +182,19 @@ public class MainForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                textArchitecture.setText("all");
+                if (cbbCompileType.getSelectedItem() != null)
+                {
+                   if (cbbCompileType.getSelectedItem().toString().equals("rpm"))
+                   {
+                       textArchitecture.setText("noarch " + getCurrentArch());
+                   }else
+                   {
+                       textArchitecture.setText("all");
+                   }
+                }else
+                {
+                    textArchitecture.setText(getCurrentArch());
+                }
                 rbAll.setSelected(true);
                 rbOnlyI386.setSelected(false);
                 rbOnlyAmd64.setSelected(false);
@@ -176,7 +205,25 @@ public class MainForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                textArchitecture.setText("i386");
+                if (cbbCompileType.getSelectedItem() != null)
+                {
+                    if (cbbCompileType.getSelectedItem().toString().equals("rpm"))
+                    {
+                        if (getCurrentArch().equals("i386"))
+                        {
+                            textArchitecture.setText(getCurrentArch());
+                        }else
+                        {
+                            textArchitecture.setText("i386 " + getCurrentArch());
+                        }
+                    }else
+                    {
+                        textArchitecture.setText("i386");
+                    }
+                }else
+                {
+                    textArchitecture.setText(getCurrentArch());
+                }
                 rbAll.setSelected(false);
                 rbOnlyI386.setSelected(true);
                 rbOnlyAmd64.setSelected(false);
@@ -187,7 +234,25 @@ public class MainForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                textArchitecture.setText("amd64");
+                if (cbbCompileType.getSelectedItem() != null)
+                {
+                    if (cbbCompileType.getSelectedItem().toString().equals("rpm"))
+                    {
+                        if (getCurrentArch().equals("x86_64"))
+                        {
+                            textArchitecture.setText(getCurrentArch());
+                        }else
+                        {
+                            textArchitecture.setText("x86_64 " + getCurrentArch());
+                        }
+                    }else
+                    {
+                        textArchitecture.setText("amd64");
+                    }
+                }else
+                {
+                    textArchitecture.setText(getCurrentArch());
+                }
                 rbAll.setSelected(false);
                 rbOnlyI386.setSelected(false);
                 rbOnlyAmd64.setSelected(true);
@@ -198,7 +263,25 @@ public class MainForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                textArchitecture.setText("powerpc");
+                if (cbbCompileType.getSelectedItem() != null)
+                {
+                    if (cbbCompileType.getSelectedItem().toString().equals("rpm"))
+                    {
+                        if (getCurrentArch().contains("powerpc"))
+                        {
+                            textArchitecture.setText(getCurrentArch());
+                        }else
+                        {
+                            textArchitecture.setText("powerpc " + getCurrentArch());
+                        }
+                    }else
+                    {
+                        textArchitecture.setText("powerpc");
+                    }
+                }else
+                {
+                    textArchitecture.setText(getCurrentArch());
+                }
                 rbAll.setSelected(false);
                 rbOnlyI386.setSelected(false);
                 rbOnlyAmd64.setSelected(false);
