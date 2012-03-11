@@ -2,6 +2,8 @@ package debBuilder;
 
 import java.io.*;
 
+import debBuilder.builderConfig.configManager;
+import debBuilder.builderConfig.configModel;
 import debProjectModels.*;
 import debProjectTool.*;
 import sun.net.idn.StringPrep;
@@ -76,5 +78,16 @@ public class TestStartupClass {
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
+    }
+    
+    public static void fffffffffff(String[] args)
+    {
+        configModel cm = new configModel();
+        try {
+            debProjectModelRW.quickEasy.savetofile(cm,"/home/wcss/config.cfg");
+        } catch (Exception e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
     }
 }

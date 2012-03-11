@@ -44,10 +44,26 @@ public class builderCompile
         } else {
             projectbasedir = bufferdirs;
         }
-        projectbasedir = projectbasedir + "_" + pkgtypename + "_time_" +(new Date().getTime());
+        projectbasedir = projectbasedir + "/" + pkgtypename + "/time_" +(new Date().getTime());
         return projectbasedir;
     }
-    
+
+    /**
+     * 获取包路径(无后缀)
+     * @param sourcedebfilepath
+     * @return
+     */
+    private static String getDebFilePathWithoutExtName(String sourcedebfilepath)
+    {
+       if (sourcedebfilepath.toLowerCase().endsWith(".deb") || sourcedebfilepath.toLowerCase().endsWith(".rpm"))
+       {
+          return new File(sourcedebfilepath).getParent() + "/" + new File(sourcedebfilepath).getName().substring(0,new File(sourcedebfilepath).getName().indexOf(".",new File(sourcedebfilepath).getName().length() - 4) > 0?new File(sourcedebfilepath).getName().indexOf(".",new File(sourcedebfilepath).getName().length() - 4):new File(sourcedebfilepath).getName().length() -1);
+       }else
+       {
+          return sourcedebfilepath;
+       }
+    }
+
     /**
      * 编译包
      *
@@ -57,15 +73,18 @@ public class builderCompile
     {
         String debbasedirs = getProjectBasePath(bufferdir,"deb");
         String rpmbasedirs = getProjectBasePath(bufferdir,"rpm");
+        String pkgtype = project.packageMakerType;
         
-        String debfilepath = debfilepaths + ".deb";
-        String rpmfilepath = debfilepaths + ".rpm";
+        String debfilepath = getDebFilePathWithoutExtName(debfilepaths) + ".deb";
+        String rpmfilepath = getDebFilePathWithoutExtName(debfilepaths) + ".rpm";
 
-        checkCompilePath(debbasedirs,debfilepath);
+        System.out.println("deb file:" + debfilepath);
+        System.out.println("rpm file:" + rpmfilepath);
+
+        checkCompilePath(debbasedirs, debfilepath);
         checkCompilePath(rpmbasedirs,rpmfilepath);
 
-        String pkgtype = project.packageMakerType;
-
+        //编译软件包
         if (pkgtype != null && pkgtype.toLowerCase().equals("deb"))
         {
             debProjectCompile.compileDebPackage(project,debbasedirs);
@@ -74,15 +93,34 @@ public class builderCompile
             rpmProjectCompile.compileRpmPackage(project,rpmbasedirs);
         }
 
-//        buildPackageInfo(project, projectbasedir);
-//        buildInstallScript(project, projectbasedir);
-//        buildStartupFiles(project, projectbasedir);
-//        buildCopyInstallFiles(project, projectbasedir);
-//        if (makedebpkg)
-//        {
-//            makeDebPackageFile(projectbasedir, debfilepath);
-//        }
+        //生成包文件
+        if (configManager.config.compileType != null && configManager.config.compileType.toLowerCase().equals("system"))
+        {
+           if (pkgtype != null && pkgtype.toLowerCase().equals("deb"))
+           {
+               makePackageFile(project,"dpkg -b (source) (dest)",debbasedirs,debfilepath);
+           }else if (pkgtype != null && pkgtype.toLowerCase().equals("rpm"))
+           {
+               ArrayList al = new ArrayList();
+               al.add("cd " + rpmbasedirs);
+               al.add("rpmbuild -bb " + "pkgbuild.spec" + " --buildroot=" + rpmbasedirs);
+               al.add("cp " + new File(rpmbasedirs).getParent() + "/*.rpm " + project.resultDir);
+               al.add("rm -rf " + new File(rpmbasedirs).getParent() + "/*.rpm");
+               jDataRWHelper.writeAllLines(jCmdRunHelper.getCmdRunScriptBufferDir() + "/rpmbuild.sh",jDataRWHelper.convertTo(al.toArray()));
+               jCmdRunHelper.runSysCmd("chmod +x " + jCmdRunHelper.getCmdRunScriptBufferDir() + "/rpmbuild.sh");
+               makePackageFile(project, jCmdRunHelper.getCmdRunScriptBufferDir() + "/rpmbuild.sh", rpmbasedirs, rpmfilepath);
+           }
+        }else
+        {
+            if (pkgtype != null && pkgtype.toLowerCase().equals("deb"))
+            {
+                makePackageFile(project,configManager.config.compileCmd,debbasedirs,debfilepath);
+            }else if (pkgtype != null && pkgtype.toLowerCase().equals("rpm"))
+            {
+                makePackageFile(project,configManager.config.compileCmd,rpmbasedirs,rpmfilepath);
+            }
 
+        }
     }
 
     /**
@@ -118,9 +156,9 @@ public class builderCompile
     /**
      * 生成包文件
      */
-    public static void makePackageFile(String debresourcedir,String debresultpath) throws Exception
+    public static void makePackageFile(debProjectModel project,String compileCmd,String debresourcedir,String debresultpath) throws Exception
     {
-        String makecmd = configManager.config.compileCmd.replace("(source)",debresourcedir).replace("(dest)",debresultpath);
+        String makecmd = compileCmd.replace("(source)",debresourcedir).replace("(dest)",debresultpath).replace("(output)",project.resultDir).replace("(pkgtype)",project.packageMakerType).replace("(pkgname)",project.packageName);
         Process pro = jCmdRunHelper.runSysCmd(makecmd, false);
         pro.waitFor();
         InputStream is = pro.getErrorStream();
@@ -133,7 +171,10 @@ public class builderCompile
             {
                 errorprint+=error[k];
             }
-            throw new Exception(errorprint);
+            if (errorprint.toLowerCase().contains("error") || errorprint.contains("错误"))
+            {
+               throw new Exception(errorprint);
+            }
         }
 
     }

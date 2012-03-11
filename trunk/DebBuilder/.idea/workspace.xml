@@ -85,19 +85,19 @@
         <option value="$PROJECT_DIR$/src/debBuilder/MainUI/makeInstallPackage.form" />
         <option value="$PROJECT_DIR$/src/debBuilder/language/languageManager.java" />
         <option value="$PROJECT_DIR$/src/debBuilder/builderConfig/compileManager.java" />
-        <option value="$PROJECT_DIR$/src/debBuilder/builderConfig/configModel.java" />
-        <option value="$PROJECT_DIR$/src/debBuilder/makeDesktopStartup.java" />
         <option value="$PROJECT_DIR$/src/debBuilder/builderConfig/configManager.java" />
-        <option value="$PROJECT_DIR$/src/debBuilder/MainUI/makeInstallPackage.java" />
         <option value="$PROJECT_DIR$/src/debProjectModels/debFilesModel.java" />
         <option value="$PROJECT_DIR$/src/debProjectTool/debProjectCompile.java" />
         <option value="$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.form" />
         <option value="$PROJECT_DIR$/src/debProjectModels/debProjectModel.java" />
-        <option value="$PROJECT_DIR$/src/debBuilder/TestStartupClass.java" />
         <option value="$PROJECT_DIR$/src/debBuilder/MainUI/compileProjectThread.java" />
         <option value="$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.java" />
-        <option value="$PROJECT_DIR$/src/debProjectTool/builderCompile.java" />
+        <option value="$PROJECT_DIR$/src/debBuilder/MainUI/makeInstallPackage.java" />
+        <option value="$PROJECT_DIR$/src/debBuilder/builderConfig/configModel.java" />
+        <option value="$PROJECT_DIR$/src/debBuilder/TestStartupClass.java" />
+        <option value="$PROJECT_DIR$/src/debBuilder/makeDesktopStartup.java" />
         <option value="$PROJECT_DIR$/src/debProjectTool/rpmProjectCompile.java" />
+        <option value="$PROJECT_DIR$/src/debProjectTool/builderCompile.java" />
       </list>
     </option>
   </component>
@@ -140,6 +140,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -174,7 +175,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -397,7 +397,6 @@
     <frame x="63" y="24" width="1217" height="776" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22412318" sideWeight="0.63981766" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12489307" sideWeight="0.63981766" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24978614" sideWeight="0.63387096" order="2" side_tool="false" content_ui="tabs" />
@@ -411,7 +410,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934132" sideWeight="0.63387096" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3986313" sideWeight="0.63387096" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20786998" sideWeight="0.63981766" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36018237" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36018237" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22412318" sideWeight="0.63981766" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -475,24 +475,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/debBuilder/builderConfig/configModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="92" selection-start="437" selection-end="437" vertical-scroll-proportion="0.6586022" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/debBuilder/makeDesktopStartup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="118" selection-start="660" selection-end="660" vertical-scroll-proportion="0.54317546" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/debBuilder/builderConfig/configManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="46" selection-start="753" selection-end="753" vertical-scroll-proportion="0.6789474" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/makeInstallPackage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="4" selection-start="2317" selection-end="2317" vertical-scroll-proportion="1.1526718" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/makeInstallPackage.form">
@@ -512,18 +497,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/compileProjectThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="22" selection-start="798" selection-end="798" vertical-scroll-proportion="0.71153843">
-          <folding>
-            <element signature="method#run#0;class#compileProjectThread#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/debBuilder/TestStartupClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="41" selection-start="3153" selection-end="3153" vertical-scroll-proportion="0.7092084">
-          <folding />
-        </state>
+        <state line="30" column="22" selection-start="798" selection-end="798" vertical-scroll-proportion="0.71153843" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.form">
@@ -533,89 +507,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/debProjectTool/debProjectModelRW.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="436" selection-end="436" vertical-scroll-proportion="0.33164558">
-          <folding />
-        </state>
+        <state line="21" column="0" selection-start="436" selection-end="436" vertical-scroll-proportion="0.33164558" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/debProjectModels/debProjectModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="41" selection-start="485" selection-end="485" vertical-scroll-proportion="-2.5696204">
-          <folding />
-        </state>
+        <state line="31" column="41" selection-start="485" selection-end="485" vertical-scroll-proportion="-2.5696204" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="813" column="53" selection-start="35388" selection-end="35388" vertical-scroll-proportion="0.15443037">
+        <state line="813" column="53" selection-start="35388" selection-end="35388" vertical-scroll-proportion="0.15443037" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/debProjectTool/debProjectCompile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="227" column="82" selection-start="9229" selection-end="9229" vertical-scroll-proportion="2.0078535" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/makeInstallPackage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="4" selection-start="2317" selection-end="2317" vertical-scroll-proportion="0.65822786" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/debBuilder/builderConfig/configModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="124" selection-start="491" selection-end="491" vertical-scroll-proportion="0.42408377" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/debBuilder/TestStartupClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="34" selection-start="3499" selection-end="3499" vertical-scroll-proportion="0.37172773" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/debBuilder/makeDesktopStartup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="118" selection-start="660" selection-end="660" vertical-scroll-proportion="0.31502423">
           <folding>
-            <element signature="method#MainForm#0;class#MainForm#0" expanded="false" />
-            <element signature="class#5438:5898" expanded="false" />
-            <element signature="class#5942:6403" expanded="false" />
-            <element signature="method#actionPerformed#0;class#5942:6403" expanded="false" />
-            <element signature="class#6448:6910" expanded="false" />
-            <element signature="class#6957:7421" expanded="false" />
-            <element signature="class#7468:7730" expanded="false" />
-            <element signature="class#7782:8506" expanded="false" />
-            <element signature="class#8554:8718" expanded="false" />
-            <element signature="class#8787:10144" expanded="false" />
-            <element signature="class#10188:10699" expanded="false" />
-            <element signature="class#10743:11254" expanded="false" />
-            <element signature="class#11301:11678" expanded="false" />
-            <element signature="class#11725:12224" expanded="false" />
-            <element signature="class#12272:14458" expanded="false" />
-            <element signature="class#14504:15009" expanded="false" />
-            <element signature="class#15055:15562" expanded="false" />
-            <element signature="class#15629:15964" expanded="false" />
-            <element signature="class#16013:16440" expanded="false" />
-            <element signature="class#16490:16915" expanded="false" />
-            <element signature="class#16963:17386" expanded="false" />
-            <element signature="class#17450:17924" expanded="false" />
-            <element signature="class#17971:18478" expanded="false" />
-            <element signature="class#18526:21089" expanded="false" />
-            <element signature="class#21136:21644" expanded="false" />
-            <element signature="class#21691:22120" expanded="false" />
-            <element signature="class#22172:23287" expanded="false" />
-            <element signature="class#23348:23813" expanded="false" />
-            <element signature="class#23858:24347" expanded="false" />
-            <element signature="class#24393:26432" expanded="false" />
-            <element signature="class#26480:26979" expanded="false" />
-            <element signature="class#27032:27757" expanded="false" />
-            <element signature="class#27808:28531" expanded="false" />
-            <element signature="class#28581:29155" expanded="false" />
-            <element signature="class#29221:29651" expanded="false" />
-            <element signature="class#29702:30625" expanded="false" />
-            <element signature="class#30676:31320" expanded="false" />
-            <element signature="class#31381:31591" expanded="false" />
-            <element signature="class#31636:31856" expanded="false" />
-            <element signature="class#31914:32175" expanded="false" />
-            <element signature="method#selectSaveProjectFor#0;class#MainForm#0" expanded="false" />
-            <element signature="method#onsaveprojectfor#0;class#MainForm#0" expanded="false" />
-            <element signature="method#setFormToCenter#0;class#MainForm#0" expanded="false" />
-            <element signature="method#makeInstallPkg#0;class#MainForm#0" expanded="false" />
-            <element signature="method#clearFilesEditor#0;class#MainForm#0" expanded="false" />
-            <element signature="method#clearStartupEditor#0;class#MainForm#0" expanded="false" />
-            <element signature="method#clearDependEditor#0;class#MainForm#0" expanded="false" />
-            <element signature="method#saveprojectdata#0;class#MainForm#0" expanded="false" />
-            <element signature="method#onsaveproject#0;class#MainForm#0" expanded="false" />
-            <element signature="method#saveProjectFile#0;class#MainForm#0" expanded="false" />
-            <element signature="method#selectScriptFile#0;class#MainForm#0" expanded="false" />
-            <element signature="method#clearProjectData#0;class#MainForm#0" expanded="false" />
-            <element signature="method#showProjectData#0;class#MainForm#0" expanded="false" />
-            <element signature="method#changeEditorStatus#0;class#MainForm#0" expanded="false" />
-            <element signature="method#loadLanguage#0;class#MainForm#0" expanded="false" />
-            <element signature="method#setUILanguage#0;class#MainForm#0" expanded="false" />
-            <element signature="method#makeLanguageFile#0;class#MainForm#0" expanded="false" />
-            <element signature="method#main#0;class#MainForm#0" expanded="false" />
+            <element signature="method#buildDesktopStartup#0;class#makeDesktopStartup#0" expanded="false" />
+            <element signature="method#buildStartupFile#0;class#makeDesktopStartup#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/debProjectTool/rpmProjectCompile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="112" selection-start="3471" selection-end="3471" vertical-scroll-proportion="-1.316754">
+        <state line="21" column="109" selection-start="464" selection-end="464" vertical-scroll-proportion="0.17285945">
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#buildPackageInfo#0;class#rpmProjectCompile#0" expanded="false" />
             <element signature="method#buildRequiresStr#0;class#rpmProjectCompile#0" expanded="false" />
             <element signature="method#appendToConfigFileEnd#0;class#rpmProjectCompile#0" expanded="false" />
@@ -624,35 +562,20 @@
             <element signature="method#buildStartupFile#0;class#rpmProjectCompile#0" expanded="false" />
             <element signature="method#buildCopyInstallFiles#0;class#rpmProjectCompile#0" expanded="false" />
             <element signature="method#getPathList#0;class#rpmProjectCompile#0" expanded="false" />
-            <element signature="e#10487#10495#0" expanded="true" />
             <element signature="method#buildInstallFilesRecords#0;class#rpmProjectCompile#0" expanded="false" />
-            <element signature="e#11888#11896#0" expanded="true" />
             <element signature="method#compileRpmPackage#0;class#rpmProjectCompile#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/debProjectTool/debProjectCompile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="227" column="82" selection-start="9229" selection-end="9229" vertical-scroll-proportion="2.0078535">
-          <folding>
-            <element signature="method#buildPackageInfo#0;class#debProjectCompile#0" expanded="false" />
-            <element signature="method#buildDependsStr#0;class#debProjectCompile#0" expanded="false" />
-            <element signature="method#buildInstallScript#0;class#debProjectCompile#0" expanded="false" />
-            <element signature="method#buildStartupFiles#0;class#debProjectCompile#0" expanded="false" />
-            <element signature="method#buildStartupFile#0;class#debProjectCompile#0" expanded="false" />
-            <element signature="method#buildCopyInstallFiles#0;class#debProjectCompile#0" expanded="false" />
-            <element signature="method#compileDebPackage#0;class#debProjectCompile#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/debProjectTool/builderCompile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="75" selection-start="2182" selection-end="2182" vertical-scroll-proportion="0.60732985">
+        <state line="72" column="4" selection-start="2202" selection-end="2202" vertical-scroll-proportion="0.41884816">
           <folding>
             <element signature="method#checkCompilePath#0;class#builderCompile#0" expanded="false" />
             <element signature="method#getProjectBasePath#0;class#builderCompile#0" expanded="false" />
+            <element signature="method#getDebFilePathWithoutExtName#0;class#builderCompile#0" expanded="false" />
+            <element signature="method#compilePackage#0;class#builderCompile#0" expanded="false" />
             <element signature="method#compilePackageWithoutMakeDeb#0;class#builderCompile#0" expanded="false" />
             <element signature="method#compilePackageWithMakeDeb#0;class#builderCompile#0" expanded="false" />
             <element signature="method#compilePackageWithMakeDeb#1;class#builderCompile#0" expanded="false" />

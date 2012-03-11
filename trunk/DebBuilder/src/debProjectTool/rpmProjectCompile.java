@@ -27,19 +27,23 @@ public class rpmProjectCompile
             controlcontent.add("Name: " + project.packageName);
             controlcontent.add("Version: " + project.packageVersion);
             controlcontent.add("Release: " + project.packageVersion);
-            controlcontent.add("Build Arch:" + project.packageArchitecture);
+            //controlcontent.add("Build Arch:" + project.packageArchitecture);
             controlcontent.add("Packager: " + project.packageMaintainer);
             //controlcontent.add("Installed-Size: " + project.packageInstalledSize);
             controlcontent.add("Requires: " + buildRequiresStr(project));
             controlcontent.add("Group: Converted/" + project.packageSection);
             //controlcontent.add("Priority: " + project.packagePriority);
+            controlcontent.add("License: GPL");
             controlcontent.add("Summary: none");
             controlcontent.add("URL: " + project.packageHomepage);
+            controlcontent.add("\n");
+            controlcontent.add("%define _rpmdir ../");
+            controlcontent.add("%define _rpmfilename %%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm");
             controlcontent.add("\n");
             controlcontent.add("%description");
             controlcontent.add(project.packageDescription);
 
-            jDataRWHelper.writeAllLines(projectbasedirp + "/" + project.debPackagename + "-" + project.packageVersion + ".spec", jDataRWHelper.convertTo(controlcontent.toArray()));
+            jDataRWHelper.writeAllLines(projectbasedirp + "/" + "pkgbuild.spec", jDataRWHelper.convertTo(controlcontent.toArray()));
 
             return true;
         } else {
@@ -63,9 +67,9 @@ public class rpmProjectCompile
                     result += ddm.packageName + ",";
                 } else {
                     if (ddm.packageVersionType == debDependsModel.lessThanVersion) {
-                        result += ddm.packageName + " <= " + ddm.packageVersion + " " + ",";
+                        result += ddm.packageName + " <= " + ddm.packageVersion + "" + ",";
                     } else {
-                        result += ddm.packageName + " >= " + ddm.packageVersion + " " + ",";
+                        result += ddm.packageName + " >= " + ddm.packageVersion + "" + ",";
                     }
                 }
             }
@@ -82,7 +86,7 @@ public class rpmProjectCompile
      * @param projectbasedirape
      */
     public static void appendToConfigFileEnd(debProjectModel project,String projectbasedirape,String content) throws Exception {
-        jDataRWHelper.appendLineToFileEnd(projectbasedirape + "/" + project.debPackagename + "-" + project.packageVersion + ".spec", content);
+        jDataRWHelper.appendLineToFileEnd(projectbasedirape + "/" + "pkgbuild.spec", content);
     }
 
     /**
@@ -273,13 +277,13 @@ public class rpmProjectCompile
 
                     if (fList[j].isFile())
                     {
-                        if (fList[j].getAbsolutePath().contains(".spec"))
-                        {
-                           //.spec是配置文件不能在列表中
-                        }else
-                        {
+                        //if (fList[j].getAbsolutePath().contains(".spec"))
+                        //{
+                        //   //.spec是配置文件不能在列表中
+                        //}else
+                        //{
                           al.add("\"" + fList[j].getAbsolutePath() + "\"");
-                        }
+                        //}
                     }
 
                 }
