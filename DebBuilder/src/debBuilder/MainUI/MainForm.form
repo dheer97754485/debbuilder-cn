@@ -78,7 +78,7 @@
                 <properties/>
                 <border type="empty"/>
                 <children>
-                  <grid id="fe787" layout-manager="GridLayoutManager" row-count="15" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="fe787" layout-manager="GridLayoutManager" row-count="16" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
@@ -228,7 +228,7 @@
                       </component>
                       <component id="f40d" class="javax.swing.JLabel" binding="txt11">
                         <constraints>
-                          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <text value="软件包优先级(非重要包用默认值)："/>
@@ -236,7 +236,7 @@
                       </component>
                       <component id="f04ad" class="javax.swing.JTextField" binding="textPriority">
                         <constraints>
-                          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="300" height="-1"/>
                           </grid>
                         </constraints>
@@ -246,7 +246,7 @@
                       </component>
                       <component id="30aea" class="javax.swing.JLabel" binding="txt12">
                         <constraints>
-                          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <text value="软件包简介："/>
@@ -263,7 +263,7 @@
                       </component>
                       <component id="24827" class="javax.swing.JLabel" binding="txt13">
                         <constraints>
-                          <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <text value="编译文件名："/>
@@ -271,23 +271,15 @@
                       </component>
                       <component id="244e5" class="javax.swing.JTextField" binding="textDebName">
                         <constraints>
-                          <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                          <grid row="12" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="300" height="-1"/>
-                          </grid>
-                        </constraints>
-                        <properties/>
-                      </component>
-                      <component id="1bb6b" class="javax.swing.JTextArea" binding="textDescription">
-                        <constraints>
-                          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                            <preferred-size width="300" height="80"/>
                           </grid>
                         </constraints>
                         <properties/>
                       </component>
                       <component id="39d5e" class="javax.swing.JLabel" binding="txt14">
                         <constraints>
-                          <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <text value="编译输出目录："/>
@@ -295,7 +287,7 @@
                       </component>
                       <component id="8cf8d" class="javax.swing.JTextField" binding="textResultDir">
                         <constraints>
-                          <grid row="13" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                          <grid row="14" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="300" height="-1"/>
                           </grid>
                         </constraints>
@@ -303,52 +295,9 @@
                           <editable value="false"/>
                         </properties>
                       </component>
-                      <grid id="918d7" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <component id="33070" class="javax.swing.JRadioButton" binding="rbAll">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <selected value="true"/>
-                              <text value="ALL"/>
-                            </properties>
-                          </component>
-                          <component id="1c350" class="javax.swing.JRadioButton" binding="rbOnlyI386">
-                            <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="i386"/>
-                            </properties>
-                          </component>
-                          <component id="5da19" class="javax.swing.JRadioButton" binding="rbOnlyAmd64">
-                            <constraints>
-                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="AMD64"/>
-                            </properties>
-                          </component>
-                          <component id="2da4e" class="javax.swing.JRadioButton" binding="rbOnlyPowerPC">
-                            <constraints>
-                              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="PowerPC"/>
-                            </properties>
-                          </component>
-                        </children>
-                      </grid>
                       <component id="2f5f5" class="javax.swing.JButton" binding="btnSelectResultDir">
                         <constraints>
-                          <grid row="13" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <text value="选取目录"/>
@@ -356,7 +305,7 @@
                       </component>
                       <component id="2a3e7" class="javax.swing.JLabel" binding="txt15">
                         <constraints>
-                          <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="15" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <text value="工程文件保存位置："/>
@@ -364,7 +313,7 @@
                       </component>
                       <component id="fa5b" class="javax.swing.JTextField" binding="textProjectFile">
                         <constraints>
-                          <grid row="14" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                          <grid row="15" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="300" height="-1"/>
                           </grid>
                         </constraints>
@@ -392,7 +341,7 @@
                       </component>
                       <component id="4cb4f" class="javax.swing.JLabel" binding="txt103">
                         <constraints>
-                          <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <text value="编译器类型："/>
@@ -400,12 +349,84 @@
                       </component>
                       <component id="d95e8" class="javax.swing.JComboBox" binding="cbbCompileType">
                         <constraints>
-                          <grid row="12" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                          <grid row="13" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <model>
                             <item value="deb"/>
                             <item value="rpm"/>
+                            <item value="ypk"/>
+                          </model>
+                        </properties>
+                      </component>
+                      <component id="99b97" class="javax.swing.JLabel" binding="txt104">
+                        <constraints>
+                          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="许可证："/>
+                        </properties>
+                      </component>
+                      <component id="eec5e" class="javax.swing.JTextField" binding="textLicense">
+                        <constraints>
+                          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="GPL"/>
+                        </properties>
+                      </component>
+                      <component id="ee75b" class="javax.swing.JComboBox" binding="cbbLicense">
+                        <constraints>
+                          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <model>
+                            <item value="GPL"/>
+                            <item value="BSD"/>
+                            <item value="MIT"/>
+                            <item value="Distributable"/>
+                            <item value="Commercial"/>
+                            <item value="Share"/>
+                          </model>
+                        </properties>
+                      </component>
+                      <scrollpane id="79e64" binding="psjPane">
+                        <constraints>
+                          <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <minimum-size width="300" height="150"/>
+                            <preferred-size width="300" height="150"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <horizontalScrollBarPolicy value="32"/>
+                          <verticalScrollBarPolicy value="22"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="1bb6b" class="javax.swing.JTextArea" binding="textDescription">
+                            <constraints/>
+                            <properties>
+                              <lineWrap value="true"/>
+                              <rows value="6"/>
+                              <wrapStyleWord value="true"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </scrollpane>
+                      <component id="c3d42" class="javax.swing.JComboBox" binding="cbbArchList">
+                        <constraints>
+                          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <model>
+                            <item value="All"/>
+                            <item value="i386"/>
+                            <item value="i586"/>
+                            <item value="i686"/>
+                            <item value="AMD64"/>
+                            <item value="PowerPC"/>
                           </model>
                         </properties>
                       </component>
@@ -637,7 +658,7 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <grid id="ba040" layout-manager="GridLayoutManager" row-count="5" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="ba040" layout-manager="GridLayoutManager" row-count="9" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
@@ -759,6 +780,102 @@
                         <properties>
                           <font size="28"/>
                           <text value="安装脚本配置"/>
+                        </properties>
+                      </component>
+                      <component id="cbf24" class="javax.swing.JLabel" binding="txt105">
+                        <constraints>
+                          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="preupgrade脚本路径（更新前执行,仅ypk包!）："/>
+                        </properties>
+                      </component>
+                      <component id="592d1" class="javax.swing.JTextField" binding="textPreUpgrade">
+                        <constraints>
+                          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="3b3ad" class="javax.swing.JButton" binding="btnSelectPUpgrade">
+                        <constraints>
+                          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="选择文件"/>
+                        </properties>
+                      </component>
+                      <component id="ccf53" class="javax.swing.JLabel" binding="txt106">
+                        <constraints>
+                          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="postupgrade脚本路径（更新后执行,仅ypk包!）："/>
+                        </properties>
+                      </component>
+                      <component id="c244b" class="javax.swing.JLabel" binding="txt107">
+                        <constraints>
+                          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="predowngrade脚本路径（降级前执行,仅ypk包!）："/>
+                        </properties>
+                      </component>
+                      <component id="fe946" class="javax.swing.JLabel" binding="txt108">
+                        <constraints>
+                          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="predowngrade脚本路径（降级后执行,仅ypk包）："/>
+                        </properties>
+                      </component>
+                      <component id="53d80" class="javax.swing.JTextField" binding="textPostUpgrade">
+                        <constraints>
+                          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="3f146" class="javax.swing.JTextField" binding="textPreDowngrade">
+                        <constraints>
+                          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="30365" class="javax.swing.JTextField" binding="textPostDowngrade">
+                        <constraints>
+                          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="f32f3" class="javax.swing.JButton" binding="btnSelectTUpgrade">
+                        <constraints>
+                          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="选择文件"/>
+                        </properties>
+                      </component>
+                      <component id="b3866" class="javax.swing.JButton" binding="btnSelectDgrade">
+                        <constraints>
+                          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="选择文件"/>
+                        </properties>
+                      </component>
+                      <component id="bee1a" class="javax.swing.JButton" binding="btnSelectNgrade">
+                        <constraints>
+                          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="选择文件"/>
                         </properties>
                       </component>
                     </children>
