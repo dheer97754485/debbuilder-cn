@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
@@ -142,6 +144,23 @@ public class MainForm extends JDialog {
     private JLabel txt102;
     private JLabel txt103;
     private JComboBox cbbCompileType;
+    private JTextField textLicense;
+    private JComboBox cbbLicense;
+    private JLabel txt104;
+    private JScrollPane psjPane;
+    private JComboBox cbbArchList;
+    private JTextField textPreUpgrade;
+    private JButton btnSelectPUpgrade;
+    private JTextField textPostUpgrade;
+    private JTextField textPreDowngrade;
+    private JTextField textPostDowngrade;
+    private JLabel txt105;
+    private JLabel txt106;
+    private JLabel txt107;
+    private JLabel txt108;
+    private JButton btnSelectTUpgrade;
+    private JButton btnSelectDgrade;
+    private JButton btnSelectNgrade;
     private JButton buttonOK;
     private JFileChooser fc = new JFileChooser();
     private int flag;
@@ -171,123 +190,35 @@ public class MainForm extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         //getRootPane().setDefaultButton(buttonOK);
-        makeLanguageFile(jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/language.template");
+        //makeLanguageFile(jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/language.template");
+        loadMakerTypeList();
         clearProjectData();
         this.setUILanguage();
         lblStatus.setText(languageManager.getShowText("99"));
         this.listDepends.setListData(new Object[]{});
 
         //基本信息
-        rbAll.addActionListener(new ActionListener() {
+        cbbArchList.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                if (cbbCompileType.getSelectedItem() != null)
+                if (cbbArchList.getSelectedItem().toString().equals(getCurrentArch()))
                 {
-                   if (cbbCompileType.getSelectedItem().toString().equals("rpm"))
-                   {
-                       textArchitecture.setText("noarch " + getCurrentArch());
-                   }else
-                   {
-                       textArchitecture.setText("all");
-                   }
+                   textArchitecture.setText(cbbArchList.getSelectedItem().toString());
                 }else
-                {
-                    textArchitecture.setText(getCurrentArch());
-                }
-                rbAll.setSelected(true);
-                rbOnlyI386.setSelected(false);
-                rbOnlyAmd64.setSelected(false);
-                rbOnlyPowerPC.setSelected(false);
-            }
-        });
-        rbOnlyI386.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                //To change body of implemented methods use File | Settings | File Templates.
-                if (cbbCompileType.getSelectedItem() != null)
                 {
                     if (cbbCompileType.getSelectedItem().toString().equals("rpm"))
                     {
-                        if (getCurrentArch().equals("i386"))
-                        {
-                            textArchitecture.setText(getCurrentArch());
-                        }else
-                        {
-                            textArchitecture.setText("i386 " + getCurrentArch());
-                        }
+                        textArchitecture.setText(cbbArchList.getSelectedItem().toString() + " " + getCurrentArch());
                     }else
                     {
-                        textArchitecture.setText("i386");
+                        textArchitecture.setText(cbbArchList.getSelectedItem().toString());
                     }
-                }else
-                {
-                    textArchitecture.setText(getCurrentArch());
+
                 }
-                rbAll.setSelected(false);
-                rbOnlyI386.setSelected(true);
-                rbOnlyAmd64.setSelected(false);
-                rbOnlyPowerPC.setSelected(false);
             }
         });
-        rbOnlyAmd64.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                //To change body of implemented methods use File | Settings | File Templates.
-                if (cbbCompileType.getSelectedItem() != null)
-                {
-                    if (cbbCompileType.getSelectedItem().toString().equals("rpm"))
-                    {
-                        if (getCurrentArch().equals("x86_64"))
-                        {
-                            textArchitecture.setText(getCurrentArch());
-                        }else
-                        {
-                            textArchitecture.setText("x86_64 " + getCurrentArch());
-                        }
-                    }else
-                    {
-                        textArchitecture.setText("amd64");
-                    }
-                }else
-                {
-                    textArchitecture.setText(getCurrentArch());
-                }
-                rbAll.setSelected(false);
-                rbOnlyI386.setSelected(false);
-                rbOnlyAmd64.setSelected(true);
-                rbOnlyPowerPC.setSelected(false);
-            }
-        });
-        rbOnlyPowerPC.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                //To change body of implemented methods use File | Settings | File Templates.
-                if (cbbCompileType.getSelectedItem() != null)
-                {
-                    if (cbbCompileType.getSelectedItem().toString().equals("rpm"))
-                    {
-                        if (getCurrentArch().contains("powerpc"))
-                        {
-                            textArchitecture.setText(getCurrentArch());
-                        }else
-                        {
-                            textArchitecture.setText("powerpc " + getCurrentArch());
-                        }
-                    }else
-                    {
-                        textArchitecture.setText("powerpc");
-                    }
-                }else
-                {
-                    textArchitecture.setText(getCurrentArch());
-                }
-                rbAll.setSelected(false);
-                rbOnlyI386.setSelected(false);
-                rbOnlyAmd64.setSelected(false);
-                rbOnlyPowerPC.setSelected(true);
-            }
-        });
+
         btnNewProject.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -784,6 +715,100 @@ public class MainForm extends JDialog {
                 onsaveprojectfor();
             }
         });
+
+        //变换平台支持列表
+        cbbCompileType.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                //To change body of implemented methods use File | Settings | File Templates.
+                changeArchList(cbbCompileType.getSelectedItem().toString());
+            }
+        });
+
+        //变换许可证
+        cbbLicense.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                textLicense.setText(cbbLicense.getSelectedItem().toString());
+            }
+        });
+
+
+        btnSelectPUpgrade.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
+        btnSelectTUpgrade.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
+        btnSelectDgrade.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
+        btnSelectNgrade.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
+    }
+
+    /**
+     * 处理编译器类型
+     */
+    private void loadMakerTypeList()
+    {
+        if (configManager.config.hideCompileType != null)
+        {
+           String[] hideteam = configManager.config.hideCompileType.split(",");
+           ArrayList showlist = new ArrayList();
+           showlist.add("deb");
+           showlist.add("rpm");
+           showlist.add("ypk");
+           for(String str:hideteam)
+           {
+               showlist.remove(str);
+           }
+           ComboBoxModel cbm = new DefaultComboBoxModel(showlist.toArray());
+           cbbCompileType.setModel(cbm);
+        }else
+        {
+            ArrayList showlists = new ArrayList();
+            showlists.add("deb");
+            showlists.add("rpm");
+            showlists.add("ypk");
+            ComboBoxModel cbms = new DefaultComboBoxModel(showlists.toArray());
+            cbbCompileType.setModel(cbms);
+
+        }
+    }
+
+    /**
+     *　改变目标平台选项
+     * @param arch
+     */
+    public void changeArchList(String arch)
+    {
+        if (arch.equals("deb"))
+        {
+            ComboBoxModel cbm1 = new DefaultComboBoxModel(new Object[]{ "All","i386","i586","i686","amd64","powserpc" });
+            cbbArchList.setModel(cbm1);
+        }else if (arch.equals("rpm"))
+        {
+            ComboBoxModel cbm2 = new DefaultComboBoxModel(new Object[]{ "noarch","i386","i586","i686","x86_64"});
+            cbbArchList.setModel(cbm2);
+        }else if (arch.equals("ypk"))
+        {
+            ComboBoxModel cbm3 = new DefaultComboBoxModel(new Object[]{ "any","x86_64","i686"});
+            cbbArchList.setModel(cbm3);
+        }
     }
 
     /**
@@ -917,6 +942,7 @@ public class MainForm extends JDialog {
         MainForm.currentProject.packagePreInstFile = textPreInst.getText();
         MainForm.currentProject.packagePreRmFile = textPreRm.getText();
         MainForm.currentProject.packageMakerType = cbbCompileType.getSelectedItem().toString();
+        MainForm.currentProject.packageLicense = textLicense.getText();
 
         if (projectsave.endsWith(".dproject")) {
             //后缀名正确无需修改
@@ -946,6 +972,7 @@ public class MainForm extends JDialog {
         //设置保存文件对话框的标题
         fc.setDialogTitle(languageManager.getShowText("98"));
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
         //fc.setFileFilter(projectFilter);
 
         //这里将显示保存文件的对话框
@@ -1002,10 +1029,7 @@ public class MainForm extends JDialog {
      */
     private void clearProjectData() {
         textArchitecture.setText("all");
-        rbAll.setSelected(true);
-        rbOnlyI386.setSelected(false);
-        rbOnlyAmd64.setSelected(false);
-        rbOnlyPowerPC.setSelected(false);
+        cbbArchList.setSelectedIndex(0);
         this.textProjectName.setText("none");
         this.textDescription.setText("none");
         this.textPackageName.setText("empty");
@@ -1025,7 +1049,12 @@ public class MainForm extends JDialog {
         this.textPostRm.setText("");
         this.textPreInst.setText("");
         this.textPreRm.setText("");
-        this.cbbCompileType.setSelectedIndex(0);
+        this.textLicense.setText("GPL");
+        if (configManager.config.defaultNewProjectCompileType < cbbCompileType.getItemCount())
+        {
+          this.cbbCompileType.setSelectedIndex(configManager.config.defaultNewProjectCompileType);
+        }
+        changeArchList(this.cbbCompileType.getSelectedItem().toString());
     }
 
     /**
@@ -1033,21 +1062,10 @@ public class MainForm extends JDialog {
      */
     private void showProjectData() {
         textArchitecture.setText(MainForm.currentProject.packageArchitecture);
-        if (MainForm.currentProject.packageArchitecture != null) {
-            rbAll.setSelected(false);
-            rbOnlyI386.setSelected(false);
-            rbOnlyAmd64.setSelected(false);
-            rbOnlyPowerPC.setSelected(false);
-
-            if (MainForm.currentProject.packageArchitecture.contains("all")) {
-                rbAll.setSelected(true);
-            } else if (MainForm.currentProject.packageArchitecture.contains("i386")) {
-                rbOnlyI386.setSelected(true);
-            } else if (MainForm.currentProject.packageArchitecture.contains("amd64")) {
-                rbOnlyAmd64.setSelected(true);
-            } else if (MainForm.currentProject.packageArchitecture.contains("powerpc")) {
-                rbOnlyPowerPC.setSelected(true);
-            }
+        if (MainForm.currentProject.packageArchitecture != null && MainForm.currentProject.packageMakerType != null)
+        {
+            changeArchList(MainForm.currentProject.packageMakerType);
+            cbbArchList.setSelectedItem(MainForm.currentProject.packageArchitecture);
         }
         this.textProjectName.setText(MainForm.currentProject.projectName);
         this.textDescription.setText(MainForm.currentProject.packageDescription);
@@ -1158,6 +1176,7 @@ public class MainForm extends JDialog {
             txt40.setText(languageManager.getShowText("40"));
             txt102.setText(languageManager.getShowText("102"));
             txt103.setText(languageManager.getShowText("103"));
+            txt104.setText(languageManager.getShowText("104"));
 
             //输出标签页名字
             tabmain.setTitleAt(0,languageManager.getShowText("41"));
@@ -1247,6 +1266,7 @@ public class MainForm extends JDialog {
         languageManager.languageData.add(new languageModel("40", txt40.getText()));
         languageManager.languageData.add(new languageModel("102", txt102.getText()));
         languageManager.languageData.add(new languageModel("103",txt103.getText()));
+        languageManager.languageData.add(new languageModel("104",txt104.getText()));
 
         //输出标签页名字
         languageManager.languageData.add(new languageModel("41", tabmain.getTitleAt(0)));

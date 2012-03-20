@@ -47,6 +47,11 @@ public class debProjectModel {
     public String packageArchitecture;
 
     /**
+     * 许可证
+     */
+    public String packageLicense;
+
+    /**
      * 维护者
      */
     public String packageMaintainer;
@@ -110,6 +115,26 @@ public class debProjectModel {
      * 该脚本负责停止与软件包相关联的daemon服务。它在删除软件包关联文件之前执行
      */
     public String packagePreRmFile;
+
+    /**
+     * 更新前执行
+     */
+    public String packagePreUpgradeFile;
+
+    /**
+     * 更新后执行
+     */
+    public String packagePostUpgradeFile;
+
+    /**
+     *　删除更新之前
+     */
+    public String packagePreDowngradeFile;
+
+    /**
+     *  删除更新之后
+     */
+    public String packagePostDowngradeFile;
 
     /**
      * 启动器列表
