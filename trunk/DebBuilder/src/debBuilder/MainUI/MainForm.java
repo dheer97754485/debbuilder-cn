@@ -4,12 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -150,7 +146,7 @@ public class MainForm extends JDialog {
     private JScrollPane psjPane;
     private JComboBox cbbArchList;
     private JTextField textPreUpgrade;
-    private JButton btnSelectPUpgrade;
+    private JButton btnSelectPreUpgrade;
     private JTextField textPostUpgrade;
     private JTextField textPreDowngrade;
     private JTextField textPostDowngrade;
@@ -158,9 +154,9 @@ public class MainForm extends JDialog {
     private JLabel txt106;
     private JLabel txt107;
     private JLabel txt108;
-    private JButton btnSelectTUpgrade;
-    private JButton btnSelectDgrade;
-    private JButton btnSelectNgrade;
+    private JButton btnSelectPostUpgrade;
+    private JButton btnSelectPreDowngrade;
+    private JButton btnSelectPostDowngrade;
     private JButton buttonOK;
     private JFileChooser fc = new JFileChooser();
     private int flag;
@@ -190,7 +186,7 @@ public class MainForm extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         //getRootPane().setDefaultButton(buttonOK);
-        //makeLanguageFile(jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/language.template");
+        makeLanguageFile(jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/language.template");
         loadMakerTypeList();
         clearProjectData();
         this.setUILanguage();
@@ -733,31 +729,48 @@ public class MainForm extends JDialog {
             }
         });
 
+        //针对ypk包增加的选项
+        btnSelectPreUpgrade.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                File posti = selectScriptFile(languageManager.getShowText("113"));
+                if (posti != null) {
+                    textPreUpgrade.setText(posti.getAbsolutePath());
+                }
 
-        btnSelectPUpgrade.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                //To change body of implemented methods use File | Settings | File Templates.
             }
         });
-        btnSelectTUpgrade.addActionListener(new ActionListener() {
+        btnSelectPostUpgrade.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //To change body of implemented methods use File | Settings | File Templates.
+                File posti = selectScriptFile(languageManager.getShowText("114"));
+                if (posti != null) {
+                    textPostUpgrade.setText(posti.getAbsolutePath());
+                }
+
             }
         });
-        btnSelectDgrade.addActionListener(new ActionListener() {
+        btnSelectPreDowngrade.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //To change body of implemented methods use File | Settings | File Templates.
+                File posti = selectScriptFile(languageManager.getShowText("115"));
+                if (posti != null) {
+                    textPreDowngrade.setText(posti.getAbsolutePath());
+                }
+
             }
         });
-        btnSelectNgrade.addActionListener(new ActionListener() {
+        btnSelectPostDowngrade.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //To change body of implemented methods use File | Settings | File Templates.
+                File posti = selectScriptFile(languageManager.getShowText("116"));
+                if (posti != null) {
+                    textPostDowngrade.setText(posti.getAbsolutePath());
+                }
+
             }
         });
+
     }
 
     /**
@@ -941,6 +954,10 @@ public class MainForm extends JDialog {
         MainForm.currentProject.packagePostRmFile = textPostRm.getText();
         MainForm.currentProject.packagePreInstFile = textPreInst.getText();
         MainForm.currentProject.packagePreRmFile = textPreRm.getText();
+        MainForm.currentProject.packagePreUpgradeFile = textPreUpgrade.getText();
+        MainForm.currentProject.packagePostUpgradeFile = textPostUpgrade.getText();
+        MainForm.currentProject.packagePreDowngradeFile = textPreDowngrade.getText();
+        MainForm.currentProject.packagePostDowngradeFile = textPostDowngrade.getText();
         MainForm.currentProject.packageMakerType = cbbCompileType.getSelectedItem().toString();
         MainForm.currentProject.packageLicense = textLicense.getText();
 
@@ -1089,6 +1106,10 @@ public class MainForm extends JDialog {
         this.textPostRm.setText(MainForm.currentProject.packagePostRmFile);
         this.textPreInst.setText(MainForm.currentProject.packagePreInstFile);
         this.textPreRm.setText(MainForm.currentProject.packagePreRmFile);
+        this.textPreUpgrade.setText(MainForm.currentProject.packagePreUpgradeFile);
+        this.textPostUpgrade.setText(MainForm.currentProject.packagePostUpgradeFile);
+        this.textPreDowngrade.setText(MainForm.currentProject.packagePreDowngradeFile);
+        this.textPostDowngrade.setText(MainForm.currentProject.packagePostDowngradeFile);
         this.cbbCompileType.setSelectedItem(MainForm.currentProject.packageMakerType);
     }
 
@@ -1113,7 +1134,7 @@ public class MainForm extends JDialog {
     }
 
     /**
-     * 载入语言项
+     * 载入语言数据
      */
     public static void loadLanguage() {
         //makeLanguageFile(jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/language.template");
@@ -1131,6 +1152,9 @@ public class MainForm extends JDialog {
         }
     }
 
+    /**
+     *　显示语言数据
+     */
     private void setUILanguage() {
         if (languageManager.languageData != null && languageManager.languageData.size() > 90)
         {
@@ -1178,6 +1202,12 @@ public class MainForm extends JDialog {
             txt103.setText(languageManager.getShowText("103"));
             txt104.setText(languageManager.getShowText("104"));
 
+            txt105.setText(languageManager.getShowText("105"));
+            txt106.setText(languageManager.getShowText("106"));
+            txt107.setText(languageManager.getShowText("107"));
+            txt108.setText(languageManager.getShowText("108"));
+
+
             //输出标签页名字
             tabmain.setTitleAt(0,languageManager.getShowText("41"));
             tabmain.setTitleAt(1,languageManager.getShowText("42"));
@@ -1213,6 +1243,11 @@ public class MainForm extends JDialog {
             btnSelectPreInst.setText(languageManager.getShowText("69"));
             btnSelectPreRm.setText(languageManager.getShowText("70"));
             btnSelectSourcePath.setText(languageManager.getShowText("71"));
+
+            btnSelectPreUpgrade.setText(languageManager.getShowText("109"));
+            btnSelectPostUpgrade.setText(languageManager.getShowText("110"));
+            btnSelectPreDowngrade.setText(languageManager.getShowText("111"));
+            btnSelectPostDowngrade.setText(languageManager.getShowText("112"));
 
         }
 
@@ -1267,6 +1302,10 @@ public class MainForm extends JDialog {
         languageManager.languageData.add(new languageModel("102", txt102.getText()));
         languageManager.languageData.add(new languageModel("103",txt103.getText()));
         languageManager.languageData.add(new languageModel("104",txt104.getText()));
+        languageManager.languageData.add(new languageModel("105",txt105.getText()));
+        languageManager.languageData.add(new languageModel("106",txt106.getText()));
+        languageManager.languageData.add(new languageModel("107",txt107.getText()));
+        languageManager.languageData.add(new languageModel("108",txt108.getText()));
 
         //输出标签页名字
         languageManager.languageData.add(new languageModel("41", tabmain.getTitleAt(0)));
@@ -1304,6 +1343,11 @@ public class MainForm extends JDialog {
         languageManager.languageData.add(new languageModel("70", btnSelectPreRm.getText()));
         languageManager.languageData.add(new languageModel("71", btnSelectSourcePath.getText()));
 
+        languageManager.languageData.add(new languageModel("109",btnSelectPreUpgrade.getText()));
+        languageManager.languageData.add(new languageModel("110",btnSelectPostUpgrade.getText()));
+        languageManager.languageData.add(new languageModel("111",btnSelectPreDowngrade.getText()));
+        languageManager.languageData.add(new languageModel("112",btnSelectPostDowngrade.getText()));
+
         //进度条窗口
         languageManager.languageData.add(new languageModel("72", "DebBuilder软件包生成器-编译进度"));
         languageManager.languageData.add(new languageModel("73", "正在生成安装包......"));
@@ -1337,6 +1381,11 @@ public class MainForm extends JDialog {
         languageManager.languageData.add(new languageModel("99", "DebBuilder软件包生成器 V1.7 QQ707519239"));
 
         languageManager.languageData.add(new languageModel("100", "为(x)快速打包"));
+
+        languageManager.languageData.add(new languageModel("109","请选择PreUpgrade脚本！"));
+        languageManager.languageData.add(new languageModel("110","请选择PostUpgrade脚本！"));
+        languageManager.languageData.add(new languageModel("111","请选择PreDowngrade脚本！"));
+        languageManager.languageData.add(new languageModel("112","请选择PostDowngrade脚本！"));
 
         try {
             languageManager.saveLanguageFile(savepaths);
