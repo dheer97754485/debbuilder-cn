@@ -78,48 +78,53 @@
       <file leaf-file-name="MainForm.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="757" column="16" selection-start="33977" selection-end="34054" vertical-scroll-proportion="1.6886076">
+            <state line="934" column="53" selection-start="39274" selection-end="39274" vertical-scroll-proportion="0.4379747">
               <folding>
-                <element signature="method#getCurrentArch#0;class#MainForm#0" expanded="false" />
-                <element signature="class#6721:7581" expanded="false" />
-                <element signature="class#7629:7891" expanded="false" />
-                <element signature="class#7943:8667" expanded="false" />
-                <element signature="class#8715:8879" expanded="false" />
-                <element signature="class#8948:10305" expanded="false" />
-                <element signature="class#10349:10860" expanded="false" />
-                <element signature="class#10904:11415" expanded="false" />
-                <element signature="class#11462:11839" expanded="false" />
-                <element signature="class#11886:12385" expanded="false" />
-                <element signature="class#12433:14619" expanded="false" />
-                <element signature="class#14665:15170" expanded="false" />
-                <element signature="class#15216:15723" expanded="false" />
-                <element signature="class#15790:16125" expanded="false" />
-                <element signature="class#16174:16601" expanded="false" />
-                <element signature="class#16651:17076" expanded="false" />
-                <element signature="class#17124:17547" expanded="false" />
-                <element signature="class#17611:18085" expanded="false" />
-                <element signature="class#18132:18639" expanded="false" />
-                <element signature="class#18687:21250" expanded="false" />
-                <element signature="class#21297:21805" expanded="false" />
-                <element signature="method#actionPerformed#0;class#21297:21805" expanded="false" />
-                <element signature="class#21852:22281" expanded="false" />
-                <element signature="class#22333:23448" expanded="false" />
-                <element signature="class#23509:23974" expanded="false" />
-                <element signature="class#24019:24508" expanded="false" />
-                <element signature="class#24554:26593" expanded="false" />
-                <element signature="class#26641:27140" expanded="false" />
-                <element signature="class#27193:27918" expanded="false" />
-                <element signature="class#27969:28692" expanded="false" />
-                <element signature="class#28742:29316" expanded="false" />
-                <element signature="class#29382:29812" expanded="false" />
-                <element signature="class#29863:30786" expanded="false" />
-                <element signature="class#30837:31481" expanded="false" />
-                <element signature="class#31542:31752" expanded="false" />
-                <element signature="class#31797:32017" expanded="false" />
-                <element signature="method#actionPerformed#0;class#31797:32017" expanded="false" />
-                <element signature="class#32075:32336" expanded="false" />
-                <element signature="class#32404:32706" expanded="false" />
-                <element signature="class#32767:32976" expanded="false" />
+                <element signature="method#MainForm#0;class#MainForm#0" expanded="false" />
+                <element signature="class#6591:7451" expanded="false" />
+                <element signature="class#7499:7761" expanded="false" />
+                <element signature="class#7813:8537" expanded="false" />
+                <element signature="class#8585:8749" expanded="false" />
+                <element signature="class#8818:10175" expanded="false" />
+                <element signature="class#10219:10730" expanded="false" />
+                <element signature="class#10774:11285" expanded="false" />
+                <element signature="class#11332:11709" expanded="false" />
+                <element signature="class#11756:12255" expanded="false" />
+                <element signature="class#12303:14489" expanded="false" />
+                <element signature="class#14535:15040" expanded="false" />
+                <element signature="class#15086:15593" expanded="false" />
+                <element signature="class#15660:15995" expanded="false" />
+                <element signature="method#actionPerformed#0;class#15660:15995" expanded="false" />
+                <element signature="class#16044:16471" expanded="false" />
+                <element signature="class#16521:16946" expanded="false" />
+                <element signature="class#16994:17417" expanded="false" />
+                <element signature="class#17481:17955" expanded="false" />
+                <element signature="class#18002:18509" expanded="false" />
+                <element signature="class#18557:21120" expanded="false" />
+                <element signature="class#21167:21675" expanded="false" />
+                <element signature="method#actionPerformed#0;class#21167:21675" expanded="false" />
+                <element signature="class#21722:22151" expanded="false" />
+                <element signature="class#22203:23318" expanded="false" />
+                <element signature="class#23379:23844" expanded="false" />
+                <element signature="class#23889:24378" expanded="false" />
+                <element signature="class#24424:26463" expanded="false" />
+                <element signature="class#26511:27010" expanded="false" />
+                <element signature="class#27063:27788" expanded="false" />
+                <element signature="class#27839:28562" expanded="false" />
+                <element signature="class#28612:29186" expanded="false" />
+                <element signature="class#29252:29682" expanded="false" />
+                <element signature="class#29733:30656" expanded="false" />
+                <element signature="class#30707:31351" expanded="false" />
+                <element signature="class#31412:31622" expanded="false" />
+                <element signature="class#31667:31887" expanded="false" />
+                <element signature="method#actionPerformed#0;class#31667:31887" expanded="false" />
+                <element signature="class#31945:32206" expanded="false" />
+                <element signature="class#32274:32576" expanded="false" />
+                <element signature="class#32637:32846" expanded="false" />
+                <element signature="class#32922:33261" expanded="false" />
+                <element signature="class#33315:33655" expanded="false" />
+                <element signature="class#33710:34051" expanded="false" />
+                <element signature="class#34107:34449" expanded="false" />
                 <element signature="method#loadMakerTypeList#0;class#MainForm#0" expanded="false" />
                 <element signature="method#changeArchList#0;class#MainForm#0" expanded="false" />
                 <element signature="method#selectSaveProjectFor#0;class#MainForm#0" expanded="false" />
@@ -269,9 +274,9 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Application.MainForm">
     <configuration default="false" name="TestStartupClass" type="Application" factoryName="Application" temporary="true">
@@ -341,6 +346,24 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -366,24 +389,6 @@
       <envs />
       <properties />
       <listeners />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -473,7 +478,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="24" width="1217" height="776" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20273738" sideWeight="0.63981766" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -620,9 +625,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/debProjectModels/debProjectModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="14" selection-start="2010" selection-end="2010" vertical-scroll-proportion="5.063291">
-          <folding />
-        </state>
+        <state line="134" column="14" selection-start="2010" selection-end="2010" vertical-scroll-proportion="5.063291" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.form">
@@ -632,48 +635,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="757" column="16" selection-start="33977" selection-end="34054" vertical-scroll-proportion="1.6886076">
+        <state line="934" column="53" selection-start="39274" selection-end="39274" vertical-scroll-proportion="0.4379747">
           <folding>
-            <element signature="method#getCurrentArch#0;class#MainForm#0" expanded="false" />
-            <element signature="class#6721:7581" expanded="false" />
-            <element signature="class#7629:7891" expanded="false" />
-            <element signature="class#7943:8667" expanded="false" />
-            <element signature="class#8715:8879" expanded="false" />
-            <element signature="class#8948:10305" expanded="false" />
-            <element signature="class#10349:10860" expanded="false" />
-            <element signature="class#10904:11415" expanded="false" />
-            <element signature="class#11462:11839" expanded="false" />
-            <element signature="class#11886:12385" expanded="false" />
-            <element signature="class#12433:14619" expanded="false" />
-            <element signature="class#14665:15170" expanded="false" />
-            <element signature="class#15216:15723" expanded="false" />
-            <element signature="class#15790:16125" expanded="false" />
-            <element signature="class#16174:16601" expanded="false" />
-            <element signature="class#16651:17076" expanded="false" />
-            <element signature="class#17124:17547" expanded="false" />
-            <element signature="class#17611:18085" expanded="false" />
-            <element signature="class#18132:18639" expanded="false" />
-            <element signature="class#18687:21250" expanded="false" />
-            <element signature="class#21297:21805" expanded="false" />
-            <element signature="method#actionPerformed#0;class#21297:21805" expanded="false" />
-            <element signature="class#21852:22281" expanded="false" />
-            <element signature="class#22333:23448" expanded="false" />
-            <element signature="class#23509:23974" expanded="false" />
-            <element signature="class#24019:24508" expanded="false" />
-            <element signature="class#24554:26593" expanded="false" />
-            <element signature="class#26641:27140" expanded="false" />
-            <element signature="class#27193:27918" expanded="false" />
-            <element signature="class#27969:28692" expanded="false" />
-            <element signature="class#28742:29316" expanded="false" />
-            <element signature="class#29382:29812" expanded="false" />
-            <element signature="class#29863:30786" expanded="false" />
-            <element signature="class#30837:31481" expanded="false" />
-            <element signature="class#31542:31752" expanded="false" />
-            <element signature="class#31797:32017" expanded="false" />
-            <element signature="method#actionPerformed#0;class#31797:32017" expanded="false" />
-            <element signature="class#32075:32336" expanded="false" />
-            <element signature="class#32404:32706" expanded="false" />
-            <element signature="class#32767:32976" expanded="false" />
+            <element signature="method#MainForm#0;class#MainForm#0" expanded="false" />
+            <element signature="class#6591:7451" expanded="false" />
+            <element signature="class#7499:7761" expanded="false" />
+            <element signature="class#7813:8537" expanded="false" />
+            <element signature="class#8585:8749" expanded="false" />
+            <element signature="class#8818:10175" expanded="false" />
+            <element signature="class#10219:10730" expanded="false" />
+            <element signature="class#10774:11285" expanded="false" />
+            <element signature="class#11332:11709" expanded="false" />
+            <element signature="class#11756:12255" expanded="false" />
+            <element signature="class#12303:14489" expanded="false" />
+            <element signature="class#14535:15040" expanded="false" />
+            <element signature="class#15086:15593" expanded="false" />
+            <element signature="class#15660:15995" expanded="false" />
+            <element signature="method#actionPerformed#0;class#15660:15995" expanded="false" />
+            <element signature="class#16044:16471" expanded="false" />
+            <element signature="class#16521:16946" expanded="false" />
+            <element signature="class#16994:17417" expanded="false" />
+            <element signature="class#17481:17955" expanded="false" />
+            <element signature="class#18002:18509" expanded="false" />
+            <element signature="class#18557:21120" expanded="false" />
+            <element signature="class#21167:21675" expanded="false" />
+            <element signature="method#actionPerformed#0;class#21167:21675" expanded="false" />
+            <element signature="class#21722:22151" expanded="false" />
+            <element signature="class#22203:23318" expanded="false" />
+            <element signature="class#23379:23844" expanded="false" />
+            <element signature="class#23889:24378" expanded="false" />
+            <element signature="class#24424:26463" expanded="false" />
+            <element signature="class#26511:27010" expanded="false" />
+            <element signature="class#27063:27788" expanded="false" />
+            <element signature="class#27839:28562" expanded="false" />
+            <element signature="class#28612:29186" expanded="false" />
+            <element signature="class#29252:29682" expanded="false" />
+            <element signature="class#29733:30656" expanded="false" />
+            <element signature="class#30707:31351" expanded="false" />
+            <element signature="class#31412:31622" expanded="false" />
+            <element signature="class#31667:31887" expanded="false" />
+            <element signature="method#actionPerformed#0;class#31667:31887" expanded="false" />
+            <element signature="class#31945:32206" expanded="false" />
+            <element signature="class#32274:32576" expanded="false" />
+            <element signature="class#32637:32846" expanded="false" />
+            <element signature="class#32922:33261" expanded="false" />
+            <element signature="class#33315:33655" expanded="false" />
+            <element signature="class#33710:34051" expanded="false" />
+            <element signature="class#34107:34449" expanded="false" />
             <element signature="method#loadMakerTypeList#0;class#MainForm#0" expanded="false" />
             <element signature="method#changeArchList#0;class#MainForm#0" expanded="false" />
             <element signature="method#selectSaveProjectFor#0;class#MainForm#0" expanded="false" />
