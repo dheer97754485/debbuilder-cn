@@ -67,90 +67,7 @@
     <favorites_list name="DebBuilder" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="MainForm.form" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainForm.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="934" column="53" selection-start="39274" selection-end="39274" vertical-scroll-proportion="0.4379747">
-              <folding>
-                <element signature="method#MainForm#0;class#MainForm#0" expanded="false" />
-                <element signature="class#6591:7451" expanded="false" />
-                <element signature="class#7499:7761" expanded="false" />
-                <element signature="class#7813:8537" expanded="false" />
-                <element signature="class#8585:8749" expanded="false" />
-                <element signature="class#8818:10175" expanded="false" />
-                <element signature="class#10219:10730" expanded="false" />
-                <element signature="class#10774:11285" expanded="false" />
-                <element signature="class#11332:11709" expanded="false" />
-                <element signature="class#11756:12255" expanded="false" />
-                <element signature="class#12303:14489" expanded="false" />
-                <element signature="class#14535:15040" expanded="false" />
-                <element signature="class#15086:15593" expanded="false" />
-                <element signature="class#15660:15995" expanded="false" />
-                <element signature="method#actionPerformed#0;class#15660:15995" expanded="false" />
-                <element signature="class#16044:16471" expanded="false" />
-                <element signature="class#16521:16946" expanded="false" />
-                <element signature="class#16994:17417" expanded="false" />
-                <element signature="class#17481:17955" expanded="false" />
-                <element signature="class#18002:18509" expanded="false" />
-                <element signature="class#18557:21120" expanded="false" />
-                <element signature="class#21167:21675" expanded="false" />
-                <element signature="method#actionPerformed#0;class#21167:21675" expanded="false" />
-                <element signature="class#21722:22151" expanded="false" />
-                <element signature="class#22203:23318" expanded="false" />
-                <element signature="class#23379:23844" expanded="false" />
-                <element signature="class#23889:24378" expanded="false" />
-                <element signature="class#24424:26463" expanded="false" />
-                <element signature="class#26511:27010" expanded="false" />
-                <element signature="class#27063:27788" expanded="false" />
-                <element signature="class#27839:28562" expanded="false" />
-                <element signature="class#28612:29186" expanded="false" />
-                <element signature="class#29252:29682" expanded="false" />
-                <element signature="class#29733:30656" expanded="false" />
-                <element signature="class#30707:31351" expanded="false" />
-                <element signature="class#31412:31622" expanded="false" />
-                <element signature="class#31667:31887" expanded="false" />
-                <element signature="method#actionPerformed#0;class#31667:31887" expanded="false" />
-                <element signature="class#31945:32206" expanded="false" />
-                <element signature="class#32274:32576" expanded="false" />
-                <element signature="class#32637:32846" expanded="false" />
-                <element signature="class#32922:33261" expanded="false" />
-                <element signature="class#33315:33655" expanded="false" />
-                <element signature="class#33710:34051" expanded="false" />
-                <element signature="class#34107:34449" expanded="false" />
-                <element signature="method#loadMakerTypeList#0;class#MainForm#0" expanded="false" />
-                <element signature="method#changeArchList#0;class#MainForm#0" expanded="false" />
-                <element signature="method#selectSaveProjectFor#0;class#MainForm#0" expanded="false" />
-                <element signature="method#onsaveprojectfor#0;class#MainForm#0" expanded="false" />
-                <element signature="method#setFormToCenter#0;class#MainForm#0" expanded="false" />
-                <element signature="method#makeInstallPkg#0;class#MainForm#0" expanded="false" />
-                <element signature="method#clearFilesEditor#0;class#MainForm#0" expanded="false" />
-                <element signature="method#clearStartupEditor#0;class#MainForm#0" expanded="false" />
-                <element signature="method#clearDependEditor#0;class#MainForm#0" expanded="false" />
-                <element signature="method#saveprojectdata#0;class#MainForm#0" expanded="false" />
-                <element signature="method#onsaveproject#0;class#MainForm#0" expanded="false" />
-                <element signature="method#saveProjectFile#0;class#MainForm#0" expanded="false" />
-                <element signature="method#selectScriptFile#0;class#MainForm#0" expanded="false" />
-                <element signature="method#clearProjectData#0;class#MainForm#0" expanded="false" />
-                <element signature="method#showProjectData#0;class#MainForm#0" expanded="false" />
-                <element signature="method#changeEditorStatus#0;class#MainForm#0" expanded="false" />
-                <element signature="method#loadLanguage#0;class#MainForm#0" expanded="false" />
-                <element signature="method#setUILanguage#0;class#MainForm#0" expanded="false" />
-                <element signature="method#makeLanguageFile#0;class#MainForm#0" expanded="false" />
-                <element signature="method#main#0;class#MainForm#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -176,11 +93,11 @@
         <option value="$PROJECT_DIR$/src/debBuilder/TestStartupClass.java" />
         <option value="$PROJECT_DIR$/src/debBuilder/makeDesktopStartup.java" />
         <option value="$PROJECT_DIR$/src/debProjectTool/builderCompile.java" />
-        <option value="$PROJECT_DIR$/src/debProjectTool/rpmProjectCompile.java" />
         <option value="$PROJECT_DIR$/src/debProjectModels/debProjectModel.java" />
         <option value="$PROJECT_DIR$/src/debBuilder/builderConfig/configModel.java" />
         <option value="$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.form" />
         <option value="$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.java" />
+        <option value="$PROJECT_DIR$/src/debProjectTool/rpmProjectCompile.java" />
       </list>
     </option>
   </component>
@@ -222,6 +139,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -230,33 +148,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DebBuilder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DebBuilder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DebBuilder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DebBuilder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -274,9 +167,9 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager" selected="Application.MainForm">
     <configuration default="false" name="TestStartupClass" type="Application" factoryName="Application" temporary="true">
@@ -346,24 +239,6 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -389,6 +264,24 @@
       <envs />
       <properties />
       <listeners />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -493,7 +386,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934132" sideWeight="0.63387096" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3986313" sideWeight="0.63387096" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20786998" sideWeight="0.63981766" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20786998" sideWeight="0.63981766" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36018237" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -608,11 +501,6 @@
         <state line="72" column="4" selection-start="2202" selection-end="2202" vertical-scroll-proportion="0.41884816" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/debProjectTool/rpmProjectCompile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="109" selection-start="464" selection-end="464" vertical-scroll-proportion="0.16492146" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/debBuilder/builderConfig/configManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="46" selection-start="753" selection-end="753" vertical-scroll-proportion="0.61227787" />
@@ -628,15 +516,11 @@
         <state line="134" column="14" selection-start="2010" selection-end="2010" vertical-scroll-proportion="5.063291" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="934" column="53" selection-start="39274" selection-end="39274" vertical-scroll-proportion="0.4379747">
+        <state line="920" column="63" selection-start="38867" selection-end="38867" vertical-scroll-proportion="0.3164557">
           <folding>
+            <element signature="method#getCurrentArch#0;class#MainForm#0" expanded="false" />
             <element signature="method#MainForm#0;class#MainForm#0" expanded="false" />
             <element signature="class#6591:7451" expanded="false" />
             <element signature="class#7499:7761" expanded="false" />
@@ -702,6 +586,29 @@
             <element signature="method#setUILanguage#0;class#MainForm#0" expanded="false" />
             <element signature="method#makeLanguageFile#0;class#MainForm#0" expanded="false" />
             <element signature="method#main#0;class#MainForm#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/debBuilder/MainUI/MainForm.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/debProjectTool/rpmProjectCompile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="109" selection-start="464" selection-end="464" vertical-scroll-proportion="0.7068063">
+          <folding>
+            <element signature="method#buildPackageInfo#0;class#rpmProjectCompile#0" expanded="false" />
+            <element signature="method#buildRequiresStr#0;class#rpmProjectCompile#0" expanded="false" />
+            <element signature="method#appendToConfigFileEnd#0;class#rpmProjectCompile#0" expanded="false" />
+            <element signature="method#buildInstallScript#0;class#rpmProjectCompile#0" expanded="false" />
+            <element signature="method#buildStartupFiles#0;class#rpmProjectCompile#0" expanded="false" />
+            <element signature="method#buildStartupFile#0;class#rpmProjectCompile#0" expanded="false" />
+            <element signature="method#buildCopyInstallFiles#0;class#rpmProjectCompile#0" expanded="false" />
+            <element signature="method#getPathList#0;class#rpmProjectCompile#0" expanded="false" />
+            <element signature="method#buildInstallFilesRecords#0;class#rpmProjectCompile#0" expanded="false" />
+            <element signature="method#compileRpmPackage#0;class#rpmProjectCompile#0" expanded="false" />
           </folding>
         </state>
       </provider>

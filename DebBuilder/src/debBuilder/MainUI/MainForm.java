@@ -1092,6 +1092,7 @@ public class MainForm extends JDialog {
         this.textInstalledSize.setText(MainForm.currentProject.packageInstalledSize);
         this.textSection.setText(MainForm.currentProject.packageSection);
         this.textMaintainer.setText(MainForm.currentProject.packageMaintainer);
+        this.textLicense.setText(MainForm.currentProject.packageLicense);
         //this.textOriginalMaintainer.setText(MainForm.currentProject.packageOriginalMaintainer);
         this.textPriority.setText(MainForm.currentProject.packagePriority);
         this.textDebName.setText(MainForm.currentProject.debPackagename);
@@ -1382,10 +1383,10 @@ public class MainForm extends JDialog {
 
         languageManager.languageData.add(new languageModel("100", "为(x)快速打包"));
 
-        languageManager.languageData.add(new languageModel("109","请选择PreUpgrade脚本！"));
-        languageManager.languageData.add(new languageModel("110","请选择PostUpgrade脚本！"));
-        languageManager.languageData.add(new languageModel("111","请选择PreDowngrade脚本！"));
-        languageManager.languageData.add(new languageModel("112","请选择PostDowngrade脚本！"));
+        languageManager.languageData.add(new languageModel("113","请选择PreUpgrade脚本！"));
+        languageManager.languageData.add(new languageModel("114","请选择PostUpgrade脚本！"));
+        languageManager.languageData.add(new languageModel("115","请选择PreDowngrade脚本！"));
+        languageManager.languageData.add(new languageModel("116","请选择PostDowngrade脚本！"));
 
         try {
             languageManager.saveLanguageFile(savepaths);

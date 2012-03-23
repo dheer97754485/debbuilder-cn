@@ -33,7 +33,7 @@ public class rpmProjectCompile
             controlcontent.add("Requires: " + buildRequiresStr(project));
             controlcontent.add("Group: " + project.packageSection);
             //controlcontent.add("Priority: " + project.packagePriority);
-            controlcontent.add("License: GPL");
+            controlcontent.add("License:" + project.packageLicense);
             controlcontent.add("Summary: none");
             controlcontent.add("URL: " + project.packageHomepage);
             controlcontent.add("\n");
