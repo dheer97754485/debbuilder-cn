@@ -92,6 +92,11 @@ public class debProjectModel {
     public String packageHomepage;
 
     /**
+     * 软件包类型(stable和testing)
+     */
+    public String packageRepo;
+
+    /**
      * 文件列表
      */
     public ArrayList packageFiles = new ArrayList();

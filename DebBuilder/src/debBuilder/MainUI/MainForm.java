@@ -157,6 +157,9 @@ public class MainForm extends JDialog {
     private JButton btnSelectPostUpgrade;
     private JButton btnSelectPreDowngrade;
     private JButton btnSelectPostDowngrade;
+    private JLabel txt117;
+    private JTextField textRepo;
+    private JComboBox cbbRepoList;
     private JButton buttonOK;
     private JFileChooser fc = new JFileChooser();
     private int flag;
@@ -186,7 +189,7 @@ public class MainForm extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         //getRootPane().setDefaultButton(buttonOK);
-        makeLanguageFile(jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/language.template");
+        //makeLanguageFile(jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/language.template");
         loadMakerTypeList();
         clearProjectData();
         this.setUILanguage();
@@ -771,6 +774,14 @@ public class MainForm extends JDialog {
             }
         });
 
+        //版本类型
+        cbbRepoList.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                //To change body of implemented methods use File | Settings | File Templates.
+                textRepo.setText(cbbRepoList.getSelectedItem().toString());
+            }
+        });
     }
 
     /**
@@ -960,6 +971,7 @@ public class MainForm extends JDialog {
         MainForm.currentProject.packagePostDowngradeFile = textPostDowngrade.getText();
         MainForm.currentProject.packageMakerType = cbbCompileType.getSelectedItem().toString();
         MainForm.currentProject.packageLicense = textLicense.getText();
+        MainForm.currentProject.packageRepo = textRepo.getText();
 
         if (projectsave.endsWith(".dproject")) {
             //后缀名正确无需修改
@@ -1067,6 +1079,7 @@ public class MainForm extends JDialog {
         this.textPreInst.setText("");
         this.textPreRm.setText("");
         this.textLicense.setText("GPL");
+        this.textRepo.setText("stable");
         if (configManager.config.defaultNewProjectCompileType < cbbCompileType.getItemCount())
         {
           this.cbbCompileType.setSelectedIndex(configManager.config.defaultNewProjectCompileType);
@@ -1097,6 +1110,7 @@ public class MainForm extends JDialog {
         this.textPriority.setText(MainForm.currentProject.packagePriority);
         this.textDebName.setText(MainForm.currentProject.debPackagename);
         this.textResultDir.setText(MainForm.currentProject.resultDir);
+        this.textRepo.setText(MainForm.currentProject.packageRepo);
         this.clearDependEditor();
         this.clearStartupEditor();
         this.clearFilesEditor();
@@ -1207,6 +1221,7 @@ public class MainForm extends JDialog {
             txt106.setText(languageManager.getShowText("106"));
             txt107.setText(languageManager.getShowText("107"));
             txt108.setText(languageManager.getShowText("108"));
+            txt117.setText(languageManager.getShowText("117"));
 
 
             //输出标签页名字
@@ -1307,6 +1322,7 @@ public class MainForm extends JDialog {
         languageManager.languageData.add(new languageModel("106",txt106.getText()));
         languageManager.languageData.add(new languageModel("107",txt107.getText()));
         languageManager.languageData.add(new languageModel("108",txt108.getText()));
+        languageManager.languageData.add(new languageModel("117",txt117.getText()));
 
         //输出标签页名字
         languageManager.languageData.add(new languageModel("41", tabmain.getTitleAt(0)));

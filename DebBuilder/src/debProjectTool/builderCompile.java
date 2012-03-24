@@ -73,16 +73,20 @@ public class builderCompile
     {
         String debbasedirs = getProjectBasePath(bufferdir,"deb");
         String rpmbasedirs = getProjectBasePath(bufferdir,"rpm");
+        String ypkbasedirs = getProjectBasePath(bufferdir,"ypk");
         String pkgtype = project.packageMakerType;
         
         String debfilepath = getDebFilePathWithoutExtName(debfilepaths) + ".deb";
         String rpmfilepath = getDebFilePathWithoutExtName(debfilepaths) + ".rpm";
+        String ypkfilepath = getDebFilePathWithoutExtName(debfilepaths) + ".ypk";
 
         System.out.println("deb file:" + debfilepath);
         System.out.println("rpm file:" + rpmfilepath);
+        System.out.println("ypk file:" + ypkfilepath);
 
         checkCompilePath(debbasedirs, debfilepath);
         checkCompilePath(rpmbasedirs,rpmfilepath);
+        checkCompilePath(ypkbasedirs,ypkfilepath);
 
         //编译软件包
         if (pkgtype != null && pkgtype.toLowerCase().equals("deb"))
@@ -91,6 +95,9 @@ public class builderCompile
         }else if (pkgtype != null && pkgtype.toLowerCase().equals("rpm"))
         {
             rpmProjectCompile.compileRpmPackage(project,rpmbasedirs);
+        }else if (pkgtype != null && pkgtype.toLowerCase().equals("ypk"))
+        {
+            ypkProjectCompile.compileYpkPackage(project,ypkbasedirs);
         }
 
         //生成包文件
@@ -109,6 +116,18 @@ public class builderCompile
                jDataRWHelper.writeAllLines(jCmdRunHelper.getCmdRunScriptBufferDir() + "/rpmbuild.sh",jDataRWHelper.convertTo(al.toArray()));
                jCmdRunHelper.runSysCmd("chmod +x " + jCmdRunHelper.getCmdRunScriptBufferDir() + "/rpmbuild.sh");
                makePackageFile(project, jCmdRunHelper.getCmdRunScriptBufferDir() + "/rpmbuild.sh", rpmbasedirs, rpmfilepath);
+           }else if (pkgtype != null && pkgtype.toLowerCase().equals("ypk"))
+           {
+               ArrayList al = new ArrayList();
+               al.add("cd " + ypkbasedirs);
+               al.add("cd ..");
+               al.add("ypkg -b " + new File(ypkbasedirs).getName());
+               al.add("cp " + new File(ypkbasedirs).getParent() + "/*.ypk " + project.resultDir);
+               al.add("rm -rf " + new File(rpmbasedirs).getParent() + "/*.ypk");
+               jDataRWHelper.writeAllLines(jCmdRunHelper.getCmdRunScriptBufferDir() + "/ypkbuild.sh",jDataRWHelper.convertTo(al.toArray()));
+               jCmdRunHelper.runSysCmd("chmod +x " + jCmdRunHelper.getCmdRunScriptBufferDir() + "/ypkbuild.sh");
+               makePackageFile(project, jCmdRunHelper.getCmdRunScriptBufferDir() + "/ypkbuild.sh", rpmbasedirs, rpmfilepath);
+
            }
         }else
         {
@@ -118,6 +137,9 @@ public class builderCompile
             }else if (pkgtype != null && pkgtype.toLowerCase().equals("rpm"))
             {
                 makePackageFile(project,configManager.config.compileCmd,rpmbasedirs,rpmfilepath);
+            }else if (pkgtype != null && pkgtype.toLowerCase().equals("ypk"))
+            {
+                makePackageFile(project,configManager.config.compileCmd,ypkbasedirs,ypkfilepath);
             }
 
         }
