@@ -221,6 +221,29 @@ public class debProjectCompile
     }
 
     /**
+     * 生成MD5校验文件
+     * @param project
+     * @param projectbasedirms
+     * @return
+     * @throws Exception
+     */
+    public static boolean buildMd5SumsFile(debProjectModel project,String projectbasedirms) throws Exception {
+        ArrayList<String> makemd5sums = new ArrayList<String>();
+        makemd5sums.add("cd " + projectbasedirms);
+        makemd5sums.add("md5sum `find . -type f` > DEBIAN/md5sums");
+        jDataRWHelper.writeAllLines(jCmdRunHelper.getCmdRunScriptBufferDir() + "/makemd5sums.sh",jDataRWHelper.convertTo(makemd5sums.toArray()));
+        jCmdRunHelper.runSysCmd("chmod +x " + jCmdRunHelper.getCmdRunScriptBufferDir() + "/makemd5sums.sh");
+        jCmdRunHelper.runSysCmd(jCmdRunHelper.getCmdRunScriptBufferDir() + "/makemd5sums.sh");
+        String[] md5sums = jDataRWHelper.readAllLines(projectbasedirms + "/DEBIAN/md5sums");
+        for(int k = 0;k < md5sums.length;k++)
+        {
+            md5sums[k] = md5sums[k].replace("./","");
+        }
+        jDataRWHelper.writeAllLines(projectbasedirms + "/DEBIAN/md5sums",md5sums);
+        return true;
+    }
+    
+    /**
      * 编译deb包
      *
      * @return 执行结果
@@ -230,6 +253,7 @@ public class debProjectCompile
         buildInstallScript(project, bufferdir);
         buildStartupFiles(project, bufferdir);
         buildCopyInstallFiles(project, bufferdir);
+        buildMd5SumsFile(project,bufferdir);
     }
 
 }
