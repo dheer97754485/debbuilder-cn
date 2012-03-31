@@ -250,6 +250,7 @@ public class MainForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 onsaveproject();
+                changeArchProperty(cbbCompileType.getSelectedItem().toString());
             }
         });
 
@@ -932,7 +933,7 @@ public class MainForm extends JDialog {
             this.textDebName.setEnabled(true);
             this.textInstalledSize.setEnabled(true);
             this.textPriority.setText("optional");
-            this.textDebName.setText(this.textPackageName.getText() + "_" + this.textVersion.getText() + ".deb");
+            //this.textDebName.setText(this.textPackageName.getText() + "_" + this.textVersion.getText() + ".deb");
         } else if (archs.equals("rpm")) {
             this.textPriority.setEnabled(true);
             this.textDebName.setEnabled(false);
