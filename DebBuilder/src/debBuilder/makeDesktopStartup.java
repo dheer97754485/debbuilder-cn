@@ -22,11 +22,21 @@ public class makeDesktopStartup {
 
     public static void buildDesktopStartup(debProjectModel project,File projectfile,String iconname) throws Exception {
         //java -jar DebBuilder.jar -compile -project=/home/wcss/IDEAIC11.02.dpro -debfile=/home/wcss/创建目录/cmdlinemake.deb
-        String desktoppath = FileSystemView.getFileSystemView().getHomeDirectory().getAbsolutePath() + "/Desktop";
+        String desktoppath = "";
+        String desktoppatheng = FileSystemView.getFileSystemView().getHomeDirectory().getAbsolutePath() + "/Desktop";
+        String desktoppathcn = FileSystemView.getFileSystemView().getHomeDirectory().getAbsolutePath() + "/桌面";
+        if (new File(desktoppatheng).exists())
+        {
+            desktoppath = desktoppatheng;
+        }else
+        {
+            desktoppath = desktoppathcn;
+        }
+        
         String shownames = languageManager.getShowText("100").replace("(x)",project.projectName + "@" + project.packageMakerType);
         String startupfull = desktoppath + "/" + shownames + ".desktop";
         String debpkgfile = project.resultDir + "/" + project.debPackagename;
-        String jarfilepath = configManager.config.workDir + "/DebBuilder.jar";
+        String jarfilepath = configManager.config.workDir + "/PkgBuilder.jar";
         String cmdlines = "java -jar " + jarfilepath + " -compile -project=" + projectfile.getAbsolutePath() + " -debfile=" + debpkgfile;
         buildStartupFile(shownames,cmdlines,startupfull,iconname);
 

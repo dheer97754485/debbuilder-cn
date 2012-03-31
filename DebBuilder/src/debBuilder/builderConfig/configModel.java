@@ -17,8 +17,9 @@ public class configModel
         this.compileCmd = "dpkg -b " + "(source)" + " " + "(dest)" + " " + "(output)" + " " + "(pkgtype)"  + " " + "(pkgname)";
         this.hideCompileType = "ypk";
         this.defaultNewProjectCompileType = 0;
+        this.editScriptCmd = "gedit (file)";
     }
-    public configModel(String language,String type,String dir,String cmd,String hide,int newcompileindex)
+    public configModel(String language,String type,String dir,String cmd,String hide,int newcompileindex,String editscript)
     {
         this.languageName = language;
         this.compileType = type;
@@ -26,6 +27,7 @@ public class configModel
         this.compileCmd = cmd;
         this.hideCompileType = hide;
         this.defaultNewProjectCompileType = newcompileindex;
+        this.editScriptCmd = editscript;
     }
     
     public String languageName = "";
@@ -34,4 +36,5 @@ public class configModel
     public String compileCmd = "";
     public String hideCompileType = "";
     public int defaultNewProjectCompileType = 0;
+    public String editScriptCmd = "";
 }

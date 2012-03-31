@@ -41,7 +41,10 @@ public class rpmProjectCompile
             controlcontent.add("%define _rpmfilename %%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm");
             controlcontent.add("\n");
             controlcontent.add("%description");
-            controlcontent.add(project.packageDescription);
+            controlcontent.add(project.packageDescription + "\n");
+
+            controlcontent.add("# Fix rpath");
+            controlcontent.add("export NO_BRP_CHECK_RPATH=true");
 
             jDataRWHelper.writeAllLines(projectbasedirp + "/" + "pkgbuild.spec", jDataRWHelper.convertTo(controlcontent.toArray()));
 
