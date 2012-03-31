@@ -857,7 +857,7 @@ public class MainForm extends JDialog {
         } catch (Exception e) 
         {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null,"打开文件错误！error:" + e.toString());
+            JOptionPane.showMessageDialog(null,"Edit Script Error！Message:" + e.toString());
         }
         return scriptpath;
     }
