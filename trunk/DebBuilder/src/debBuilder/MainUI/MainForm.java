@@ -160,6 +160,14 @@ public class MainForm extends JDialog {
     private JLabel txt117;
     private JTextField textRepo;
     private JComboBox cbbRepoList;
+    private JButton btnEditPostInst;
+    private JButton btnEditPostRM;
+    private JButton btnEditPreInst;
+    private JButton btnEditPreRM;
+    private JButton btnEditPreUpgrade;
+    private JButton btnEditPostUpgrade;
+    private JButton btnEditPreDownUpgrade;
+    private JButton btnEditPostDowngrade;
     private JButton buttonOK;
     private JFileChooser fc = new JFileChooser();
     private int flag;
@@ -172,8 +180,7 @@ public class MainForm extends JDialog {
     private int dependVersionType = 0;
     private static makeInstallPackage makeDialog = null;
 
-    public String getCurrentArch()
-    {
+    public String getCurrentArch() {
         String arch = "";
         try {
             InputStream is = jCmdRunHelper.runSysCmd("uname -i", false).getInputStream();
@@ -201,16 +208,12 @@ public class MainForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                if (cbbArchList.getSelectedItem().toString().equals(getCurrentArch()))
-                {
-                   textArchitecture.setText(cbbArchList.getSelectedItem().toString());
-                }else
-                {
-                    if (cbbCompileType.getSelectedItem().toString().equals("rpm"))
-                    {
+                if (cbbArchList.getSelectedItem().toString().equals(getCurrentArch())) {
+                    textArchitecture.setText(cbbArchList.getSelectedItem().toString());
+                } else {
+                    if (cbbCompileType.getSelectedItem().toString().equals("rpm")) {
                         textArchitecture.setText(cbbArchList.getSelectedItem().toString() + " " + getCurrentArch());
-                    }else
-                    {
+                    } else {
                         textArchitecture.setText(cbbArchList.getSelectedItem().toString());
                     }
 
@@ -721,6 +724,7 @@ public class MainForm extends JDialog {
             public void actionPerformed(ActionEvent actionEvent) {
                 //To change body of implemented methods use File | Settings | File Templates.
                 changeArchList(cbbCompileType.getSelectedItem().toString());
+                changeArchProperty(cbbCompileType.getSelectedItem().toString());
             }
         });
 
@@ -782,28 +786,98 @@ public class MainForm extends JDialog {
                 textRepo.setText(cbbRepoList.getSelectedItem().toString());
             }
         });
+
+        //编辑脚本
+        btnEditPostInst.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                textPostInst.setText(editInstallScript("PostInst"));
+            }
+        });
+        btnEditPostRM.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                textPostRm.setText(editInstallScript("PostRM"));
+            }
+        });
+        btnEditPreInst.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                textPreInst.setText(editInstallScript("PreInst"));
+            }
+        });
+        btnEditPreRM.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                textPreRm.setText(editInstallScript("PreRM"));
+            }
+        });
+        btnEditPreUpgrade.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                textPreUpgrade.setText(editInstallScript("PreUpgrade"));
+            }
+        });
+        btnEditPostUpgrade.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                textPostUpgrade.setText(editInstallScript("PostUpgrade"));
+            }
+        });
+        btnEditPreDownUpgrade.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                textPreDowngrade.setText(editInstallScript("PreDownUpgrade"));
+            }
+        });
+        btnEditPostDowngrade.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                textPostDowngrade.setText(editInstallScript("PostDowngrade"));
+            }
+        });
+    }
+
+    /**
+     * 编辑安装脚本
+     * @param scripttype
+     * @return
+     */
+    public String editInstallScript(String scripttype)
+    {
+        String dir = new File(MainForm.currentProjectFile.getAbsolutePath()).getParent();
+        String scriptpath = dir + "//" + scripttype + ".sh";
+        try
+        {
+            if (!new File(scriptpath).exists())
+            {
+              jAppHelper.jDataRWHelper.writeAllLines(scriptpath,new String[]{""});
+            }
+            jCmdRunHelper.runSysCmd(configManager.config.editScriptCmd.replace("(file)",scriptpath),false);
+        } catch (Exception e) 
+        {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"打开文件错误！error:" + e.toString());
+        }
+        return scriptpath;
     }
 
     /**
      * 处理编译器类型
      */
-    private void loadMakerTypeList()
-    {
-        if (configManager.config.hideCompileType != null)
-        {
-           String[] hideteam = configManager.config.hideCompileType.split(",");
-           ArrayList showlist = new ArrayList();
-           showlist.add("deb");
-           showlist.add("rpm");
-           showlist.add("ypk");
-           for(String str:hideteam)
-           {
-               showlist.remove(str);
-           }
-           ComboBoxModel cbm = new DefaultComboBoxModel(showlist.toArray());
-           cbbCompileType.setModel(cbm);
-        }else
-        {
+    private void loadMakerTypeList() {
+        if (configManager.config.hideCompileType != null) {
+            String[] hideteam = configManager.config.hideCompileType.split(",");
+            ArrayList showlist = new ArrayList();
+            showlist.add("deb");
+            showlist.add("rpm");
+            showlist.add("ypk");
+            for (String str : hideteam) {
+                showlist.remove(str);
+            }
+            ComboBoxModel cbm = new DefaultComboBoxModel(showlist.toArray());
+            cbbCompileType.setModel(cbm);
+        } else {
             ArrayList showlists = new ArrayList();
             showlists.add("deb");
             showlists.add("rpm");
@@ -815,23 +889,80 @@ public class MainForm extends JDialog {
     }
 
     /**
-     *　改变目标平台选项
+     * 　改变目标平台选项
+     *
      * @param arch
      */
-    public void changeArchList(String arch)
-    {
-        if (arch.equals("deb"))
-        {
-            ComboBoxModel cbm1 = new DefaultComboBoxModel(new Object[]{ "All","i386","i586","i686","amd64","powserpc" });
+    public void changeArchList(String arch) {
+        if (arch.equals("deb")) {
+            ComboBoxModel cbm1 = new DefaultComboBoxModel(new Object[]{"all", "i386", "i586", "i686", "amd64"});
             cbbArchList.setModel(cbm1);
-        }else if (arch.equals("rpm"))
-        {
-            ComboBoxModel cbm2 = new DefaultComboBoxModel(new Object[]{ "noarch","i386","i586","i686","x86_64"});
+        } else if (arch.equals("rpm")) {
+            ComboBoxModel cbm2 = new DefaultComboBoxModel(new Object[]{"noarch", "i386", "i586", "i686", "x86_64"});
             cbbArchList.setModel(cbm2);
-        }else if (arch.equals("ypk"))
-        {
-            ComboBoxModel cbm3 = new DefaultComboBoxModel(new Object[]{ "any","x86_64","i686"});
+        } else if (arch.equals("ypk")) {
+            ComboBoxModel cbm3 = new DefaultComboBoxModel(new Object[]{"any", "x86_64", "i686"});
             cbbArchList.setModel(cbm3);
+        }
+    }
+
+    /**
+     * 针对平台改变软件包属性默认值
+     *
+     * @param archs
+     */
+    public void changeArchProperty(String archs) {
+        this.textPriority.setEnabled(false);
+        this.textDebName.setEnabled(false);
+        this.textInstalledSize.setEnabled(false);
+        this.textPostUpgrade.setEnabled(false);
+        this.textPreUpgrade.setEnabled(false);
+        this.textPostDowngrade.setEnabled(false);
+        this.textPreDowngrade.setEnabled(false);
+        this.btnSelectPostUpgrade.setEnabled(false);
+        this.btnSelectPreUpgrade.setEnabled(false);
+        this.btnSelectPostDowngrade.setEnabled(false);
+        this.btnSelectPreDowngrade.setEnabled(false);
+        this.btnEditPostDowngrade.setEnabled(false);
+        this.btnEditPostUpgrade.setEnabled(false);
+        this.btnEditPreDownUpgrade.setEnabled(false);
+        this.btnEditPreUpgrade.setEnabled(false);
+        if (archs.equals("deb")) {
+            this.textPriority.setEnabled(true);
+            this.textDebName.setEnabled(true);
+            this.textInstalledSize.setEnabled(true);
+            this.textPriority.setText("optional");
+            this.textDebName.setText(this.textPackageName.getText() + "_" + this.textVersion.getText() + ".deb");
+        } else if (archs.equals("rpm")) {
+            this.textPriority.setEnabled(true);
+            this.textDebName.setEnabled(false);
+            this.textInstalledSize.setEnabled(false);
+            this.textInstalledSize.setText("0");
+            this.textPriority.setText("optional");
+            this.textDebName.setText(this.textPackageName.getText() + "_" + this.textVersion.getText() + ".rpm");
+
+        } else if (archs.equals("ypk")) {
+            this.textPriority.setEnabled(false);
+            this.textDebName.setEnabled(false);
+            this.textInstalledSize.setEnabled(false);
+
+            this.textPostUpgrade.setEnabled(true);
+            this.textPreUpgrade.setEnabled(true);
+            this.textPostDowngrade.setEnabled(true);
+            this.textPreDowngrade.setEnabled(true);
+            this.btnSelectPostUpgrade.setEnabled(true);
+            this.btnSelectPreUpgrade.setEnabled(true);
+            this.btnSelectPostDowngrade.setEnabled(true);
+            this.btnSelectPreDowngrade.setEnabled(true);
+
+            this.btnEditPostDowngrade.setEnabled(true);
+            this.btnEditPostUpgrade.setEnabled(true);
+            this.btnEditPreDownUpgrade.setEnabled(true);
+            this.btnEditPreUpgrade.setEnabled(true);
+
+            this.textInstalledSize.setText("0");
+            this.textPriority.setText("");
+            this.textDebName.setText(this.textPackageName.getText() + "_" + this.textVersion.getText() + ".ypk");
         }
     }
 
@@ -1062,7 +1193,7 @@ public class MainForm extends JDialog {
         this.textProjectName.setText("none");
         this.textDescription.setText("none");
         this.textPackageName.setText("empty");
-        this.textHomePage.setText("http://www.linuxdeepin.com");
+        this.textHomePage.setText("http://scholar.linuxjoy.info");
         this.textVersion.setText("1.0");
         this.textInstalledSize.setText("0");
         this.textSection.setText("utils");
@@ -1080,9 +1211,8 @@ public class MainForm extends JDialog {
         this.textPreRm.setText("");
         this.textLicense.setText("GPL");
         this.textRepo.setText("stable");
-        if (configManager.config.defaultNewProjectCompileType < cbbCompileType.getItemCount())
-        {
-          this.cbbCompileType.setSelectedIndex(configManager.config.defaultNewProjectCompileType);
+        if (configManager.config.defaultNewProjectCompileType < cbbCompileType.getItemCount()) {
+            this.cbbCompileType.setSelectedIndex(configManager.config.defaultNewProjectCompileType);
         }
         changeArchList(this.cbbCompileType.getSelectedItem().toString());
     }
@@ -1092,8 +1222,7 @@ public class MainForm extends JDialog {
      */
     private void showProjectData() {
         textArchitecture.setText(MainForm.currentProject.packageArchitecture);
-        if (MainForm.currentProject.packageArchitecture != null && MainForm.currentProject.packageMakerType != null)
-        {
+        if (MainForm.currentProject.packageArchitecture != null && MainForm.currentProject.packageMakerType != null) {
             changeArchList(MainForm.currentProject.packageMakerType);
             cbbArchList.setSelectedItem(MainForm.currentProject.packageArchitecture);
         }
@@ -1154,10 +1283,8 @@ public class MainForm extends JDialog {
     public static void loadLanguage() {
         //makeLanguageFile(jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/language.template");
 
-        if (new File(configManager.config.workDir + "/" + configManager.config.languageName).exists())
-        {
-            try
-            {
+        if (new File(configManager.config.workDir + "/" + configManager.config.languageName).exists()) {
+            try {
                 languageManager.languageData = new ArrayList<languageModel>();
                 languageManager.loadLanguageFile(configManager.config.workDir + "/" + configManager.config.languageName);
             } catch (Exception e) {
@@ -1168,11 +1295,10 @@ public class MainForm extends JDialog {
     }
 
     /**
-     *　显示语言数据
+     * 　显示语言数据
      */
     private void setUILanguage() {
-        if (languageManager.languageData != null && languageManager.languageData.size() > 90)
-        {
+        if (languageManager.languageData != null && languageManager.languageData.size() > 90) {
             txt1.setText(languageManager.getShowText("1"));
             txt2.setText(languageManager.getShowText("2"));
             txt3.setText(languageManager.getShowText("3"));
@@ -1225,12 +1351,12 @@ public class MainForm extends JDialog {
 
 
             //输出标签页名字
-            tabmain.setTitleAt(0,languageManager.getShowText("41"));
-            tabmain.setTitleAt(1,languageManager.getShowText("42"));
-            tabmain.setTitleAt(2,languageManager.getShowText("43"));
-            tabmain.setTitleAt(3,languageManager.getShowText("44"));
-            tabmain.setTitleAt(4,languageManager.getShowText("45"));
-            tabmain.setTitleAt(5,languageManager.getShowText("101"));
+            tabmain.setTitleAt(0, languageManager.getShowText("41"));
+            tabmain.setTitleAt(1, languageManager.getShowText("42"));
+            tabmain.setTitleAt(2, languageManager.getShowText("43"));
+            tabmain.setTitleAt(3, languageManager.getShowText("44"));
+            tabmain.setTitleAt(4, languageManager.getShowText("45"));
+            tabmain.setTitleAt(5, languageManager.getShowText("101"));
 
             //输出按钮
             btnSelectResultDir.setText(languageManager.getShowText("46"));
@@ -1264,6 +1390,16 @@ public class MainForm extends JDialog {
             btnSelectPostUpgrade.setText(languageManager.getShowText("110"));
             btnSelectPreDowngrade.setText(languageManager.getShowText("111"));
             btnSelectPostDowngrade.setText(languageManager.getShowText("112"));
+
+            btnEditPostInst.setText(languageManager.getShowText("118"));
+            btnEditPostRM.setText(languageManager.getShowText("118"));
+            btnEditPostUpgrade.setText(languageManager.getShowText("118"));
+            btnEditPostDowngrade.setText(languageManager.getShowText("118"));
+            btnEditPreInst.setText(languageManager.getShowText("118"));
+            btnEditPreRM.setText(languageManager.getShowText("118"));
+            btnEditPreUpgrade.setText(languageManager.getShowText("118"));
+            btnEditPreDownUpgrade.setText(languageManager.getShowText("118"));
+
 
         }
 
@@ -1316,13 +1452,13 @@ public class MainForm extends JDialog {
         languageManager.languageData.add(new languageModel("39", txt39.getText()));
         languageManager.languageData.add(new languageModel("40", txt40.getText()));
         languageManager.languageData.add(new languageModel("102", txt102.getText()));
-        languageManager.languageData.add(new languageModel("103",txt103.getText()));
-        languageManager.languageData.add(new languageModel("104",txt104.getText()));
-        languageManager.languageData.add(new languageModel("105",txt105.getText()));
-        languageManager.languageData.add(new languageModel("106",txt106.getText()));
-        languageManager.languageData.add(new languageModel("107",txt107.getText()));
-        languageManager.languageData.add(new languageModel("108",txt108.getText()));
-        languageManager.languageData.add(new languageModel("117",txt117.getText()));
+        languageManager.languageData.add(new languageModel("103", txt103.getText()));
+        languageManager.languageData.add(new languageModel("104", txt104.getText()));
+        languageManager.languageData.add(new languageModel("105", txt105.getText()));
+        languageManager.languageData.add(new languageModel("106", txt106.getText()));
+        languageManager.languageData.add(new languageModel("107", txt107.getText()));
+        languageManager.languageData.add(new languageModel("108", txt108.getText()));
+        languageManager.languageData.add(new languageModel("117", txt117.getText()));
 
         //输出标签页名字
         languageManager.languageData.add(new languageModel("41", tabmain.getTitleAt(0)));
@@ -1330,7 +1466,7 @@ public class MainForm extends JDialog {
         languageManager.languageData.add(new languageModel("43", tabmain.getTitleAt(2)));
         languageManager.languageData.add(new languageModel("44", tabmain.getTitleAt(3)));
         languageManager.languageData.add(new languageModel("45", tabmain.getTitleAt(4)));
-        languageManager.languageData.add(new languageModel("101",tabmain.getTitleAt(5)));
+        languageManager.languageData.add(new languageModel("101", tabmain.getTitleAt(5)));
 
         //输出按钮
         languageManager.languageData.add(new languageModel("46", btnSelectResultDir.getText()));
@@ -1360,10 +1496,12 @@ public class MainForm extends JDialog {
         languageManager.languageData.add(new languageModel("70", btnSelectPreRm.getText()));
         languageManager.languageData.add(new languageModel("71", btnSelectSourcePath.getText()));
 
-        languageManager.languageData.add(new languageModel("109",btnSelectPreUpgrade.getText()));
-        languageManager.languageData.add(new languageModel("110",btnSelectPostUpgrade.getText()));
-        languageManager.languageData.add(new languageModel("111",btnSelectPreDowngrade.getText()));
-        languageManager.languageData.add(new languageModel("112",btnSelectPostDowngrade.getText()));
+        languageManager.languageData.add(new languageModel("109", btnSelectPreUpgrade.getText()));
+        languageManager.languageData.add(new languageModel("110", btnSelectPostUpgrade.getText()));
+        languageManager.languageData.add(new languageModel("111", btnSelectPreDowngrade.getText()));
+        languageManager.languageData.add(new languageModel("112", btnSelectPostDowngrade.getText()));
+
+        languageManager.languageData.add(new languageModel("118", btnEditPostDowngrade.getText()));
 
         //进度条窗口
         languageManager.languageData.add(new languageModel("72", "DebBuilder软件包生成器-编译进度"));
@@ -1399,10 +1537,10 @@ public class MainForm extends JDialog {
 
         languageManager.languageData.add(new languageModel("100", "为(x)快速打包"));
 
-        languageManager.languageData.add(new languageModel("113","请选择PreUpgrade脚本！"));
-        languageManager.languageData.add(new languageModel("114","请选择PostUpgrade脚本！"));
-        languageManager.languageData.add(new languageModel("115","请选择PreDowngrade脚本！"));
-        languageManager.languageData.add(new languageModel("116","请选择PostDowngrade脚本！"));
+        languageManager.languageData.add(new languageModel("113", "请选择PreUpgrade脚本！"));
+        languageManager.languageData.add(new languageModel("114", "请选择PostUpgrade脚本！"));
+        languageManager.languageData.add(new languageModel("115", "请选择PreDowngrade脚本！"));
+        languageManager.languageData.add(new languageModel("116", "请选择PostDowngrade脚本！"));
 
         try {
             languageManager.saveLanguageFile(savepaths);
@@ -1416,8 +1554,7 @@ public class MainForm extends JDialog {
      *
      * @param args
      */
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
 
         configManager.loadConfig();
         loadLanguage();

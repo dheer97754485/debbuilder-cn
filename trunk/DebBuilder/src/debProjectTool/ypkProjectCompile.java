@@ -435,6 +435,8 @@ public class ypkProjectCompile
 
         buildPackageInfo(project, bufferdir);
         buildInstallScript(project, bufferdir);
+
+        buildYPKInitFile(project,bufferdir);
     }
 
 }

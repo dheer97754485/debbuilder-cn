@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="jAppHelper">
     <CLASSES>
-      <root url="jar://$USER_HOME$/MyCodeFiles/publiclib/jAppHelper.jar!/" />
-      <root url="jar://$USER_HOME$/MyCodeFiles/publiclib/jdom-1.1.1-computer.jar!/" />
-      <root url="jar://$USER_HOME$/MyCodeFiles/publiclib/woxSerializer_2012.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../JLib/jAppHelper.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../JLib/jdom-1.1.1-computer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../JLib/woxSerializer_2012.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
