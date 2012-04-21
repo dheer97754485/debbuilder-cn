@@ -168,6 +168,16 @@ public class MainForm extends JDialog {
     private JButton btnEditPostUpgrade;
     private JButton btnEditPreDownUpgrade;
     private JButton btnEditPostDowngrade;
+    private JTextField textUpdateIndex;
+    private JLabel txt119;
+    private JTextField textMainAppPath;
+    private JLabel txt120;
+    private JLabel txt121;
+    private JLabel txt122;
+    private JTextField textUpdateListUrl;
+    private JTextField textUpdateInfoUrl;
+    private JButton btnMakeUpdateSupport;
+    private JButton btnMakeUpdateScript;
     private JButton buttonOK;
     private JFileChooser fc = new JFileChooser();
     private int flag;
@@ -837,6 +847,60 @@ public class MainForm extends JDialog {
                 textPostDowngrade.setText(editInstallScript("PostDowngrade"));
             }
         });
+        btnMakeUpdateSupport.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) 
+            {
+                debDependsModel dep = new debDependsModel();
+                dep.packageVersionType=debDependsModel.allVersion;
+                dep.packageVersion = "0.0";
+                if (cbbCompileType.getSelectedItem() != null && cbbCompileType.getSelectedItem().toString().equals("deb"))
+                {
+                    dep.packageName = "openjdk-6-jre";
+                }if (cbbCompileType.getSelectedItem() != null && cbbCompileType.getSelectedItem().toString().equals("rpm"))
+                {
+                    dep.packageName = "java-1.6.0-openjdk";
+                }if (cbbCompileType.getSelectedItem() != null && cbbCompileType.getSelectedItem().toString().equals("ypk"))
+                {
+                    dep.packageName = "jre";
+                }
+                MainForm.currentProject.packageDepends.add(dep);
+                debStartupModel star = new debStartupModel();
+                star.startupName = "AutoUpdate";
+                star.startupCategories = "System";
+                star.startupComment = "AutoUpdate";
+                star.startupGenericName = "AutoUpdate";
+                star.startupType = "Application";
+                star.startupVersion = "1.0";
+                star.startupFileName = textPackageName.getText() + "_update.desktop";
+                star.startupExec = "java -jar " + new File(textMainAppPath.getText()).getParent() + "/updateapp/GameAutoUpdate.jar " + textPackageName.getText() + "_update" +".cfg";
+                MainForm.currentProject.packageStartupList.add(star);
+
+                listDepends.setListData(MainForm.currentProject.packageDepends.toArray());
+                listStartup.setListData(MainForm.currentProject.packageStartupList.toArray());
+                MainForm.currentProject.autoUpdate = "ok";
+            }
+        });
+        btnMakeUpdateScript.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent)
+            {
+                if (MainForm.currentProjectFile != null)
+                {
+                   saveprojectdata(MainForm.currentProjectFile.getAbsolutePath());
+                   MakeUpdateForm muf = new MakeUpdateForm();
+                   muf.pack();
+                   muf.setTitle(languageManager.getShowText("126"));
+                   muf.setSize(new Dimension(500,240));
+                   setFormToCenter(muf);
+                   muf.setAlwaysOnTop(true);
+                   muf.setVisible(true);
+                }else
+                {
+                   JOptionPane.showMessageDialog(null,languageManager.getShowText("134"));
+                }
+            }
+        });
     }
 
     /**
@@ -1111,7 +1175,28 @@ public class MainForm extends JDialog {
             projectsave += ".dproject";
         }
 
-        debProjectModelRW.saveProject(MainForm.currentProject, projectsave);
+        if (MainForm.currentProject.updateConfig == null)
+        {
+            MainForm.currentProject.updateConfig = new debUpdateModel();
+        }
+        MainForm.currentProject.updateConfig.softName = MainForm.currentProject.projectName;
+        try
+        {
+           MainForm.currentProject.updateConfig.currentVersion = Integer.parseInt(this.textUpdateIndex.getText());
+
+            MainForm.currentProject.updateConfig.homepage = MainForm.currentProject.packageHomepage;
+            MainForm.currentProject.updateConfig.managerInfo = MainForm.currentProject.packageMaintainer;
+            MainForm.currentProject.updateConfig.localAppPath = this.textMainAppPath.getText();
+            MainForm.currentProject.updateConfig.updateListUrl = this.textUpdateListUrl.getText();
+            MainForm.currentProject.updateConfig.updateInfoUrl = this.textUpdateInfoUrl.getText();
+
+            debProjectModelRW.saveProject(MainForm.currentProject, projectsave);
+
+        }catch(Exception ex)
+        {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null,languageManager.getShowText("123"));
+        }
 
     }
 
@@ -1190,6 +1275,9 @@ public class MainForm extends JDialog {
      */
     private void clearProjectData() {
         textArchitecture.setText("all");
+        textUpdateIndex.setText("1");
+        textUpdateListUrl.setText("http://");
+        textUpdateInfoUrl.setText("http://");
         cbbArchList.setSelectedIndex(0);
         this.textProjectName.setText("none");
         this.textDescription.setText("none");
@@ -1227,6 +1315,9 @@ public class MainForm extends JDialog {
             changeArchList(MainForm.currentProject.packageMakerType);
             cbbArchList.setSelectedItem(MainForm.currentProject.packageArchitecture);
         }
+        MainForm.currentProject.packageDepends = new ArrayList(MainForm.currentProject.packageDepends);
+        MainForm.currentProject.packageStartupList = new ArrayList(MainForm.currentProject.packageStartupList);
+        MainForm.currentProject.packageFiles = new ArrayList(MainForm.currentProject.packageFiles);
         this.textProjectName.setText(MainForm.currentProject.projectName);
         this.textDescription.setText(MainForm.currentProject.packageDescription);
         this.textPackageName.setText(MainForm.currentProject.packageName);
@@ -1256,6 +1347,11 @@ public class MainForm extends JDialog {
         this.textPreDowngrade.setText(MainForm.currentProject.packagePreDowngradeFile);
         this.textPostDowngrade.setText(MainForm.currentProject.packagePostDowngradeFile);
         this.cbbCompileType.setSelectedItem(MainForm.currentProject.packageMakerType);
+
+        this.textUpdateIndex.setText(MainForm.currentProject.updateConfig.currentVersion +"");
+        this.textMainAppPath.setText(MainForm.currentProject.updateConfig.localAppPath);
+        this.textUpdateListUrl.setText(MainForm.currentProject.updateConfig.updateListUrl);
+        this.textUpdateInfoUrl.setText(MainForm.currentProject.updateConfig.updateInfoUrl);
     }
 
     /**
@@ -1349,6 +1445,10 @@ public class MainForm extends JDialog {
             txt107.setText(languageManager.getShowText("107"));
             txt108.setText(languageManager.getShowText("108"));
             txt117.setText(languageManager.getShowText("117"));
+            txt119.setText(languageManager.getShowText("119"));
+            txt120.setText(languageManager.getShowText("120"));
+            txt121.setText(languageManager.getShowText("121"));
+            txt122.setText(languageManager.getShowText("122"));
 
 
             //输出标签页名字
@@ -1400,6 +1500,8 @@ public class MainForm extends JDialog {
             btnEditPreRM.setText(languageManager.getShowText("118"));
             btnEditPreUpgrade.setText(languageManager.getShowText("118"));
             btnEditPreDownUpgrade.setText(languageManager.getShowText("118"));
+            btnMakeUpdateSupport.setText(languageManager.getShowText("124"));
+            btnMakeUpdateScript.setText(languageManager.getShowText("125"));
 
 
         }
@@ -1460,6 +1562,11 @@ public class MainForm extends JDialog {
         languageManager.languageData.add(new languageModel("107", txt107.getText()));
         languageManager.languageData.add(new languageModel("108", txt108.getText()));
         languageManager.languageData.add(new languageModel("117", txt117.getText()));
+        languageManager.languageData.add(new languageModel("119", txt119.getText()));
+        languageManager.languageData.add(new languageModel("120", txt120.getText()));
+        languageManager.languageData.add(new languageModel("121", txt121.getText()));
+        languageManager.languageData.add(new languageModel("122", txt122.getText()));
+
 
         //输出标签页名字
         languageManager.languageData.add(new languageModel("41", tabmain.getTitleAt(0)));
@@ -1503,6 +1610,8 @@ public class MainForm extends JDialog {
         languageManager.languageData.add(new languageModel("112", btnSelectPostDowngrade.getText()));
 
         languageManager.languageData.add(new languageModel("118", btnEditPostDowngrade.getText()));
+        languageManager.languageData.add(new languageModel("124", btnMakeUpdateSupport.getText()));
+        languageManager.languageData.add(new languageModel("125", btnMakeUpdateScript.getText()));
 
         //进度条窗口
         languageManager.languageData.add(new languageModel("72", "DebBuilder软件包生成器-编译进度"));

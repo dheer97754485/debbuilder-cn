@@ -140,10 +140,17 @@ public class debProjectModel {
      *  删除更新之后
      */
     public String packagePostDowngradeFile;
+    
+    public String autoUpdate = "";
 
     /**
      * 启动器列表
      */
     public ArrayList packageStartupList = new ArrayList();
+
+    /**
+     * 更新配置
+     */
+    public debUpdateModel updateConfig = new debUpdateModel();
 
 }

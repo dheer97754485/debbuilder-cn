@@ -88,6 +88,13 @@ public class builderCompile
         checkCompilePath(rpmbasedirs,rpmfilepath);
         checkCompilePath(ypkbasedirs,ypkfilepath);
 
+        clearBufferDirs(project, debbasedirs, rpmbasedirs, ypkbasedirs);
+
+        if (project.autoUpdate != null && project.autoUpdate.equals("ok"))
+        {
+            addUpdateSupport(project,debbasedirs,rpmbasedirs,ypkbasedirs);
+        }
+
         //编译软件包
         if (pkgtype != null && pkgtype.toLowerCase().equals("deb"))
         {
@@ -143,6 +150,74 @@ public class builderCompile
             }
 
         }
+    }
+
+    /**
+     * 清理缓存目录
+     * @param projects
+     * @param debdir
+     * @param rpmdir
+     * @param ypkdir
+     * @throws Exception
+     */
+    private static void clearBufferDirs(debProjectModel projects, String debdir,String rpmdir,String ypkdir) throws Exception {
+        String bufdir = "";
+        if (projects.packageMakerType.toLowerCase().contains("deb"))
+        {
+            bufdir = debdir;
+        }if (projects.packageMakerType.toLowerCase().contains("rpm"))
+        {
+            bufdir = rpmdir;
+        }if (projects.packageMakerType.toLowerCase().contains("ypk"))
+        {
+            bufdir = ypkdir;
+        }
+        ArrayList<String> clearbuffers = new ArrayList<String>();
+        clearbuffers.add("rm -rf " + new File(bufdir).getParent() + "/*.*");
+        jDataRWHelper.writeAllLines(jCmdRunHelper.getCmdRunScriptBufferDir() + "/clearbuffers.sh",jDataRWHelper.convertTo(clearbuffers.toArray()));
+        jCmdRunHelper.runSysCmd("chmod +x " + jCmdRunHelper.getCmdRunScriptBufferDir() + "/clearbuffers.sh");
+        jCmdRunHelper.runSysCmd(jCmdRunHelper.getCmdRunScriptBufferDir() + "/clearbuffers.sh");
+    }
+
+    /**
+     * 增加自动更新支持
+     * @param projects
+     * @param debdir
+     * @param rpmdir
+     * @param ypkdir
+     */
+    private static void addUpdateSupport(debProjectModel projects, String debdir,String rpmdir,String ypkdir) throws Exception {
+        String bufdir = "";
+        if (projects.packageMakerType.toLowerCase().contains("deb"))
+        {
+            bufdir = debdir;
+        }if (projects.packageMakerType.toLowerCase().contains("rpm"))
+        {
+            bufdir = rpmdir;
+        }if (projects.packageMakerType.toLowerCase().contains("ypk"))
+        {
+            bufdir = ypkdir;
+        }
+
+        File etcf = new File(bufdir + "/etc");
+        etcf.mkdirs();
+        File appf = new File(bufdir + new File(projects.updateConfig.localAppPath).getParent() + "/updateapp/lib");
+        appf.mkdirs();
+        ArrayList<String> configwrite = new ArrayList<String>();
+        configwrite.add("listurl=" + projects.updateConfig.updateListUrl);
+        configwrite.add("currentversion=" + projects.updateConfig.currentVersion);
+        configwrite.add("softname=" + projects.updateConfig.softName);
+        configwrite.add("homepage=" + projects.updateConfig.homepage);
+        configwrite.add("managerinfo=" + projects.updateConfig.managerInfo);
+        configwrite.add("updateinfourl=" + projects.updateConfig.updateInfoUrl);
+        configwrite.add("localapppath=" + projects.updateConfig.localAppPath);
+        jAppHelper.jDataRWHelper.writeAllLines(bufdir + "/etc/" + projects.packageName + "_update.cfg",jAppHelper.jDataRWHelper.convertTo(configwrite.toArray()));
+        ArrayList<String> copyupdates = new ArrayList<String>();
+        copyupdates.add("cp " + configManager.config.workDir + "/updateapp/*.* " + appf.getParent());
+        copyupdates.add("cp " + configManager.config.workDir + "/updateapp/lib/*.* " + appf.getAbsolutePath());
+        jDataRWHelper.writeAllLines(jCmdRunHelper.getCmdRunScriptBufferDir() + "/copyupdate.sh",jDataRWHelper.convertTo(copyupdates.toArray()));
+        jCmdRunHelper.runSysCmd("chmod +x " + jCmdRunHelper.getCmdRunScriptBufferDir() + "/copyupdate.sh");
+        jCmdRunHelper.runSysCmd(jCmdRunHelper.getCmdRunScriptBufferDir() + "/copyupdate.sh");
     }
 
     /**
