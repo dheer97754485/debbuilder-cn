@@ -24,17 +24,17 @@ public class debDependsModel {
     /**
      * 包名
      */
-    public String packageName;
+    public String packageName = "";
 
     /**
      * 版本号
      */
-    public String packageVersion;
+    public String packageVersion = "";
 
     /**
      * 版本类型
      */
-    public int packageVersionType;
+    public int packageVersionType = 0;
 
     public String toString() {
         if (packageVersionType == allVersion) {

@@ -21,71 +21,71 @@ public class debStartupModel
     /**
      * 启动器文件名
      */
-    public String startupFileName;
+    public String startupFileName ="";
     /**
      * 版本
      */
-    public String startupVersion;
+    public String startupVersion = "";
 
     /**
      * 类型
      */
-    public String startupType;
+    public String startupType = "";
 
     /**
      * 用途
      */
-    public String startupGenericName;
+    public String startupGenericName = "";
 
     /**
      * 介绍
      */
-    public String startupComment;
+    public String startupComment = "";
 
     /**
      * 是否需要在终端运行
      */
-    public Boolean startupTerminal;
+    public Boolean startupTerminal = false;
 
     /**
      * 命令
      */
-    public String startupExec;
+    public String startupExec = "";
 
     /**
      * 名称
      */
-    public String startupName;
+    public String startupName = "";
 
     /**
      * 图标
      */
-    public String startupIcon;
+    public String startupIcon = "";
 
     /**
      * 允许开启托盘图标
      */
-    public Boolean startupNotify;
+    public Boolean startupNotify = false;
 
     /**
      * 分类
      */
-    public String startupCategories;
+    public String startupCategories = "";
 
     /**
      * 桌面启动器
      */
-    public boolean isDesktopStartup;
+    public boolean isDesktopStartup = false;
 
     /**
      * 菜单启动器
      */
-    public boolean isStartMenuStartup;
+    public boolean isStartMenuStartup = true;
 
     /**
      * 图标源文件
      */
-    public String iconSourceFile;
+    public String iconSourceFile = "";
 
     public String toString()
     {
