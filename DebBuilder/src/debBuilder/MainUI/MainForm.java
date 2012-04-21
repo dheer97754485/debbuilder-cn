@@ -873,7 +873,7 @@ public class MainForm extends JDialog {
                 star.startupType = "Application";
                 star.startupVersion = "1.0";
                 star.startupFileName = textPackageName.getText() + "_update.desktop";
-                star.startupExec = "java -jar " + new File(textMainAppPath.getText()).getParent() + "/updateapp/GameAutoUpdate.jar " + textPackageName.getText() + "_update" +".cfg";
+                star.startupExec = "gksu \"java -jar " + new File(textMainAppPath.getText()).getParent() + "/updateapp/GameAutoUpdate.jar " + textPackageName.getText() + "_update.cfg " + configManager.config.languageName.replace(".lang","") + "\"";
                 MainForm.currentProject.packageStartupList.add(star);
 
                 listDepends.setListData(MainForm.currentProject.packageDepends.toArray());
