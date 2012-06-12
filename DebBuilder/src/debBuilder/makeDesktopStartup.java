@@ -4,9 +4,7 @@ import debBuilder.builderConfig.configManager;
 import debBuilder.language.languageManager;
 import debProjectModels.debProjectModel;
 import debProjectModels.debStartupModel;
-import jAppHelper.jCmdRunHelper;
-import jAppHelper.jDataRWHelper;
-
+import JAppToolKit.*;
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.util.ArrayList;
@@ -62,7 +60,7 @@ public class makeDesktopStartup {
         content.add("StartupNotify=" + "false");
         content.add("Icon=" + iconname);
         content.add("Categories=" + "system");
-        jDataRWHelper.writeAllLines(startupfullpath, jDataRWHelper.convertTo(content.toArray()));
-        jCmdRunHelper.runSysCmd("chmod +x " + startupfullpath);
+        JDataHelper.writeAllLines(startupfullpath, JDataHelper.convertTo(content.toArray()));
+        JRunHelper.runSysCmd("chmod +x " + startupfullpath);
     }
 }

@@ -15,7 +15,6 @@ import debBuilder.language.*;
 import debBuilder.makeDesktopStartup;
 import debProjectModels.*;
 import debProjectTool.*;
-import jAppHelper.jCmdRunHelper;
 
 public class MainForm extends JDialog {
     private JPanel contentPane;
@@ -193,8 +192,8 @@ public class MainForm extends JDialog {
     public String getCurrentArch() {
         String arch = "";
         try {
-            InputStream is = jCmdRunHelper.runSysCmd("uname -i", false).getInputStream();
-            arch = jAppHelper.jDataRWHelper.readFromInputStream(is)[0].trim();
+            InputStream is = JAppToolKit.JRunHelper.runSysCmd("uname -i", false).getInputStream();
+            arch = JAppToolKit.JDataHelper.readFromInputStream(is)[0].trim();
             is.close();
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
@@ -916,9 +915,9 @@ public class MainForm extends JDialog {
         {
             if (!new File(scriptpath).exists())
             {
-              jAppHelper.jDataRWHelper.writeAllLines(scriptpath,new String[]{""});
+                JAppToolKit.JDataHelper.writeAllLines(scriptpath,new String[]{""});
             }
-            jCmdRunHelper.runSysCmd(configManager.config.editScriptCmd.replace("(file)",scriptpath),false);
+            JAppToolKit.JRunHelper.runSysCmd(configManager.config.editScriptCmd.replace("(file)",scriptpath),false);
         } catch (Exception e) 
         {
             e.printStackTrace();
@@ -1092,7 +1091,7 @@ public class MainForm extends JDialog {
      * @param closeapps
      */
     public static void makeInstallPkg(debProjectModel project, String debfile, boolean closeapps) {
-        makeDialog = new makeInstallPackage(project, jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/debBuilderWorkSpace/" + project.packageName, debfile, closeapps);
+        makeDialog = new makeInstallPackage(project, JAppToolKit.JRunHelper.getUserHomeDirPath() + "/debBuilderWorkSpace/" + project.packageName, debfile, closeapps);
         makeDialog.pack();
         makeDialog.setTitle(languageManager.getShowText("72"));
         makeDialog.setSize(new Dimension(400, 240));

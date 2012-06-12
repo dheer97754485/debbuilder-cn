@@ -2,9 +2,7 @@ package debProjectTool;
 
 import debBuilder.builderConfig.configManager;
 import debProjectModels.debProjectModel;
-import jAppHelper.jCmdRunHelper;
-import jAppHelper.jDataRWHelper;
-
+import JAppToolKit.*;
 import java.io.*;
 import java.util.*;
 
@@ -120,9 +118,9 @@ public class builderCompile
                al.add("rpmbuild -bb " + "pkgbuild.spec" + " --buildroot=" + rpmbasedirs);
                al.add("cp " + new File(rpmbasedirs).getParent() + "/*.rpm " + project.resultDir);
                al.add("rm -rf " + new File(rpmbasedirs).getParent() + "/*.rpm");
-               jDataRWHelper.writeAllLines(jCmdRunHelper.getCmdRunScriptBufferDir() + "/rpmbuild.sh",jDataRWHelper.convertTo(al.toArray()));
-               jCmdRunHelper.runSysCmd("chmod +x " + jCmdRunHelper.getCmdRunScriptBufferDir() + "/rpmbuild.sh");
-               makePackageFile(project, jCmdRunHelper.getCmdRunScriptBufferDir() + "/rpmbuild.sh", rpmbasedirs, rpmfilepath);
+               JDataHelper.writeAllLines(JRunHelper.getCmdRunScriptBufferDir() + "/rpmbuild.sh",JDataHelper.convertTo(al.toArray()));
+               JRunHelper.runSysCmd("chmod +x " + JRunHelper.getCmdRunScriptBufferDir() + "/rpmbuild.sh");
+               makePackageFile(project, JRunHelper.getCmdRunScriptBufferDir() + "/rpmbuild.sh", rpmbasedirs, rpmfilepath);
            }else if (pkgtype != null && pkgtype.toLowerCase().equals("ypk"))
            {
                ArrayList al = new ArrayList();
@@ -131,9 +129,9 @@ public class builderCompile
                al.add("ypkg -b " + new File(ypkbasedirs).getName());
                al.add("cp " + new File(ypkbasedirs).getParent() + "/*.ypk " + project.resultDir);
                al.add("rm -rf " + new File(rpmbasedirs).getParent() + "/*.ypk");
-               jDataRWHelper.writeAllLines(jCmdRunHelper.getCmdRunScriptBufferDir() + "/ypkbuild.sh",jDataRWHelper.convertTo(al.toArray()));
-               jCmdRunHelper.runSysCmd("chmod +x " + jCmdRunHelper.getCmdRunScriptBufferDir() + "/ypkbuild.sh");
-               makePackageFile(project, jCmdRunHelper.getCmdRunScriptBufferDir() + "/ypkbuild.sh", rpmbasedirs, rpmfilepath);
+               JDataHelper.writeAllLines(JRunHelper.getCmdRunScriptBufferDir() + "/ypkbuild.sh",JDataHelper.convertTo(al.toArray()));
+               JRunHelper.runSysCmd("chmod +x " + JRunHelper.getCmdRunScriptBufferDir() + "/ypkbuild.sh");
+               makePackageFile(project, JRunHelper.getCmdRunScriptBufferDir() + "/ypkbuild.sh", rpmbasedirs, rpmfilepath);
 
            }
         }else
@@ -174,9 +172,9 @@ public class builderCompile
         }
         ArrayList<String> clearbuffers = new ArrayList<String>();
         clearbuffers.add("rm -rf " + new File(bufdir).getParent() + "/*.*");
-        jDataRWHelper.writeAllLines(jCmdRunHelper.getCmdRunScriptBufferDir() + "/clearbuffers.sh",jDataRWHelper.convertTo(clearbuffers.toArray()));
-        jCmdRunHelper.runSysCmd("chmod +x " + jCmdRunHelper.getCmdRunScriptBufferDir() + "/clearbuffers.sh");
-        jCmdRunHelper.runSysCmd(jCmdRunHelper.getCmdRunScriptBufferDir() + "/clearbuffers.sh");
+        JDataHelper.writeAllLines(JRunHelper.getCmdRunScriptBufferDir() + "/clearbuffers.sh",JDataHelper.convertTo(clearbuffers.toArray()));
+        JRunHelper.runSysCmd("chmod +x " + JRunHelper.getCmdRunScriptBufferDir() + "/clearbuffers.sh");
+        JRunHelper.runSysCmd(JRunHelper.getCmdRunScriptBufferDir() + "/clearbuffers.sh");
     }
 
     /**
@@ -210,14 +208,15 @@ public class builderCompile
         configwrite.add("homepage=" + projects.updateConfig.homepage);
         configwrite.add("managerinfo=" + projects.updateConfig.managerInfo);
         configwrite.add("updateinfourl=" + projects.updateConfig.updateInfoUrl);
-        configwrite.add("localapppath=" + projects.updateConfig.localAppPath);
-        jAppHelper.jDataRWHelper.writeAllLines(bufdir + "/etc/" + projects.packageName + "_update.cfg",jAppHelper.jDataRWHelper.convertTo(configwrite.toArray()));
+        configwrite.add("softWorkPath=" + projects.updateConfig.localAppPath);
+        configwrite.add("mainAppName=" + "");
+        JDataHelper.writeAllLines(bufdir + "/etc/" + projects.packageName + "_update.cfg",JDataHelper.convertTo(configwrite.toArray()));
         ArrayList<String> copyupdates = new ArrayList<String>();
         copyupdates.add("cp " + configManager.config.workDir + "/updateapp/*.* " + appf.getParent());
         copyupdates.add("cp " + configManager.config.workDir + "/updateapp/lib/*.* " + appf.getAbsolutePath());
-        jDataRWHelper.writeAllLines(jCmdRunHelper.getCmdRunScriptBufferDir() + "/copyupdate.sh",jDataRWHelper.convertTo(copyupdates.toArray()));
-        jCmdRunHelper.runSysCmd("chmod +x " + jCmdRunHelper.getCmdRunScriptBufferDir() + "/copyupdate.sh");
-        jCmdRunHelper.runSysCmd(jCmdRunHelper.getCmdRunScriptBufferDir() + "/copyupdate.sh");
+        JDataHelper.writeAllLines(JRunHelper.getCmdRunScriptBufferDir() + "/copyupdate.sh",JDataHelper.convertTo(copyupdates.toArray()));
+        JRunHelper.runSysCmd("chmod +x " + JRunHelper.getCmdRunScriptBufferDir() + "/copyupdate.sh");
+        JRunHelper.runSysCmd(JRunHelper.getCmdRunScriptBufferDir() + "/copyupdate.sh");
     }
 
     /**
@@ -256,10 +255,10 @@ public class builderCompile
     public static void makePackageFile(debProjectModel project,String compileCmd,String debresourcedir,String debresultpath) throws Exception
     {
         String makecmd = compileCmd.replace("(source)",debresourcedir).replace("(dest)",debresultpath).replace("(output)",project.resultDir).replace("(pkgtype)",project.packageMakerType).replace("(pkgname)",project.packageName);
-        Process pro = jCmdRunHelper.runSysCmd(makecmd, false);
+        Process pro = JRunHelper.runSysCmd(makecmd, false);
         pro.waitFor();
         InputStream is = pro.getErrorStream();
-        String[] error = jDataRWHelper.readFromInputStream(is);
+        String[] error = JDataHelper.readFromInputStream(is);
         is.close();
         String errorprint="";
         if (error != null && error.length > 0)

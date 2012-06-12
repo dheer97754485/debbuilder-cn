@@ -4,9 +4,7 @@ import debProjectModels.debDependsModel;
 import debProjectModels.debFilesModel;
 import debProjectModels.debProjectModel;
 import debProjectModels.debStartupModel;
-import jAppHelper.jCmdRunHelper;
-import jAppHelper.jDataRWHelper;
-
+import JAppToolKit.*;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -62,7 +60,7 @@ public class ypkProjectCompile
             controlcontent.add(" </Package>");
             controlcontent.add("</PackageInfo>");
 
-            jDataRWHelper.writeAllLines(projectbasedirp + "/" + "YLMFOS/control.xml", jDataRWHelper.convertTo(controlcontent.toArray()));
+            JDataHelper.writeAllLines(projectbasedirp + "/" + "YLMFOS/control.xml", JDataHelper.convertTo(controlcontent.toArray()));
 
             return true;
         } else {
@@ -105,7 +103,7 @@ public class ypkProjectCompile
      * @param projectbasedirape
      */
     public static void appendToConfigFileEnd(debProjectModel project,String projectbasedirape,String content) throws Exception {
-        jDataRWHelper.appendLineToFileEnd(projectbasedirape + "/" + "YLMFOS/" + project.packageName + ".install", content);
+        JDataHelper.appendLineToFileEnd(projectbasedirape + "/" + "YLMFOS/" + project.packageName + ".install", content);
     }
 
     /**
@@ -124,13 +122,13 @@ public class ypkProjectCompile
         scripthead.add("sqlfile=\"/usr/share/ypkg/db_create.sql\"");
         scripthead.add("sqlite3=\"$(which sqlite3)\"");
         scripthead.add("\n");
-        jDataRWHelper.writeAllLines(projectbasediris + "/" + "YLMFOS/" + project.packageName + ".install",jDataRWHelper.convertTo(scripthead.toArray()));
+        JDataHelper.writeAllLines(projectbasediris + "/" + "YLMFOS/" + project.packageName + ".install",JDataHelper.convertTo(scripthead.toArray()));
 
         if (project.packagePostInstFile != null) {
             File fi = new File(project.packagePostInstFile);
             if (fi.exists())
             {
-                String[] postinitstrs = jDataRWHelper.readAllLines(project.packagePostInstFile);
+                String[] postinitstrs = JDataHelper.readAllLines(project.packagePostInstFile);
                 appendToConfigFileEnd(project,projectbasediris,"\n");
                 appendToConfigFileEnd(project,projectbasediris,"post_install() {");
                 for(String str:postinitstrs)
@@ -144,7 +142,7 @@ public class ypkProjectCompile
         if (project.packagePostRmFile != null) {
             File fr = new File(project.packagePostRmFile);
             if (fr.exists()) {
-                String[] postrmstrs = jDataRWHelper.readAllLines(project.packagePostRmFile);
+                String[] postrmstrs = JDataHelper.readAllLines(project.packagePostRmFile);
                 appendToConfigFileEnd(project,projectbasediris,"\n");
                 appendToConfigFileEnd(project,projectbasediris,"post_remove() {");
                 for(String str:postrmstrs)
@@ -158,7 +156,7 @@ public class ypkProjectCompile
         if (project.packagePreInstFile != null) {
             File fr = new File(project.packagePreInstFile);
             if (fr.exists()) {
-                String[] preinststrs = jDataRWHelper.readAllLines(project.packagePreInstFile);
+                String[] preinststrs = JDataHelper.readAllLines(project.packagePreInstFile);
                 appendToConfigFileEnd(project,projectbasediris,"\n");
                 appendToConfigFileEnd(project,projectbasediris,"pre_install() {");
                 for(String str:preinststrs)
@@ -172,7 +170,7 @@ public class ypkProjectCompile
         if (project.packagePreRmFile != null) {
             File fr = new File(project.packagePreRmFile);
             if (fr.exists()) {
-                String[] prermstrs = jDataRWHelper.readAllLines(project.packagePreRmFile);
+                String[] prermstrs = JDataHelper.readAllLines(project.packagePreRmFile);
                 appendToConfigFileEnd(project,projectbasediris,"\n");
                 appendToConfigFileEnd(project,projectbasediris,"pre_remove() {");
                 for(String str:prermstrs)
@@ -186,7 +184,7 @@ public class ypkProjectCompile
         if (project.packagePostUpgradeFile != null) {
             File fr = new File(project.packagePostUpgradeFile);
             if (fr.exists()) {
-                String[] prermstrs = jDataRWHelper.readAllLines(project.packagePostUpgradeFile);
+                String[] prermstrs = JDataHelper.readAllLines(project.packagePostUpgradeFile);
                 appendToConfigFileEnd(project,projectbasediris,"\n");
                 appendToConfigFileEnd(project,projectbasediris,"post_upgrade() {");
                 for(String str:prermstrs)
@@ -200,7 +198,7 @@ public class ypkProjectCompile
         if (project.packagePostDowngradeFile != null) {
             File fr = new File(project.packagePostDowngradeFile);
             if (fr.exists()) {
-                String[] prermstrs = jDataRWHelper.readAllLines(project.packagePostDowngradeFile);
+                String[] prermstrs = JDataHelper.readAllLines(project.packagePostDowngradeFile);
                 appendToConfigFileEnd(project,projectbasediris,"\n");
                 appendToConfigFileEnd(project,projectbasediris,"post_downgrade() {");
                 for(String str:prermstrs)
@@ -214,7 +212,7 @@ public class ypkProjectCompile
         if (project.packagePreUpgradeFile != null) {
             File fr = new File(project.packagePreUpgradeFile);
             if (fr.exists()) {
-                String[] prermstrs = jDataRWHelper.readAllLines(project.packagePreUpgradeFile);
+                String[] prermstrs = JDataHelper.readAllLines(project.packagePreUpgradeFile);
                 appendToConfigFileEnd(project,projectbasediris,"\n");
                 appendToConfigFileEnd(project,projectbasediris,"pre_upgrade() {");
                 for(String str:prermstrs)
@@ -228,7 +226,7 @@ public class ypkProjectCompile
         if (project.packagePreDowngradeFile != null) {
             File fr = new File(project.packagePreDowngradeFile);
             if (fr.exists()) {
-                String[] prermstrs = jDataRWHelper.readAllLines(project.packagePreDowngradeFile);
+                String[] prermstrs = JDataHelper.readAllLines(project.packagePreDowngradeFile);
                 appendToConfigFileEnd(project,projectbasediris,"\n");
                 appendToConfigFileEnd(project,projectbasediris,"pre_downgrade() {");
                 for(String str:prermstrs)
@@ -295,9 +293,9 @@ public class ypkProjectCompile
                 startupfile.mkdirs();
                 File startupicon = new File(projectbasedirss + "/usr/share/icons/");
                 startupicon.mkdirs();
-                jCmdRunHelper.runSysCmd("cp " + startup.iconSourceFile + " " + projectbasedirss + "/usr/share/icons/" + iconsource.getName());
-                jDataRWHelper.writeAllLines(projectbasedirss + "/usr/share/applications/" + startup.startupFileName + ".desktop", jDataRWHelper.convertTo(content.toArray()));
-                jCmdRunHelper.runSysCmd("chmod +x " + projectbasedirss + "/usr/share/applications/" + startup.startupFileName + ".desktop");
+                JRunHelper.runSysCmd("cp " + startup.iconSourceFile + " " + projectbasedirss + "/usr/share/icons/" + iconsource.getName());
+                JDataHelper.writeAllLines(projectbasedirss + "/usr/share/applications/" + startup.startupFileName + ".desktop", JDataHelper.convertTo(content.toArray()));
+                JRunHelper.runSysCmd("chmod +x " + projectbasedirss + "/usr/share/applications/" + startup.startupFileName + ".desktop");
                 return true;
 
             }else
@@ -335,9 +333,9 @@ public class ypkProjectCompile
                     content.add("cp -a " + dfm.sourcePath + "/. " + projectbasedircc + dfm.destPath);
                 }
             }
-            jDataRWHelper.writeAllLines(jCmdRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh", jDataRWHelper.convertTo(content.toArray()));
-            jCmdRunHelper.runSysCmd("chmod +x " + jCmdRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh");
-            jCmdRunHelper.runSysCmd(jCmdRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh", true);
+            JDataHelper.writeAllLines(JRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh", JDataHelper.convertTo(content.toArray()));
+            JRunHelper.runSysCmd("chmod +x " + JRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh");
+            JRunHelper.runSysCmd(JRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh", true);
             return true;
         } else {
             return false;
@@ -416,9 +414,9 @@ public class ypkProjectCompile
         ArrayList<String> initfile = new ArrayList<String>();
         initfile.add("cd " + projectbasediryi);
         initfile.add("ypkg-gencontrol");
-        jDataRWHelper.writeAllLines(jCmdRunHelper.getCmdRunScriptBufferDir() + "/ypkinit.sh",jDataRWHelper.convertTo(initfile.toArray()));
-        jCmdRunHelper.runSysCmd("chmod +x " + jCmdRunHelper.getCmdRunScriptBufferDir() + "/ypkinit.sh");
-        jCmdRunHelper.runSysCmd(jCmdRunHelper.getCmdRunScriptBufferDir() + "/ypkinit.sh");
+        JDataHelper.writeAllLines(JRunHelper.getCmdRunScriptBufferDir() + "/ypkinit.sh",JDataHelper.convertTo(initfile.toArray()));
+        JRunHelper.runSysCmd("chmod +x " + JRunHelper.getCmdRunScriptBufferDir() + "/ypkinit.sh");
+        JRunHelper.runSysCmd(JRunHelper.getCmdRunScriptBufferDir() + "/ypkinit.sh");
         return true;
     }
 
