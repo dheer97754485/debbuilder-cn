@@ -30,7 +30,7 @@ public class configManager
     public static void saveConfig()
     {
         try {
-            debProjectModelRW.quickEasy.savetofile(config, jAppHelper.jCmdRunHelper.getUserHomeDirPath() + "/builderconfig.cfg");
+            debProjectModelRW.quickEasy.savetofile(config, JAppToolKit.JRunHelper.getUserHomeDirPath() + "/builderconfig.cfg");
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }

@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.util.ArrayList;
+import JAppToolKit.*;
 
 public class MakeUpdateForm extends JDialog {
     private JPanel contentPane;
@@ -151,7 +152,7 @@ public class MakeUpdateForm extends JDialog {
             //生成更新列表文件
             ArrayList<String> list = new ArrayList<String>();
             list.add(this.textRemoteBefore.getText() + "/" + "update1.xml");
-            jAppHelper.jDataRWHelper.writeAllLines(MainForm.currentProjectFile.getParent() + "/" + "updatelist.xml",jAppHelper.jDataRWHelper.convertTo(list.toArray()));
+            JAppToolKit.JDataHelper.writeAllLines(MainForm.currentProjectFile.getParent() + "/" + "updatelist.xml",JAppToolKit.JDataHelper.convertTo(list.toArray()));
 
             //生成更新补丁配置文件
             ArrayList<String> item = new ArrayList<String>();
@@ -161,7 +162,7 @@ public class MakeUpdateForm extends JDialog {
             item.add("finishscriptpath=" + this.textScript.getText());
             item.add("[[Files]]");
             item.addAll(getPathList(this.textRemoteBefore.getText(),this.textLocalBefore.getText(),this.textFiles.getText(),this.textFiles.getText()));
-            jAppHelper.jDataRWHelper.writeAllLines(MainForm.currentProjectFile.getParent() + "/" + "update1.xml",jAppHelper.jDataRWHelper.convertTo(item.toArray()));
+            JAppToolKit.JDataHelper.writeAllLines(MainForm.currentProjectFile.getParent() + "/" + "update1.xml",JAppToolKit.JDataHelper.convertTo(item.toArray()));
             JOptionPane.showMessageDialog(null,languageManager.getShowText("138"));
             dispose();
         } catch (Exception e) {

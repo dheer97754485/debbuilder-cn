@@ -1,7 +1,6 @@
 package debProjectTool;
 
 import debProjectModels.*;
-import jAppHelper.*;
 import wox.serial.*;
 
 /**

@@ -2,7 +2,6 @@ package debBuilder.language;
 
 import debProjectTool.*;
 import java.util.*;
-import jAppHelper.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -21,7 +20,7 @@ public class languageManager
      * @param loadpaths
      */
     public static void loadLanguageFile(String loadpaths) throws Exception {
-        String[] texts = jDataRWHelper.readAllLines(loadpaths);
+        String[] texts = JAppToolKit.JDataHelper.readAllLines(loadpaths);
         languageData.clear();
         for(int k=0;k < texts.length;k++)
         {
@@ -41,7 +40,7 @@ public class languageManager
        {
           texts[k] = languageData.get(k).languageId + languageSplit + languageData.get(k).showText;
        }
-       jDataRWHelper.writeAllLines(savepaths,texts);
+        JAppToolKit.JDataHelper.writeAllLines(savepaths,texts);
     }
 
     /**

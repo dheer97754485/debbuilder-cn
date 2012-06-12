@@ -2,8 +2,7 @@ package debProjectTool;
 
 import debBuilder.builderConfig.configManager;
 import debProjectModels.*;
-import jAppHelper.*;
-
+import JAppToolKit.*;
 import java.awt.datatransfer.FlavorEvent;
 import java.io.*;
 import java.util.*;
@@ -40,7 +39,7 @@ public class debProjectCompile
             controlcontent.add("Description: " + project.packageDescription);
             controlcontent.add("Homepage: " + project.packageHomepage);
 
-            jDataRWHelper.writeAllLines(projectbasedirp + "/DEBIAN/control", jDataRWHelper.convertTo(controlcontent.toArray()));
+            JDataHelper.writeAllLines(projectbasedirp + "/DEBIAN/control", JDataHelper.convertTo(controlcontent.toArray()));
 
             return true;
         } else {
@@ -86,32 +85,32 @@ public class debProjectCompile
         if (project.packagePostInstFile != null) {
             File fi = new File(project.packagePostInstFile);
             if (fi.exists()) {
-                jCmdRunHelper.runSysCmd("cp " + project.packagePostInstFile + " " + projectbasediris + "/DEBIAN/postinst", true);
-                jCmdRunHelper.runSysCmd("chmod +x " + projectbasediris + "/DEBIAN/postinst", true);
+                JRunHelper.runSysCmd("cp " + project.packagePostInstFile + " " + projectbasediris + "/DEBIAN/postinst", true);
+                JRunHelper.runSysCmd("chmod +x " + projectbasediris + "/DEBIAN/postinst", true);
             }
         }
 
         if (project.packagePostRmFile != null) {
             File fr = new File(project.packagePostRmFile);
             if (fr.exists()) {
-                jCmdRunHelper.runSysCmd("cp " + project.packagePostRmFile + " " + projectbasediris + "/DEBIAN/postrm", true);
-                jCmdRunHelper.runSysCmd("chmod +x " + projectbasediris + "/DEBIAN/postrm");
+                JRunHelper.runSysCmd("cp " + project.packagePostRmFile + " " + projectbasediris + "/DEBIAN/postrm", true);
+                JRunHelper.runSysCmd("chmod +x " + projectbasediris + "/DEBIAN/postrm");
             }
         }
 
         if (project.packagePreInstFile != null) {
             File fr = new File(project.packagePreInstFile);
             if (fr.exists()) {
-                jCmdRunHelper.runSysCmd("cp " + project.packagePreInstFile + " " + projectbasediris + "/DEBIAN/preinst", true);
-                jCmdRunHelper.runSysCmd("chmod +x " + projectbasediris + "/DEBIAN/preinst");
+                JRunHelper.runSysCmd("cp " + project.packagePreInstFile + " " + projectbasediris + "/DEBIAN/preinst", true);
+                JRunHelper.runSysCmd("chmod +x " + projectbasediris + "/DEBIAN/preinst");
             }
         }
 
         if (project.packagePreRmFile != null) {
             File fr = new File(project.packagePreRmFile);
             if (fr.exists()) {
-                jCmdRunHelper.runSysCmd("cp " + project.packagePreRmFile + " " + projectbasediris + "/DEBIAN/prerm", true);
-                jCmdRunHelper.runSysCmd("chmod +x " + projectbasediris + "/DEBIAN/prerm");
+                JRunHelper.runSysCmd("cp " + project.packagePreRmFile + " " + projectbasediris + "/DEBIAN/prerm", true);
+                JRunHelper.runSysCmd("chmod +x " + projectbasediris + "/DEBIAN/prerm");
             }
         }
 
@@ -171,9 +170,9 @@ public class debProjectCompile
               startupfile.mkdirs();
               File startupicon = new File(projectbasedirss + "/usr/share/icons/");
               startupicon.mkdirs();
-              jCmdRunHelper.runSysCmd("cp " + startup.iconSourceFile + " " + projectbasedirss + "/usr/share/icons/" + iconsource.getName());
-              jDataRWHelper.writeAllLines(projectbasedirss + "/usr/share/applications/" + startup.startupFileName + ".desktop", jDataRWHelper.convertTo(content.toArray()));
-              jCmdRunHelper.runSysCmd("chmod +x " + projectbasedirss + "/usr/share/applications/" + startup.startupFileName + ".desktop");
+              JRunHelper.runSysCmd("cp " + startup.iconSourceFile + " " + projectbasedirss + "/usr/share/icons/" + iconsource.getName());
+              JDataHelper.writeAllLines(projectbasedirss + "/usr/share/applications/" + startup.startupFileName + ".desktop", JDataHelper.convertTo(content.toArray()));
+              JRunHelper.runSysCmd("chmod +x " + projectbasedirss + "/usr/share/applications/" + startup.startupFileName + ".desktop");
               return true;
 
             }else
@@ -211,9 +210,9 @@ public class debProjectCompile
                   content.add("cp -a " + dfm.sourcePath + "/. " + projectbasedircc + dfm.destPath);
                 }
             }
-            jDataRWHelper.writeAllLines(jCmdRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh", jDataRWHelper.convertTo(content.toArray()));
-            jCmdRunHelper.runSysCmd("chmod +x " + jCmdRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh");
-            jCmdRunHelper.runSysCmd(jCmdRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh", true);
+            JDataHelper.writeAllLines(JRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh", JDataHelper.convertTo(content.toArray()));
+            JRunHelper.runSysCmd("chmod +x " + JRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh");
+            JRunHelper.runSysCmd(JRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh", true);
             return true;
         } else {
             return false;
@@ -231,15 +230,15 @@ public class debProjectCompile
         ArrayList<String> makemd5sums = new ArrayList<String>();
         makemd5sums.add("cd " + projectbasedirms);
         makemd5sums.add("md5sum `find . -type f` > DEBIAN/md5sums");
-        jDataRWHelper.writeAllLines(jCmdRunHelper.getCmdRunScriptBufferDir() + "/makemd5sums.sh",jDataRWHelper.convertTo(makemd5sums.toArray()));
-        jCmdRunHelper.runSysCmd("chmod +x " + jCmdRunHelper.getCmdRunScriptBufferDir() + "/makemd5sums.sh");
-        jCmdRunHelper.runSysCmd(jCmdRunHelper.getCmdRunScriptBufferDir() + "/makemd5sums.sh");
-        String[] md5sums = jDataRWHelper.readAllLines(projectbasedirms + "/DEBIAN/md5sums");
+        JDataHelper.writeAllLines(JRunHelper.getCmdRunScriptBufferDir() + "/makemd5sums.sh",JDataHelper.convertTo(makemd5sums.toArray()));
+        JRunHelper.runSysCmd("chmod +x " + JRunHelper.getCmdRunScriptBufferDir() + "/makemd5sums.sh");
+        JRunHelper.runSysCmd(JRunHelper.getCmdRunScriptBufferDir() + "/makemd5sums.sh");
+        String[] md5sums = JDataHelper.readAllLines(projectbasedirms + "/DEBIAN/md5sums");
         for(int k = 0;k < md5sums.length;k++)
         {
             md5sums[k] = md5sums[k].replace("./","");
         }
-        jDataRWHelper.writeAllLines(projectbasedirms + "/DEBIAN/md5sums",md5sums);
+        JDataHelper.writeAllLines(projectbasedirms + "/DEBIAN/md5sums",md5sums);
         return true;
     }
     

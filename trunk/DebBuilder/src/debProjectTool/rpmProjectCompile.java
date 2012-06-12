@@ -1,9 +1,9 @@
 package debProjectTool;
 
 import debProjectModels.*;
-import jAppHelper.*;
 import java.io.*;
 import java.util.*;
+import JAppToolKit.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -46,7 +46,7 @@ public class rpmProjectCompile
             controlcontent.add("# Fix rpath");
             controlcontent.add("export NO_BRP_CHECK_RPATH=true");
 
-            jDataRWHelper.writeAllLines(projectbasedirp + "/" + "pkgbuild.spec", jDataRWHelper.convertTo(controlcontent.toArray()));
+            JDataHelper.writeAllLines(projectbasedirp + "/" + "pkgbuild.spec", JDataHelper.convertTo(controlcontent.toArray()));
 
             return true;
         } else {
@@ -89,7 +89,7 @@ public class rpmProjectCompile
      * @param projectbasedirape
      */
     public static void appendToConfigFileEnd(debProjectModel project,String projectbasedirape,String content) throws Exception {
-        jDataRWHelper.appendLineToFileEnd(projectbasedirape + "/" + "pkgbuild.spec", content);
+        JDataHelper.appendLineToFileEnd(projectbasedirape + "/" + "pkgbuild.spec", content);
     }
 
     /**
@@ -102,7 +102,7 @@ public class rpmProjectCompile
             File fi = new File(project.packagePostInstFile);
             if (fi.exists())
             {
-                String[] postinitstrs = jDataRWHelper.readAllLines(project.packagePostInstFile);
+                String[] postinitstrs = JDataHelper.readAllLines(project.packagePostInstFile);
                 appendToConfigFileEnd(project,projectbasediris,"\n");
                 appendToConfigFileEnd(project,projectbasediris,"%post");
                 for(String str:postinitstrs)
@@ -115,7 +115,7 @@ public class rpmProjectCompile
         if (project.packagePostRmFile != null) {
             File fr = new File(project.packagePostRmFile);
             if (fr.exists()) {
-                String[] postrmstrs = jDataRWHelper.readAllLines(project.packagePostRmFile);
+                String[] postrmstrs = JDataHelper.readAllLines(project.packagePostRmFile);
                 appendToConfigFileEnd(project,projectbasediris,"\n");
                 appendToConfigFileEnd(project,projectbasediris,"%postun");
                 for(String str:postrmstrs)
@@ -128,7 +128,7 @@ public class rpmProjectCompile
         if (project.packagePreInstFile != null) {
             File fr = new File(project.packagePreInstFile);
             if (fr.exists()) {
-                String[] preinststrs = jDataRWHelper.readAllLines(project.packagePreInstFile);
+                String[] preinststrs = JDataHelper.readAllLines(project.packagePreInstFile);
                 appendToConfigFileEnd(project,projectbasediris,"\n");
                 appendToConfigFileEnd(project,projectbasediris,"%pre");
                 for(String str:preinststrs)
@@ -141,7 +141,7 @@ public class rpmProjectCompile
         if (project.packagePreRmFile != null) {
             File fr = new File(project.packagePreRmFile);
             if (fr.exists()) {
-                String[] prermstrs = jDataRWHelper.readAllLines(project.packagePreRmFile);
+                String[] prermstrs = JDataHelper.readAllLines(project.packagePreRmFile);
                 appendToConfigFileEnd(project,projectbasediris,"\n");
                 appendToConfigFileEnd(project,projectbasediris,"%preun");
                 for(String str:prermstrs)
@@ -207,9 +207,9 @@ public class rpmProjectCompile
                 startupfile.mkdirs();
                 File startupicon = new File(projectbasedirss + "/usr/share/icons/");
                 startupicon.mkdirs();
-                jCmdRunHelper.runSysCmd("cp " + startup.iconSourceFile + " " + projectbasedirss + "/usr/share/icons/" + iconsource.getName());
-                jDataRWHelper.writeAllLines(projectbasedirss + "/usr/share/applications/" + startup.startupFileName + ".desktop", jDataRWHelper.convertTo(content.toArray()));
-                jCmdRunHelper.runSysCmd("chmod +x " + projectbasedirss + "/usr/share/applications/" + startup.startupFileName + ".desktop");
+                JRunHelper.runSysCmd("cp " + startup.iconSourceFile + " " + projectbasedirss + "/usr/share/icons/" + iconsource.getName());
+                JDataHelper.writeAllLines(projectbasedirss + "/usr/share/applications/" + startup.startupFileName + ".desktop", JDataHelper.convertTo(content.toArray()));
+                JRunHelper.runSysCmd("chmod +x " + projectbasedirss + "/usr/share/applications/" + startup.startupFileName + ".desktop");
                 return true;
 
             }else
@@ -247,9 +247,9 @@ public class rpmProjectCompile
                     content.add("cp -a " + dfm.sourcePath + "/. " + projectbasedircc + dfm.destPath);
                 }
             }
-            jDataRWHelper.writeAllLines(jCmdRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh", jDataRWHelper.convertTo(content.toArray()));
-            jCmdRunHelper.runSysCmd("chmod +x " + jCmdRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh");
-            jCmdRunHelper.runSysCmd(jCmdRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh", true);
+            JDataHelper.writeAllLines(JRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh", JDataHelper.convertTo(content.toArray()));
+            JRunHelper.runSysCmd("chmod +x " + JRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh");
+            JRunHelper.runSysCmd(JRunHelper.getCmdRunScriptBufferDir() + "/copyinstallfile_" + project.packageName + ".sh", true);
             return true;
         } else {
             return false;
