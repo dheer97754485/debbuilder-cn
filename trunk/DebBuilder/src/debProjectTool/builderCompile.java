@@ -199,7 +199,7 @@ public class builderCompile
 
         File etcf = new File(bufdir + "/etc");
         etcf.mkdirs();
-        File appf = new File(bufdir + new File(projects.updateConfig.localAppPath).getParent() + "/updateapp/lib");
+        File appf = new File(bufdir + projects.updateConfig.localAppPath + "/updateapp/lib");
         appf.mkdirs();
         ArrayList<String> configwrite = new ArrayList<String>();
         configwrite.add("listurl=" + projects.updateConfig.updateListUrl);
